@@ -3,5 +3,17 @@
 @tailwind utilities;
 
 body {
-  @apply max-w-[90%] w-[1080px] mx-auto;
+  @apply max-w-[90%] w-[1080px] mx-auto text-gray-700;
+}
+
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-yellow-500 to-lime-500;
+}
+
+.bg-gradient {
+  @apply bg-gradient-to-br from-lime-50 from-30% via-lime-100 to-teal-100;
+}
+
+.h1-section {
+  @apply inline text-4xl text-gradient font-semibold;
 }

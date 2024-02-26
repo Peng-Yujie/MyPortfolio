@@ -7,9 +7,11 @@ import Twitter from "public/twitter.svg";
 
 const Intro = () => {
   return (
-    <section className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-4 mb-4">
+    <section className="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-4 mb-4">
       <div className="h-[30rem] rounded-3xl p-10 flex flex-col gap-16 bg-[url('/gradient-bg.jpg')] bg-cover">
-        <h1 className="text-4xl font-semibold">Hello, I am Yujie</h1>
+        <h1 className="text-4xl font-semibold">
+          Hello, I am <span className="text-gradient">Yujie</span>
+        </h1>
         <p className="flex-1">Hello world</p>
         <div className="flex flex-col lg:flex-row item-center gap-4 justify-self-end">
           <button className="bg-black text-white font-medium py-3 px-12 rounded-full w-60 lg:w-auto">
