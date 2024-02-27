@@ -1,7 +1,7 @@
 import React from "react";
 import Arrow from "../public/arrow.svg";
 import { motion } from "framer-motion";
-import { motionProps } from "./motionSettings";
+import { motionProps } from "../lib/motionSettings";
 
 interface Props {
   name?: string | undefined;

@@ -1,30 +1,21 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { motionProps, skillsMotionProps, useScroll } from "./motionSettings";
-
-const skillsData = [
-  "HTML5/CSS3",
-  "JavaScript",
-  "Python",
-  "C++",
-  "React",
-  "Tailwind",
-  "Next.js",
-  "TypeScript",
-  "Node.js",
-  "MongoDB",
-  "MySQL",
-  "Figma",
-];
+import {
+  motionProps,
+  skillsMotionProps,
+  useScroll,
+} from "../lib/motionSettings";
+import { skillsData } from "../lib/data";
 
 const Skills = () => {
   const { ref, isInView } = useScroll();
 
   return (
-    <>
-      <motion.div {...motionProps} className="w-full my-4 overflow-hidden">
+    <section className="skills mb-4">
+      {/* <section className="skills mb-12 scroll-mt-12"> */}
+      {/* <motion.div {...motionProps} className="w-full my-4 overflow-hidden">
         <h1 className="h1-section">Skills</h1>
-      </motion.div>
+      </motion.div> */}
       <motion.div
         className="rounded-3xl overflow-hidden bg-gradient"
         {...motionProps}
@@ -44,7 +35,7 @@ const Skills = () => {
           ))}
         </div>
       </motion.div>
-    </>
+    </section>
   );
 };
 
