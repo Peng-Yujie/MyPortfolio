@@ -29,7 +29,10 @@ const Intro = () => {
           </p>
         </div>
         <div className="flex flex-col lg:flex-row item-center gap-4 justify-self-end">
-          <button className="bg-black text-white font-medium py-3 px-12 rounded-full w-60 lg:w-auto dark:bg-gray-500 hover:scale-105">
+          <button
+            className="bg-black text-white font-medium py-3 px-12 rounded-full w-60 lg:w-auto dark:bg-gray-500 hover:scale-105"
+            onClick={scrollToContact}
+          >
             Contact me
           </button>
           <div className="flex items-center gap-4">

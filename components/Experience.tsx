@@ -7,6 +7,7 @@ import "react-vertical-timeline-component/style.min.css";
 import { motion } from "framer-motion";
 import { motionProps } from "../lib/motionSettings";
 import { experienceData } from "../lib/data";
+import { darkBgClass } from "./ThemeSwitch";
 
 const Experience = () => {
   return (
@@ -17,7 +18,7 @@ const Experience = () => {
       </motion.div> */}
       <motion.div
         {...motionProps}
-        className="rounded-3xl overflow-hidden bg-gray-50 px-10 py-6"
+        className={`rounded-3xl overflow-hidden bg-gray-50 px-10 py-6 ${darkBgClass}`}
       >
         <VerticalTimeline>
           {experienceData.map((experience, index) => (
@@ -26,6 +27,7 @@ const Experience = () => {
               date={experience.date}
               icon={experience.icon}
               iconStyle={experience.iconStyle}
+              style={{ color: "#000" }}
             >
               <h3 className="vertical-timeline-element-title">
                 {experience.title}

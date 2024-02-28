@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { motionProps } from "../lib/motionSettings";
 import SocialButton from "./SocialButton";
 import { socialMediaData } from "../lib/data";
+import { darkBgClass } from "./ThemeSwitch";
 
 const Contact = () => {
   return (
@@ -14,7 +15,7 @@ const Contact = () => {
       <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-4">
         <motion.div
           {...motionProps}
-          className="rounded-3xl flex flex-col justify-between bg-gray-50"
+          className={`rounded-3xl flex flex-col justify-between bg-gray-50 ${darkBgClass}`}
         >
           <div className="h-4/6 rounded-t-3xl bg-[url('/me.png')] bg-contain bg-center bg-no-repeat hidden md:block" />
           <div className="mx-10 my-6">
@@ -34,7 +35,7 @@ const Contact = () => {
         </motion.div>
         <motion.div
           {...motionProps}
-          className="rounded-3xl overflow-hidden bg-gradient px-10 py-6"
+          className={`rounded-3xl overflow-hidden bg-gradient px-10 py-6 ${darkBgClass}`}
         >
           <h1 className="text-3xl font-semibold mb-6">
             Send me a <span className="text-gradient">Message</span>
