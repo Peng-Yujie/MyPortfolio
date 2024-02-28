@@ -6,7 +6,6 @@ import {
   useScroll,
 } from "../lib/motionSettings";
 import { skillsData } from "../lib/data";
-import { darkBgClass } from "./ThemeSwitch";
 
 const Skills = () => {
   const { ref, isInView } = useScroll();
@@ -18,7 +17,7 @@ const Skills = () => {
         <h1 className="h1-section">Skills</h1>
       </motion.div> */}
       <motion.div
-        className={`rounded-3xl overflow-hidden bg-gray-50 ${darkBgClass}`}
+        className="rounded-3xl overflow-hidden bg-gray-50 dark:bg-none dark:bg-gray-600 dark:outline dark:outline-2 dark:outline-gray-500"
         {...motionProps}
       >
         <div className="px-10 py-6 flex flex-wrap gap-4 items-center justify-center">

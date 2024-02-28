@@ -2,6 +2,7 @@ import React from "react";
 import Arrow from "../public/arrow.svg";
 import { motion } from "framer-motion";
 import { motionProps } from "../lib/motionSettings";
+import { useTheme } from "../context/theme-context";
 
 interface Props {
   name?: string | undefined;
@@ -9,7 +10,6 @@ interface Props {
   badges?: string[] | undefined;
   imgURL?: string | undefined;
   bgColor?: string | undefined;
-  dark?: boolean | undefined;
 }
 
 const ProjectPreview: React.FC<Props> = ({
@@ -18,12 +18,22 @@ const ProjectPreview: React.FC<Props> = ({
   badges = ["React", "Tailwind", "Framer Motion"],
   imgURL = "/project-1.png",
   bgColor = "#E4E4E4",
-  dark = false,
 }) => {
+  const { theme } = useTheme();
+
   return (
     <motion.div
-      className={`h-[30rem] rounded-3xl overflow-hidden ${dark ? "dark" : ""}`}
-      style={{ background: `${bgColor}` }}
+      className="h-[30rem] rounded-3xl overflow-hidden"
+      style={
+        theme === "dark"
+          ? {
+              background: "#4B5563",
+              outline: "2px solid #6B7280",
+            }
+          : {
+              background: `linear-gradient(180deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%), ${bgColor}`,
+            }
+      }
       {...motionProps}
     >
       <div
@@ -45,7 +55,7 @@ const ProjectPreview: React.FC<Props> = ({
           {badges.map((badge, index) => (
             <div
               key={index}
-              className="h-8 px-3 bg-white rounded-full flex items-center justify-center"
+              className="h-8 px-3 bg-white rounded-full flex items-center justify-center dark:text-zinc-500 dark:bg-zinc-300"
             >
               {badge}
             </div>
