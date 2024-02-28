@@ -6,7 +6,7 @@ import { socialMediaData } from "../lib/data";
 
 const Contact = () => {
   return (
-    <section className="contact scroll-mt-12" id="contact">
+    <section className="contact scroll-mt-20" id="contact">
       {/* <section className="contact mb-12 scroll-mt-12"> */}
       {/* <motion.div {...motionProps} className="w-full mb-4 overflow-hidden">
         <h1 className="h1-section">Contact me</h1>

@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import ReactSwitch from "react-switch";
 
+export const darkBgClass =
+  "dark:bg-none dark:bg-gray-600 dark:outline dark:outline-2 dark:outline-gray-500";
+// export const darkTextClass = "dark:text-gray-300";
+
 const ThemeSwitch = () => {
   const [darkMode, setDarkMode] = useState(false);
   const switchDarkMode = () => {

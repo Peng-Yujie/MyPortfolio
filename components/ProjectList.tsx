@@ -6,7 +6,7 @@ import { projectData } from "../lib/data";
 
 const ProjectList = () => {
   return (
-    <section className="projects mb-4 scroll-mt-12" id="projects">
+    <section className="projects mb-4 scroll-mt-20" id="projects">
       {/* <section className="projects mb-12 scroll-mt-12"> */}
       {/* <motion.div {...motionProps} className="w-full my-4 overflow-hidden">
         <h1 className="h1-section">Projects</h1>

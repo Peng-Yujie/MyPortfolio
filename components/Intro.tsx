@@ -1,7 +1,7 @@
 import React from "react";
 import SocialButton from "./SocialButton";
 import { socialMediaData } from "../lib/data";
-import ThemeSwitch from "./ThemeSwitch";
+import ThemeSwitch, { darkBgClass } from "./ThemeSwitch";
 
 const Intro = () => {
   const scrollToContact = () => {
@@ -10,13 +10,26 @@ const Intro = () => {
 
   return (
     <section className="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-4 mb-4">
-      <div className="h-[30rem] rounded-3xl p-10 flex flex-col gap-16 bg-[url('/gradient-bg.jpg')] bg-cover">
-        <h1 className="text-4xl font-semibold">
+      <div
+        className={`h-[32rem] rounded-3xl p-10 flex flex-col gap-8 bg-[url('/gradient-bg.jpg')] bg-cover ${darkBgClass}`}
+      >
+        <h1 className="text-4xl font-bold">
           Hello, I am <span className="text-gradient">Yujie</span>
         </h1>
-        <p className="flex-1">Hello world</p>
+        <div className="flex-1 flex flex-col justify-center">
+          <p>
+            Currently a CS student at Langara College, equipped with a diverse
+            set of skills in{" "}
+            <strong>web development and software engineering</strong>
+            . I am looking for opportunities to work on exciting projects.
+            <br />
+            Passionate about programming and technology, with extensive
+            expertise in e-commerce operations and a deep understanding of
+            business requirements.
+          </p>
+        </div>
         <div className="flex flex-col lg:flex-row item-center gap-4 justify-self-end">
-          <button className="bg-black text-white font-medium py-3 px-12 rounded-full w-60 lg:w-auto">
+          <button className="bg-black text-white font-medium py-3 px-12 rounded-full w-60 lg:w-auto dark:bg-gray-500 hover:scale-105">
             Contact me
           </button>
           <div className="flex items-center gap-4">
@@ -28,10 +41,18 @@ const Intro = () => {
           </div>
         </div>
       </div>
-      <div className="md:h-[30rem] rounded-3xl p-8 bg-gray-50 flex flex-row md:flex-col justify-items-end md:justify-between">
-        <div className="w-[15rem] h-[8rem] md:w-auto md:h-4/6 bg-[url('/me-mac.png')] bg-contain bg-center bg-no-repeat" />
-        <div className="flex-1 flex items-center">
-          <p>Yujie Peng</p>
+      <div
+        className={`md:h-[32rem] rounded-3xl p-8 bg-gray-50 flex flex-row md:flex-col justify-items-end md:justify-between ${darkBgClass}`}
+      >
+        <div className="h-[8rem] flex-1 md:w-auto bg-[url('/me-mac.png')] bg-contain bg-center bg-no-repeat">
+          <p className="text-2xl md:text-center dark:hidden">💭</p>
+          <p className="text-2xl md:text-center hidden dark:block">💡</p>
+          {/* <div className="h-[8rem] w-1/4 flex-1 md:w-auto bg-[url('/me-mac.png')] bg-contain bg-center bg-no-repeat" /> */}
+        </div>
+        <div className="flex-1 flex items-center text-center">
+          <p>
+            <i>Business-minded. Team Player. Data-analytic Thinking.</i>
+          </p>
         </div>
         <div className="flex items-center">
           <ThemeSwitch />
