@@ -12,8 +12,9 @@ const ProjectList = () => {
             name={project.name}
             description={project.description}
             badges={project.badges}
-            imgURL={project.imgURL}
+            imgSrc={project.imgSrc}
             bgColor={project.bgColor}
+            url={project.url}
           />
         ))}
       </div>

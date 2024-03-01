@@ -23,8 +23,8 @@ const Contact = () => {
             </h1>
             <div className="flex flex-col lg:flex-row item-center gap-4 justify-self-end">
               <div className="flex items-center gap-4">
-                {socialMediaData.map(({ name, icon: Icon }) => (
-                  <SocialButton key={name} bgColor={name}>
+                {socialMediaData.map(({ name, icon: Icon, url }) => (
+                  <SocialButton key={name} bgColor={name} href={url}>
                     <Icon className="w-5 h-5" />
                   </SocialButton>
                 ))}

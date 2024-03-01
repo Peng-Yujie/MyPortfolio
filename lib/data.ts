@@ -1,27 +1,38 @@
 import React from "react";
 import { FaTiktok } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa";
+import { FaRegFileAlt } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
 import { SiTripdotcom } from "react-icons/si";
 import { LuGraduationCap } from "react-icons/lu";
-import Dribbble from "public/dribbble.svg";
-import Instagram from "public/instagram.svg";
-import Linkedin from "public/linkedin.svg";
-import Twitter from "public/twitter.svg";
+import Project01 from "public/project-1.png";
+import Project02 from "public/project-2.png";
 
 export const projectData = [
   {
     name: "Tireder",
     description:
       "A web application for tracking and measuring daily stress, incorporating real-time communication with an AI Chatbot.",
-    badges: ["Python", "MongoDB", "OpenAI API"],
-    imgURL: "/project-1.png",
-    bgColor: "#E4E4E4",
+    badges: [
+      "Python",
+      "Flask",
+      "Socket.IO",
+      "MongoDB",
+      "OpenAI API",
+      "JavaScript",
+    ],
+    imgSrc: Project01,
+    bgColor: "#ffe3a4",
+    url: "https://github.com/Peng-Yujie/Tireder",
   },
   {
     name: "Eastern Explore",
-    description: "Database for a company that organizes group hiking events.",
-    badges: ["Database", "MySQL"],
-    imgURL: "/project-2.png",
-    bgColor: "#E4E4E4",
+    description:
+      "Database for a company that organizes group hiking events, including queries for efficient data management.",
+    badges: ["Database", "MySQL", "PHP", "HTML", "CSS"],
+    imgSrc: Project02,
+    bgColor: "#6ed2b7",
+    url: "https://github.com/Peng-Yujie/Eastern-Explore-Database",
   },
 ];
 
@@ -88,8 +99,11 @@ export const skillsData = [
 ];
 
 export const socialMediaData = [
-  { name: "dribbble", icon: Dribbble },
-  { name: "instagram", icon: Instagram },
-  { name: "twitter", icon: Twitter },
-  { name: "linkedin", icon: Linkedin },
+  { name: "resume", icon: FaRegFileAlt, url: "/resume.pdf" },
+  {
+    name: "linkedin",
+    icon: FaLinkedin,
+    url: "https://www.linkedin.com/in/yujie-peng-8276b1279/",
+  },
+  { name: "github", icon: FaGithub, url: "https://github.com/Peng-Yujie" },
 ];

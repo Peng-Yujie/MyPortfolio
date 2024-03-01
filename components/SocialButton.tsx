@@ -3,36 +3,38 @@ import React from "react";
 interface Props {
   children: React.ReactNode;
   bgColor?: string | undefined;
+  href?: string;
 }
 
-const SocialButton: React.FC<Props> = ({ children, bgColor = "black" }) => {
+const SocialButton: React.FC<Props> = ({
+  children,
+  bgColor = "f8fafb",
+  href,
+}) => {
   let bgHoverColorClass;
 
   switch (bgColor) {
-    case "dribbble":
-      bgHoverColorClass = "hover:bg-dribbble";
-      break;
-    case "instagram":
-      bgHoverColorClass = "hover:bg-instagram";
-      break;
-    case "twitter":
-      bgHoverColorClass = "hover:bg-twitter";
+    case "resume":
+      bgHoverColorClass = "hover:bg-resume dark:hover:bg-resume";
       break;
     case "linkedin":
-      bgHoverColorClass = "hover:bg-linkedin";
+      bgHoverColorClass = "hover:bg-linkedin dark:hover:bg-linkedin";
+      break;
+    case "github":
+      bgHoverColorClass = "hover:bg-github dark:hover:bg-github";
       break;
     default:
-      bgHoverColorClass = "hover:bg-black";
+      bgHoverColorClass = "hover:bg-github dark:hover:bg-github";
   }
 
   return (
-    <button
-      className={`group h-12 w-12 bg-white ${bgHoverColorClass} rounded-full transition-colors duration-200 ease-in-out flex justify-center items-center`}
+    <a
+      className={`h-12 w-12 bg-white ${bgHoverColorClass} rounded-full transition-colors duration-200 ease-in-out flex justify-center items-center text-black hover:text-white`}
+      target="_blank"
+      href={href}
     >
-      <div className="fill-black group-hover:fill-white transition-colors duration-200 ease-in-out">
-        {children}
-      </div>
-    </button>
+      {children}
+    </a>
   );
 };
 

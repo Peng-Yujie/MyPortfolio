@@ -28,21 +28,21 @@ const Intro = () => {
         </div>
         <div className="flex flex-col lg:flex-row item-center gap-4 justify-self-end">
           <button
-            className="bg-black text-white font-medium py-3 px-12 rounded-full w-60 lg:w-auto dark:bg-gray-500 hover:scale-105"
+            className="bg-black text-white font-medium py-3 px-10 rounded-full w-44 lg:w-auto dark:bg-gray-500 hover:scale-105"
             onClick={scrollToContact}
           >
             Contact me
           </button>
           <div className="flex items-center gap-4">
-            {socialMediaData.map(({ name, icon: Icon }) => (
-              <SocialButton key={name} bgColor={name}>
+            {socialMediaData.map(({ name, icon: Icon, url }) => (
+              <SocialButton key={name} bgColor={name} href={url}>
                 <Icon className="w-5 h-5" />
               </SocialButton>
             ))}
           </div>
         </div>
       </div>
-      <div className="md:h-[32rem] rounded-3xl p-8 bg-gray-50 flex flex-row md:flex-col justify-items-end md:justify-between dark:bg-none dark:bg-gray-600 dark:outline dark:outline-2 dark:outline-gray-500">
+      <div className="h-48 md:h-[32rem] rounded-3xl p-8 bg-gray-50 flex flex-row md:flex-col justify-items-end md:justify-between dark:bg-none dark:bg-gray-600 dark:outline dark:outline-2 dark:outline-gray-500">
         <div className="h-[8rem] flex-1 md:w-auto bg-[url('/me-mac.png')] bg-contain bg-center bg-no-repeat">
           <p className="text-2xl md:text-center dark:hidden">💭</p>
           <p className="text-2xl md:text-center hidden dark:block">💡</p>

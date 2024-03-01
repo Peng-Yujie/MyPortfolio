@@ -22,6 +22,7 @@ const Experience = () => {
         {...motionProps}
         className="rounded-3xl overflow-hidden bg-gray-50 px-10 py-6 dark:bg-none dark:bg-gray-600 dark:outline dark:outline-2 dark:outline-gray-500"
       >
+        <h1 className="font-light text-zinc-300 mb-8">Experience</h1>
         <VerticalTimeline>
           {experienceData.map((experience, index) => (
             <VerticalTimelineElement
