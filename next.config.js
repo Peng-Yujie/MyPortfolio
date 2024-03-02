@@ -8,6 +8,8 @@ const nextConfig = {
     });
     return config;
   },
+  basePath: "/MyPortfolio",
+  assetPrefix: "/MyPortfolio/",
 };
 
 module.exports = nextConfig;

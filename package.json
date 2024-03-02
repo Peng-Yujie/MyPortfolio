@@ -2,6 +2,7 @@
   "name": "nextjs-portfolio-website",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://peng-yujie.github.io/MyPortfolio",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
