@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { motionProps } from "../lib/motionSettings";
 import SocialButton from "./SocialButton";
 import { socialMediaData } from "../lib/data";
+import me from "../public/me.png";
 
 const Contact = () => {
   return (
@@ -16,7 +17,10 @@ const Contact = () => {
           {...motionProps}
           className="rounded-3xl flex flex-col justify-between bg-gray-50 dark:bg-none dark:bg-gray-600 dark:outline dark:outline-2 dark:outline-gray-500"
         >
-          <div className="h-4/6 rounded-t-3xl bg-[url('/me.png')] bg-contain bg-center bg-no-repeat hidden md:block" />
+          <div
+            className="h-4/6 rounded-t-3xl bg-contain bg-center bg-no-repeat hidden md:block"
+            style={{ backgroundImage: `url(${me.src})` }}
+          />
           <div className="mx-10 my-6">
             <h1 className="text-3xl font-semibold mb-6">
               Meet me <span className="text-gradient">Here</span>
