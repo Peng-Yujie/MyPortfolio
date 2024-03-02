@@ -2,7 +2,7 @@
   "name": "nextjs-portfolio-website",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://peng-yujie.github.io/MyPortfolio",
+  "homepage": "https://pengyujie.netlify.app/",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -10,6 +10,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@formspree/react": "^2.5.1",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@types/node": "18.15.11",
     "@types/react": "18.0.31",

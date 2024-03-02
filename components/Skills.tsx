@@ -12,15 +12,11 @@ const Skills = () => {
 
   return (
     <section className="skills mb-4">
-      {/* <section className="skills mb-12 scroll-mt-12"> */}
-      {/* <motion.div {...motionProps} className="w-full my-4 overflow-hidden">
-        <h1 className="h1-section">Skills</h1>
-      </motion.div> */}
       <motion.div
         className="rounded-3xl overflow-hidden bg-gray-50 dark:bg-none dark:bg-gray-600 dark:outline dark:outline-2 dark:outline-gray-500"
         {...motionProps}
       >
-        <div className="px-10 py-6">
+        <div className="px-10 py-6 md:px-16 md:py-12">
           <h1 className="font-light text-zinc-300 mb-4">Skills</h1>
           <div className="flex flex-wrap gap-4 items-center justify-center">
             {skillsData.map((skill, index) => (

@@ -37,18 +37,18 @@ const ProjectPreview: React.FC<Props> = ({
 
   return (
     <motion.div
-      className="h-64 md:h-80 rounded-3xl overflow-hidden"
+      className="h-64 md:h-[24rem] rounded-3xl overflow-hidden"
       style={style}
       {...motionProps}
     >
       <div
-        className="h-full w-full px-10 py-6 durantion-[500ms] transition-all ease-in-out hover:scale-105 flex flex-col justify-between relative"
+        className="h-full w-full px-10 py-6 md:px-16 md:py-12 durantion-[500ms] transition-all ease-in-out hover:scale-105 flex flex-col justify-between relative"
         onClick={url ? () => window.open(url, "_blank") : () => {}}
       >
         <Image
           src={imgSrc}
           alt={name}
-          className="absolute w-1/2 max-w-md rounded-xl right-0 bottom-0 top-1/2 md:top-1/4 transform -rotate-12 opacity-50 z-0"
+          className="absolute w-1/2 max-w-md rounded-xl right-0 bottom-0 top-1/2 md:top-1/3 transform -rotate-12 opacity-50 z-0"
         />
         <div className="flex justify-between z-10">
           <div className="w-5/6 flex flex-row gap-4 items-center md:mb-6">
