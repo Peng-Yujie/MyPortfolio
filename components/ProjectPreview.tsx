@@ -37,12 +37,12 @@ const ProjectPreview: React.FC<Props> = ({
 
   return (
     <motion.div
-      className="h-64 md:h-[24rem] rounded-3xl overflow-hidden"
+      className="md:h-[24rem] rounded-3xl overflow-hidden"
       style={style}
       {...motionProps}
     >
       <div
-        className="h-full w-full px-10 py-6 md:px-16 md:py-12 durantion-[500ms] transition-all ease-in-out hover:scale-105 flex flex-col justify-between relative"
+        className="h-full w-full p-6 md:px-16 md:py-12 durantion-[500ms] transition-all ease-in-out hover:scale-105 flex flex-col justify-between relative"
         onClick={url ? () => window.open(url, "_blank") : () => {}}
       >
         <Image

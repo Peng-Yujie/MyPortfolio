@@ -4,7 +4,6 @@ import { motionProps } from "../lib/motionSettings";
 import SocialButton from "./SocialButton";
 import { socialMediaData } from "../lib/data";
 import { useForm, ValidationError } from "@formspree/react";
-import { serialize } from "v8";
 
 const Contact = () => {
   const [state, handleSubmit] = useForm("mnqevrbb");
@@ -38,8 +37,8 @@ const Contact = () => {
           {...motionProps}
           className="rounded-3xl flex flex-col justify-begin bg-gray-50 dark:bg-none dark:bg-gray-600 dark:outline dark:outline-2 dark:outline-gray-500"
         >
-          <div className="h-4/6 max-h-64 rounded-t-3xl bg-[url('/me.png')] bg-contain bg-center bg-no-repeat hidden md:block" />
-          <div className="mx-10 my-6 md:mb-12">
+          <div className="mt-12 h-4/6 max-h-64 rounded-t-3xl bg-[url('/me.png')] bg-contain bg-center bg-no-repeat hidden md:block" />
+          <div className="m-6 md:m-12">
             <h1 className="text-3xl font-semibold mb-4">
               Meet me <span className="text-gradient">Here</span>
             </h1>
@@ -56,7 +55,7 @@ const Contact = () => {
         </motion.div>
         <motion.div
           {...motionProps}
-          className="rounded-3xl overflow-hidden bg-gradient px-10 py-6 md:py-12 dark:bg-none dark:bg-gray-600 dark:outline dark:outline-2 dark:outline-gray-500"
+          className="rounded-3xl overflow-hidden bg-gradient p-6 md:p-12 dark:bg-none dark:bg-gray-600 dark:outline dark:outline-2 dark:outline-gray-500"
         >
           <h1 className="text-3xl font-semibold mb-6">
             Send me a <span className="text-gradient">Message</span>
@@ -67,7 +66,7 @@ const Contact = () => {
                 type="email"
                 id="email"
                 name="email"
-                placeholder="Your Email" // Add placeholder here
+                placeholder="Your Email"
                 value={formValues.email}
                 onChange={(e) =>
                   setFormValues({ ...formValues, email: e.target.value })

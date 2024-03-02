@@ -16,7 +16,7 @@ const Skills = () => {
         className="rounded-3xl overflow-hidden bg-gray-50 dark:bg-none dark:bg-gray-600 dark:outline dark:outline-2 dark:outline-gray-500"
         {...motionProps}
       >
-        <div className="px-10 py-6 md:px-16 md:py-12">
+        <div className="p-6 md:px-16 md:py-12">
           <h1 className="font-light text-zinc-300 mb-4">Skills</h1>
           <div className="flex flex-wrap gap-4 items-center justify-center">
             {skillsData.map((skill, index) => (
