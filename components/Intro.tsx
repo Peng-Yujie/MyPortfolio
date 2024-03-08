@@ -7,7 +7,7 @@ import { useSectionInView } from "../lib/motionSettings";
 const Intro = () => {
   const { ref } = useSectionInView("About");
   const scrollToContact = () => {
-    document.querySelector(".contact")?.scrollIntoView({ behavior: "smooth" });
+    document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
