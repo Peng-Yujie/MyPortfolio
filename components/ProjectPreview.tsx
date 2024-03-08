@@ -52,7 +52,7 @@ const ProjectPreview: React.FC<Props> = ({
         />
         <div className="flex justify-between z-10">
           <div className="w-5/6 flex flex-row gap-4 items-center md:mb-6">
-            <h2 className="font-medium text-3xl dark:text-white">{name}</h2>
+            <h2 className="font-medium text-2xl md:text-3xl">{name}</h2>
             <div className="h-10 w-10 bg-white rounded-full flex justify-center items-center cursor-pointer dark:bg-gray-700">
               <FaGithub className="h-5 w-5" />
             </div>

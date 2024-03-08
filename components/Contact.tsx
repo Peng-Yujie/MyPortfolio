@@ -4,8 +4,10 @@ import { motionProps } from "../lib/motionSettings";
 import SocialButton from "./SocialButton";
 import { socialMediaData } from "../lib/data";
 import { useForm, ValidationError } from "@formspree/react";
+import { useSectionInView } from "../lib/motionSettings";
 
 const Contact = () => {
+  const { ref } = useSectionInView("Contact");
   const [state, handleSubmit] = useForm("mnqevrbb");
   const [feedback, setFeedback] = useState(false);
   const [formValues, setFormValues] = useState({
@@ -31,7 +33,7 @@ const Contact = () => {
   }, [state.succeeded]);
 
   return (
-    <section className="contact scroll-mt-20" id="contact">
+    <section className="scroll-mt-28" id="contact" ref={ref}>
       <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-4">
         <motion.div
           {...motionProps}

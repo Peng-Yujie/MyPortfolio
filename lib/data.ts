@@ -8,6 +8,14 @@ import { LuGraduationCap } from "react-icons/lu";
 import Project01 from "public/project-1.png";
 import Project02 from "public/project-2.png";
 
+export const links = [
+  { name: "Home", href: "#about" },
+  { name: "About", href: "#about" },
+  { name: "Projects", href: "#projects" },
+  { name: "Experience", href: "#experience" },
+  { name: "Contact", href: "#contact" },
+];
+
 export const projectData = [
   {
     name: "Tireder",
