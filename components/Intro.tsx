@@ -2,8 +2,10 @@ import React from "react";
 import SocialButton from "./SocialButton";
 import { socialMediaData } from "../lib/data";
 import ThemeSwitch from "./ThemeSwitch";
+import { useSectionInView } from "../lib/motionSettings";
 
 const Intro = () => {
+  const { ref } = useSectionInView("About");
   const scrollToContact = () => {
     document.querySelector(".contact")?.scrollIntoView({ behavior: "smooth" });
   };
@@ -11,7 +13,8 @@ const Intro = () => {
   return (
     <section
       id="about"
-      className="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-4 mb-4 scroll-mt-20"
+      className="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-4 mb-4 pt-2 scroll-mt-28"
+      ref={ref}
     >
       <div className="md:h-[32rem] rounded-3xl p-6 md:px-16 md:py-12 flex flex-col gap-8 bg-[url('/gradient-bg.jpg')] bg-cover dark:bg-none dark:bg-gray-600 dark:outline dark:outline-2 dark:outline-gray-500">
         <h1 className="text-4xl lg:text-6xl font-bold flex flex-col md:flex-row">

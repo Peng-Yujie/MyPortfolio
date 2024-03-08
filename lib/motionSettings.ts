@@ -1,5 +1,6 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useInView } from "framer-motion";
+import { useActiveSection } from "../context/active-section-context";
 
 export const PreviewAnimation = {
   initial: { y: 30, opacity: 0, scale: 0.9 },
@@ -31,4 +32,18 @@ export const useScroll = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
   return { ref, isInView };
+};
+
+export const useSectionInView = (section: string) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, {
+    margin: "0px 100px -75% 0px",
+  });
+  const { setActiveSection, timeOfLastClick } = useActiveSection();
+  useEffect(() => {
+    if (isInView && timeOfLastClick < Date.now() - 1000) {
+      setActiveSection(section);
+    }
+  }, [isInView, section, setActiveSection, timeOfLastClick]);
+  return { ref };
 };

@@ -52,14 +52,14 @@ const ProjectPreview: React.FC<Props> = ({
         />
         <div className="flex justify-between z-10">
           <div className="w-5/6 flex flex-row gap-4 items-center md:mb-6">
-            <h2 className="font-medium text-3xl dark:text-white">{name}</h2>
+            <h2 className="font-medium text-2xl md:text-3xl">{name}</h2>
             <div className="h-10 w-10 bg-white rounded-full flex justify-center items-center cursor-pointer dark:bg-gray-700">
               <FaGithub className="h-5 w-5" />
             </div>
           </div>
           <h1 className="font-light text-gray-400">Project</h1>
         </div>
-        <p className="w-5/6 max-w-lg flex-1 text-gray-500 dark:text-gray-300 z-10">
+        <p className="w-5/6 max-w-lg flex-1 my-4 text-gray-500 dark:text-gray-300 z-10">
           {description}
         </p>
         <div className="flex flex-wrap justify-items-start gap-x-4 gap-y-2 z-10">

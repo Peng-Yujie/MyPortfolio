@@ -8,12 +8,14 @@ import { motion } from "framer-motion";
 import { motionProps } from "../lib/motionSettings";
 import { experienceData } from "../lib/data";
 import { useTheme } from "../context/theme-context";
+import { useSectionInView } from "../lib/motionSettings";
 
 const Experience = () => {
   const { theme } = useTheme();
+  const { ref } = useSectionInView("Experience");
 
   return (
-    <section className="experience mb-4">
+    <section className="mb-4 scroll-mt-28" id="experience" ref={ref}>
       <motion.div
         {...motionProps}
         className="rounded-3xl overflow-hidden bg-gray-50 p-6 md:px-16 md:py-12 dark:bg-none dark:bg-gray-600 dark:outline dark:outline-2 dark:outline-gray-500"
