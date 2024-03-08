@@ -59,7 +59,7 @@ const ProjectPreview: React.FC<Props> = ({
           </div>
           <h1 className="font-light text-gray-400">Project</h1>
         </div>
-        <p className="w-5/6 max-w-lg flex-1 text-gray-500 dark:text-gray-300 z-10">
+        <p className="w-5/6 max-w-lg flex-1 my-4 text-gray-500 dark:text-gray-300 z-10">
           {description}
         </p>
         <div className="flex flex-wrap justify-items-start gap-x-4 gap-y-2 z-10">
