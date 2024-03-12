@@ -7,6 +7,7 @@ import { SiTripdotcom } from "react-icons/si";
 import { LuGraduationCap } from "react-icons/lu";
 import Project01 from "public/project-1.png";
 import Project02 from "public/project-2.png";
+import Project03 from "public/project-3.png";
 
 export const links = [
   { name: "Home", href: "#about" },
@@ -41,6 +42,21 @@ export const projectData = [
     imgSrc: Project02,
     bgColor: "#6ed2b7",
     url: "https://github.com/Peng-Yujie/Eastern-Explore-Database",
+  },
+  {
+    name: "EasyGrammar",
+    description:
+      "An AI-powered web application that helps users improve their English grammar and vocabulary.",
+    badges: [
+      "React",
+      "Node.js",
+      "Free Dictionary API",
+      "OpenAI API",
+      "Tailwind",
+    ],
+    imgSrc: Project03,
+    bgColor: "#f3e8ff",
+    url: "https://github.com/RileyC9/EasyGrammar",
   },
 ];
 
