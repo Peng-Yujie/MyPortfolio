@@ -123,7 +123,7 @@ export const skillsData = [
 ];
 
 export const socialMediaData = [
-  { name: "resume", icon: FaRegFileAlt, url: "/resume.pdf" },
+  { name: "resume", icon: FaRegFileAlt, url: "/MyPortfolio/resume.pdf" },
   {
     name: "linkedin",
     icon: FaLinkedin,

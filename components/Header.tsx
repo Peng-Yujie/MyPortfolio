@@ -10,7 +10,7 @@ const Header = () => {
         content="Yujie Peng's portfolio, built with React, Next.js and Tailwind CSS"
       />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <link rel="icon" href="/favicon.ico" />
+      <link rel="icon" href="/MyPortfolio/favicon.ico" />
     </Head>
   );
 };

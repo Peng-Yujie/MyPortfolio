@@ -16,7 +16,7 @@ const Intro = () => {
       className="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-4 mb-4 pt-2 scroll-mt-28"
       ref={ref}
     >
-      <div className="md:h-[32rem] rounded-3xl p-6 md:px-16 md:py-12 flex flex-col gap-8 bg-[url('/gradient-bg.jpg')] bg-cover dark:bg-none dark:bg-gray-600 dark:outline dark:outline-2 dark:outline-gray-500">
+      <div className="md:h-[32rem] rounded-3xl p-6 md:px-16 md:py-12 flex flex-col gap-8 bg-[url('/MyPortfolio/gradient-bg.jpg')] bg-cover dark:bg-none dark:bg-gray-600 dark:outline dark:outline-2 dark:outline-gray-500">
         <h1 className="text-4xl lg:text-6xl font-bold flex flex-col md:flex-row">
           Hello, I am&nbsp;<span className="text-gradient">Yujie</span>
         </h1>
@@ -49,7 +49,7 @@ const Intro = () => {
         </div>
       </div>
       <div className="h-48 md:h-[32rem] rounded-3xl p-6 md:py-12 bg-gray-50 flex flex-row md:flex-col justify-items-end md:justify-between dark:bg-none dark:bg-gray-600 dark:outline dark:outline-2 dark:outline-gray-500">
-        <div className="h-[8rem] flex-1 md:w-auto bg-[url('/me-mac.png')] bg-contain bg-center bg-no-repeat">
+        <div className="h-[8rem] flex-1 md:w-auto bg-[url('/MyPortfolio/me-mac.png')] bg-contain bg-center bg-no-repeat">
           <p className="text-2xl md:text-center dark:hidden">💭</p>
           <p className="text-2xl md:text-center hidden dark:block">💡</p>
         </div>
