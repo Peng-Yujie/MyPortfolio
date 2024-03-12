@@ -1,8 +1,8 @@
-Hi, I'm Yujie, this repo is my personal portfolio website. I built this website using TypeScript, Next.js, Tailwind CSS, and Framer Motion. I also used Netlify to deploy the website.
+Hi, I'm Yujie, this repo is the source code of my personal portfolio website. I built this website to showcase my projects and skills. I used Next.js, TypeScript, Tailwind CSS, and Framer Motion to build this website. It is hosted on GitHub Pages.
+
+You can check out the website **[here](https://peng-yujie.github.io/MyPortfolio/)**.
 
 ![Preview](public/preview.png)
-
-You can check out the website **[here](https://pengyujie.netlify.app/).**
 
 ## Tech Stack
 
@@ -31,7 +31,7 @@ You can check out the website **[here](https://pengyujie.netlify.app/).**
 4. Run the development server:
 
 ```bash
-npm run dev
+  npm run dev
 ```
 
 5. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
@@ -46,3 +46,10 @@ To learn more about Next.js, take a look at the following resources:
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+
+## References
+
+- [Tailwind CSS](https://tailwindcss.com/docs)
+- [GitHub Pages](https://docs.github.com/en/pages)
+- Get inspiration for the design from [Nev Flynn's Portfolio](https://nevflynn.com/)
+- Get starter code from [Built With Code](https://github.com/Built-With-Code/nextjs-portfolio-website.git)
