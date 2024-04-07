@@ -57,7 +57,7 @@ const ProjectPreview: React.FC<Props> = ({
               <FaGithub className="h-5 w-5" />
             </div>
           </div>
-          <h1 className="font-light text-gray-400">Project</h1>
+          <h1 className="font-light text-zinc-300">Project</h1>
         </div>
         <p className="w-5/6 max-w-lg flex-1 my-4 text-gray-500 dark:text-gray-300 z-10">
           {description}
