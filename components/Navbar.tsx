@@ -18,6 +18,7 @@ const Navbar = () => {
     >
       <a
         href={links[0].href}
+        aria-label="Back to the top of the page"
         className="flex items-center gap-[1ch] md:pl-2"
         onClick={() => {
           setActiveSection("About");
@@ -43,7 +44,11 @@ const Navbar = () => {
       </a>
       <div className="flex gap-8 text-md md:pr-2">
         {links.slice(1).map((link) => (
-          <div key={link.name} className="relative">
+          <div
+            key={link.name}
+            aria-label={`jump to ${link.name} section`}
+            className="relative"
+          >
             <Link
               href={link.href}
               onClick={() => {

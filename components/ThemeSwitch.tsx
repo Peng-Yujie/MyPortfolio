@@ -7,7 +7,11 @@ const ThemeSwitch = () => {
 
   return (
     <div className="flex items-center mx-auto">
+      <label htmlFor="theme-switch" className="sr-only">
+        Theme switch
+      </label>
       <ReactSwitch
+        id="theme-switch"
         checked={theme === "dark"}
         onChange={toggleTheme}
         onColor="#718096"

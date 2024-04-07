@@ -64,6 +64,7 @@ const Contact = () => {
           </h1>
           <form onSubmit={handleSubmit} className="flex flex-col gap-4">
             <div className="flex flex-col gap-2">
+              <label htmlFor="email">Email</label>
               <input
                 type="email"
                 id="email"
@@ -82,6 +83,7 @@ const Contact = () => {
               />
             </div>
             <div className="flex flex-col gap-2">
+              <label htmlFor="message">Message</label>
               <textarea
                 name="message"
                 id="message"
@@ -103,6 +105,7 @@ const Contact = () => {
               <button
                 className="bg-black text-white font-medium py-3 px-6 rounded-full w-40 lg:w-auto self-start dark:bg-gray-500 hover:scale-105"
                 type="submit"
+                aria-label="Send Message"
                 disabled={state.submitting}
               >
                 Send

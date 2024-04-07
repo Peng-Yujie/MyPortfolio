@@ -44,6 +44,7 @@ const ProjectPreview: React.FC<Props> = ({
       <div
         className="h-full w-full p-6 md:px-16 md:py-12 durantion-[500ms] transition-all ease-in-out hover:scale-105 flex flex-col justify-between relative"
         onClick={url ? () => window.open(url, "_blank") : () => {}}
+        aria-label={`View ${name} project details`}
       >
         <Image
           src={imgSrc}
@@ -57,7 +58,7 @@ const ProjectPreview: React.FC<Props> = ({
               <FaGithub className="h-5 w-5" />
             </div>
           </div>
-          <h1 className="font-light text-gray-400">Project</h1>
+          <h1 className="font-light text-zinc-300">Project</h1>
         </div>
         <p className="w-5/6 max-w-lg flex-1 my-4 text-gray-500 dark:text-gray-300 z-10">
           {description}
@@ -66,7 +67,7 @@ const ProjectPreview: React.FC<Props> = ({
           {badges.map((badge) => (
             <div
               key={badge}
-              className="h-6 px-3 bg-white rounded-full text-sm flex items-center justify-center text-gray-400 dark:bg-gray-500"
+              className="h-6 px-3 bg-white rounded-full text-sm flex items-center justify-center text-gray-400 dark:bg-gray-500 dark:text-white"
             >
               {badge}
             </div>
