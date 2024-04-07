@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { motionProps } from "../lib/motionSettings";
 import SocialButton from "./SocialButton";
 import { socialMediaData } from "../lib/data";
 import { useForm, ValidationError } from "@formspree/react";
 import { useSectionInView } from "../lib/motionSettings";
+import me from "public/me.png";
 
 const Contact = () => {
   const { ref } = useSectionInView("Contact");
@@ -39,7 +41,16 @@ const Contact = () => {
           {...motionProps}
           className="rounded-3xl flex flex-col justify-begin bg-gray-50 dark:bg-none dark:bg-gray-600 dark:outline dark:outline-2 dark:outline-gray-500"
         >
-          <div className="mt-12 h-4/6 max-h-64 rounded-t-3xl bg-[url('/MyPortfolio/me.png')] bg-contain bg-center bg-no-repeat hidden md:block" />
+          <div className="relative mt-12 h-4/6 max-h-64 rounded-t-3xl hidden md:block">
+            <Image
+              src={me}
+              alt="Me"
+              layout="fill"
+              objectFit="contain"
+              objectPosition="center"
+              className="mt-12"
+            />
+          </div>
           <div className="m-6 md:m-12">
             <h1 className="text-3xl font-semibold mb-4">
               Meet me <span className="text-gradient">Here</span>

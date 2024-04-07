@@ -1,5 +1,4 @@
 /** @type {import('next').NextConfig} */
-const withOptimizedImages = require("next-optimized-images");
 const withPWA = require("next-pwa")({ dest: "public" });
 
 const nextConfig = {
@@ -13,4 +12,4 @@ const nextConfig = {
   },
 };
 
-module.exports = withPWA(withOptimizedImages(nextConfig));
+module.exports = withPWA(nextConfig);
