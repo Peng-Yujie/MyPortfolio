@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const withOptimizedImages = require("next-optimized-images");
-const withPWA = require("next-pwa");
+const withPWA = require("next-pwa")({ dest: "public" });
 
 const nextConfig = {
   reactStrictMode: true,
@@ -10,10 +10,6 @@ const nextConfig = {
       use: [{ loader: "@svgr/webpack", options: { icon: true } }],
     });
     return config;
-  },
-  pwa: {
-    dest: "public",
-    disable: process.env.NODE_ENV === "development",
   },
 };
 
