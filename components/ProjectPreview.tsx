@@ -66,7 +66,7 @@ const ProjectPreview: React.FC<Props> = ({
           {badges.map((badge) => (
             <div
               key={badge}
-              className="h-6 px-3 bg-white rounded-full text-sm flex items-center justify-center text-gray-400 dark:bg-gray-500"
+              className="h-6 px-3 bg-white rounded-full text-sm flex items-center justify-center text-gray-400 dark:bg-gray-500 dark:text-white"
             >
               {badge}
             </div>
