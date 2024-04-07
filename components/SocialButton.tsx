@@ -32,6 +32,7 @@ const SocialButton: React.FC<Props> = ({
       className={`h-12 w-12 bg-white ${bgHoverColorClass} rounded-full transition-colors duration-200 ease-in-out flex justify-center items-center text-black hover:text-white`}
       target="_blank"
       href={href}
+      aria-label={`Visit my ${bgColor}`}
     >
       {children}
     </a>

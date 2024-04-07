@@ -105,6 +105,7 @@ const Contact = () => {
               <button
                 className="bg-black text-white font-medium py-3 px-6 rounded-full w-40 lg:w-auto self-start dark:bg-gray-500 hover:scale-105"
                 type="submit"
+                aria-label="Send Message"
                 disabled={state.submitting}
               >
                 Send

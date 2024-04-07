@@ -44,6 +44,7 @@ const ProjectPreview: React.FC<Props> = ({
       <div
         className="h-full w-full p-6 md:px-16 md:py-12 durantion-[500ms] transition-all ease-in-out hover:scale-105 flex flex-col justify-between relative"
         onClick={url ? () => window.open(url, "_blank") : () => {}}
+        aria-label={`View ${name} project details`}
       >
         <Image
           src={imgSrc}

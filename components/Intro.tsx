@@ -36,6 +36,7 @@ const Intro = () => {
           <button
             className="bg-black text-white font-medium py-3 px-10 rounded-full w-44 lg:w-auto dark:bg-gray-500 hover:scale-105"
             onClick={scrollToContact}
+            aria-label="Contact me"
           >
             Contact me
           </button>
@@ -58,7 +59,10 @@ const Intro = () => {
             <i>Business-minded. Team Player. Data-analytic Thinking.</i>
           </p>
         </div>
-        <div className="flex items-center pl-4">
+        <div
+          className="flex items-center pl-4"
+          aria-label="Click to switch theme"
+        >
           <ThemeSwitch />
         </div>
       </div>
