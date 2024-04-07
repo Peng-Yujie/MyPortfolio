@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const withOptimizedImages = require("next-optimized-images");
+const withPWA = require("next-pwa");
 
 const nextConfig = {
   reactStrictMode: true,
@@ -10,6 +11,10 @@ const nextConfig = {
     });
     return config;
   },
+  pwa: {
+    dest: "public",
+    disable: process.env.NODE_ENV === "development",
+  },
 };
 
-module.exports = withOptimizedImages(nextConfig);
+module.exports = withPWA(withOptimizedImages(nextConfig));
