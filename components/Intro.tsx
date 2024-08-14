@@ -35,14 +35,16 @@ const Intro = () => {
           </h1>
           <div className="flex-1 flex flex-col justify-center">
             <p>
-              Currently a CS student at Langara College, equipped with a diverse
-              set of skills in{" "}
-              <strong>web development and software engineering</strong>
-              . I am looking for opportunities to work on exciting projects.
-              <br />
-              Passionate about programming and technology, with extensive
-              expertise in e-commerce operations and a deep understanding of
-              business requirements.
+              A CS new grad and a results-oriented Full Stack Developer with
+              expertise in{" "}
+              <strong>
+                Web Development, Software Engineering, and UI/UX Design
+              </strong>
+              . Experienced in designing robust systems, optimizing performance,
+              and collaborating with cross-functional teams to deliver
+              innovative solutions. Passionate about developing scalable
+              applications, enhancing user experiences, and eager to take on new
+              challenges in the tech industry.
             </p>
           </div>
           <div className="flex flex-col lg:flex-row gap-4 justify-self-end">
@@ -71,7 +73,7 @@ const Intro = () => {
         </div>
         <div className="flex-1 flex items-center text-center">
           <p>
-            <i>Business-minded. Team Player. Data-analytic Thinking.</i>
+            <i>Team Player. Problem Solver. Frontend Innovator.</i>
           </p>
         </div>
         <div

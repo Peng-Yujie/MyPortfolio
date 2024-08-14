@@ -8,6 +8,8 @@ import { LuGraduationCap } from "react-icons/lu";
 import Project01 from "public/project-1.png";
 import Project02 from "public/project-2.png";
 import Project03 from "public/project-3.png";
+import Project04 from "public/project-4.png";
+import Project05 from "public/project-5.png";
 
 export const links = [
   { name: "Home", href: "#about" },
@@ -19,29 +21,28 @@ export const links = [
 
 export const projectData = [
   {
-    name: "Tireder",
+    name: "Copilot Grading Tool",
     description:
-      "A web application for tracking and measuring daily stress, incorporating real-time communication with an AI Chatbot.",
+      "An AI-powered solution designed to enhance the grading process with Canvas Learning Management System.",
     badges: [
-      "Python",
-      "Flask",
-      "Socket.IO",
-      "MongoDB",
-      "OpenAI API",
-      "JavaScript",
+      "Chrome Extension",
+      "TypeScript",
+      "Plasmo",
+      "Ollama",
+      "Docker",
+      "Llama3",
     ],
-    imgSrc: Project01,
-    bgColor: "#ffe3a4",
-    url: "https://github.com/Peng-Yujie/Tireder",
+    bgColor: "#ffd0c3",
+    imgSrc: Project05,
+    docLink: "https://copilot-grading-tool.readthedocs.io/en/latest/",
   },
   {
-    name: "Eastern Explore",
+    name: "PurrFect Neighbors",
     description:
-      "Database for a company that organizes group hiking events, including queries for efficient data management.",
-    badges: ["Database", "MySQL", "PHP", "HTML", "CSS"],
-    imgSrc: Project02,
-    bgColor: "#6ed2b7",
-    url: "https://github.com/Peng-Yujie/Eastern-Explore-Database",
+      "An online platform that helps pets find warm homes and users find their ideal pets.",
+    badges: ["React", "Node.js", "MySQL", "Redis", "AWS S3", "GraphQL"],
+    imgSrc: Project04,
+    repoLink: "https://github.com/Peng-Yujie/purrfect-neighbors/",
   },
   {
     name: "EasyGrammar",
@@ -56,16 +57,41 @@ export const projectData = [
     ],
     imgSrc: Project03,
     bgColor: "#f3e8ff",
-    url: "https://github.com/RileyC9/EasyGrammar",
+    repoLink: "https://github.com/RileyC9/EasyGrammar",
+  },
+  {
+    name: "Eastern Explore",
+    description:
+      "Database for a company that organizes group hiking events, including queries for efficient data management.",
+    badges: ["Database", "MySQL", "PHP", "HTML", "CSS"],
+    imgSrc: Project02,
+    bgColor: "#6ed2b7",
+    repoLink: "https://github.com/Peng-Yujie/Eastern-Explore-Database",
+  },
+  {
+    name: "Tireder",
+    description:
+      "A web application for tracking and measuring daily stress, incorporating real-time communication with an AI Chatbot.",
+    badges: [
+      "Python",
+      "Flask",
+      "Socket.IO",
+      "MongoDB",
+      "OpenAI API",
+      "JavaScript",
+    ],
+    imgSrc: Project01,
+    bgColor: "#ffe3a4",
+    repoLink: "https://github.com/Peng-Yujie/Tireder",
   },
 ];
 
 export const experienceData = [
   {
     title: "Langara College",
-    date: "2023 - Present",
+    date: "2023 - 2024",
     description:
-      "Currently studying Computer Science and working on various projects to improve my skills.",
+      "Recently graduated from Langara College with a Diploma in Computer Science. Currently working on various projects to improve my skills.",
     icon: React.createElement(LuGraduationCap),
     iconStyle: {
       background: "#f15a23",
@@ -110,15 +136,20 @@ export const experienceData = [
 export const skillsData = [
   "HTML5/CSS3",
   "JavaScript",
+  "TypeScript",
   "Python",
   "C++",
   "React",
-  "Tailwind",
   "Next.js",
-  "TypeScript",
   "Node.js",
-  "MongoDB",
+  "GraphQL",
+  "RESTful API",
+  "Redis",
+  "Docker",
+  "AWS",
   "MySQL",
+  "MongoDB",
+  "Tailwind",
   "Figma",
 ];
 
