@@ -19,7 +19,7 @@ const Intro = () => {
       className="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-4 mb-4 pt-2 scroll-mt-28"
       ref={ref}
     >
-      <div className="relative md:h-[32rem] rounded-3xl bg-gray-50 dark:bg-gray-600 dark:outline dark:outline-2 dark:outline-gray-500">
+      <div className="relative lg:h-[32rem] rounded-3xl bg-gray-50 dark:bg-gray-600 dark:outline dark:outline-2 dark:outline-gray-500">
         <Image
           src={gradientBg}
           alt="Background"
@@ -65,9 +65,9 @@ const Intro = () => {
           </div>
         </div>
       </div>
-      <div className="h-48 md:h-[32rem] rounded-3xl p-6 md:py-12 bg-gray-50 flex flex-row md:flex-col justify-items-end md:justify-between dark:bg-gray-600 dark:outline dark:outline-2 dark:outline-gray-500">
+      <div className="h-48 md:h-full lg:h-[32rem] rounded-3xl p-6 md:py-12 bg-gray-50 flex flex-row md:flex-col justify-items-end md:justify-between dark:bg-gray-600 dark:outline dark:outline-2 dark:outline-gray-500">
         <div className="relative h-[8rem] flex-1 md:w-auto">
-          <Image src={me} alt="Me" layout="fill" objectFit="contain" priority />
+          <Image src={me} alt="Me" fill className="object-contain" priority />
           <p className="text-2xl md:text-center dark:hidden">💭</p>
           <p className="text-2xl md:text-center hidden dark:block">💡</p>
         </div>

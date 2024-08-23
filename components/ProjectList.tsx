@@ -17,8 +17,7 @@ const ProjectList = () => {
             badges={project.badges}
             imgSrc={project.imgSrc}
             bgColor={project.bgColor}
-            repoLink={project.repoLink}
-            docLink={project.docLink}
+            links={project.links}
             colSpan={
               index === 0 && projectData.length % 2 === 1 ? "lg:col-span-2" : ""
             }

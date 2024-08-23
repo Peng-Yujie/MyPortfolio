@@ -34,7 +34,9 @@ export const projectData = [
     ],
     bgColor: "#ffd0c3",
     imgSrc: Project05,
-    docLink: "https://copilot-grading-tool.readthedocs.io/en/latest/",
+    links: {
+      docs: "https://copilot-grading-tool.readthedocs.io/en/latest/",
+    },
   },
   {
     name: "PurrFect Neighbors",
@@ -42,7 +44,9 @@ export const projectData = [
       "An online platform that helps pets find warm homes and users find their ideal pets.",
     badges: ["React", "Node.js", "MySQL", "Redis", "AWS S3", "GraphQL"],
     imgSrc: Project04,
-    repoLink: "https://github.com/Peng-Yujie/purrfect-neighbors/",
+    links: {
+      github: "https://github.com/Peng-Yujie/purrfect-neighbors/",
+    },
   },
   {
     name: "EasyGrammar",
@@ -57,7 +61,10 @@ export const projectData = [
     ],
     imgSrc: Project03,
     bgColor: "#f3e8ff",
-    repoLink: "https://github.com/RileyC9/EasyGrammar",
+    links: {
+      github: "https://github.com/RileyC9/EasyGrammar",
+      demo: "https://easygrammarapp.netlify.app/",
+    },
   },
   {
     name: "Eastern Explore",
@@ -66,7 +73,9 @@ export const projectData = [
     badges: ["Database", "MySQL", "PHP", "HTML", "CSS"],
     imgSrc: Project02,
     bgColor: "#6ed2b7",
-    repoLink: "https://github.com/Peng-Yujie/Eastern-Explore-Database",
+    links: {
+      github: "https://github.com/Peng-Yujie/Eastern-Explore-Database",
+    },
   },
   {
     name: "Tireder",
@@ -82,7 +91,9 @@ export const projectData = [
     ],
     imgSrc: Project01,
     bgColor: "#ffe3a4",
-    repoLink: "https://github.com/Peng-Yujie/Tireder",
+    links: {
+      github: "https://github.com/Peng-Yujie/Tireder",
+    },
   },
 ];
 
