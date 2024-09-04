@@ -10,6 +10,7 @@ import Project02 from "public/project-2.png";
 import Project03 from "public/project-3.png";
 import Project04 from "public/project-4.png";
 import Project05 from "public/project-5.png";
+import Project06 from "public/project-6.png";
 
 export const links = [
   { name: "Home", href: "#about" },
@@ -32,17 +33,38 @@ export const projectData = [
       "Docker",
       "Llama3",
     ],
-    bgColor: "#ffd0c3",
+    bgColor: "#ffe3a4",
     imgSrc: Project05,
     links: {
       docs: "https://copilot-grading-tool.readthedocs.io/en/latest/",
     },
   },
   {
+    name: "The Wild Oasis",
+    description:
+      "A comprehensive hotel management system featuring a customer-facing website and an admin management system.",
+    badges: ["Next.js", "Vercel", "Supabase", "Google OAuth", "Tailwind CSS"],
+    bgColor: "#c5ded5",
+    imgSrc: Project06,
+    links: {
+      github: "https://github.com/Peng-Yujie/the-wild-oasis-website",
+      demo: "https://the-wild-oasis-website-clone.vercel.app/",
+    },
+  },
+  {
     name: "PurrFect Neighbors",
     description:
       "An online platform that helps pets find warm homes and users find their ideal pets.",
-    badges: ["React", "Node.js", "MySQL", "Redis", "AWS S3", "GraphQL"],
+    badges: [
+      "React",
+      "Node.js",
+      "MySQL",
+      "Redis",
+      "AWS S3",
+      "GraphQL",
+      "Ant Design",
+    ],
+    bgColor: "#ffd0c3",
     imgSrc: Project04,
     links: {
       github: "https://github.com/Peng-Yujie/purrfect-neighbors/",
@@ -57,7 +79,7 @@ export const projectData = [
       "Node.js",
       "Free Dictionary API",
       "OpenAI API",
-      "Tailwind",
+      "Tailwind CSS",
     ],
     imgSrc: Project03,
     bgColor: "#f3e8ff",
@@ -66,35 +88,35 @@ export const projectData = [
       demo: "https://easygrammarapp.netlify.app/",
     },
   },
-  {
-    name: "Eastern Explore",
-    description:
-      "Database for a company that organizes group hiking events, including queries for efficient data management.",
-    badges: ["Database", "MySQL", "PHP", "HTML", "CSS"],
-    imgSrc: Project02,
-    bgColor: "#6ed2b7",
-    links: {
-      github: "https://github.com/Peng-Yujie/Eastern-Explore-Database",
-    },
-  },
-  {
-    name: "Tireder",
-    description:
-      "A web application for tracking and measuring daily stress, incorporating real-time communication with an AI Chatbot.",
-    badges: [
-      "Python",
-      "Flask",
-      "Socket.IO",
-      "MongoDB",
-      "OpenAI API",
-      "JavaScript",
-    ],
-    imgSrc: Project01,
-    bgColor: "#ffe3a4",
-    links: {
-      github: "https://github.com/Peng-Yujie/Tireder",
-    },
-  },
+  // {
+  //   name: "Eastern Explore",
+  //   description:
+  //     "Database for a company that organizes group hiking events, including queries for efficient data management.",
+  //   badges: ["Database", "MySQL", "PHP", "HTML", "CSS"],
+  //   imgSrc: Project02,
+  //   bgColor: "#6ed2b7",
+  //   links: {
+  //     github: "https://github.com/Peng-Yujie/Eastern-Explore-Database",
+  //   },
+  // },
+  // {
+  //   name: "Tireder",
+  //   description:
+  //     "A web application for tracking and measuring daily stress, incorporating real-time communication with an AI Chatbot.",
+  //   badges: [
+  //     "Python",
+  //     "Flask",
+  //     "Socket.IO",
+  //     "MongoDB",
+  //     "OpenAI API",
+  //     "JavaScript",
+  //   ],
+  //   imgSrc: Project01,
+  //   bgColor: "#ffe3a4",
+  //   links: {
+  //     github: "https://github.com/Peng-Yujie/Tireder",
+  //   },
+  // },
 ];
 
 export const experienceData = [
