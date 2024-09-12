@@ -5,8 +5,8 @@ import { FaRegFileAlt } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 import { SiTripdotcom } from "react-icons/si";
 import { LuGraduationCap } from "react-icons/lu";
-import Project01 from "public/project-1.png";
-import Project02 from "public/project-2.png";
+// import Project01 from "public/project-1.png";
+// import Project02 from "public/project-2.png";
 import Project03 from "public/project-3.png";
 import Project04 from "public/project-4.png";
 import Project05 from "public/project-5.png";
@@ -68,6 +68,7 @@ export const projectData = [
     imgSrc: Project04,
     links: {
       github: "https://github.com/Peng-Yujie/purrfect-neighbors/",
+      demo: "http://purrfect-neighbors.ca-central-1.elasticbeanstalk.com",
     },
   },
   {
