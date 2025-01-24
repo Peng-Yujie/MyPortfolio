@@ -26,17 +26,18 @@ export const projectData = [
     description:
       "An AI-powered solution designed to enhance the grading process with Canvas Learning Management System.",
     badges: [
-      "Chrome Extension",
+      "GenAI",
       "TypeScript",
-      "Plasmo",
       "Ollama",
       "Docker",
       "Llama3",
+      "Plasmo",
+      "Chrome Extension",
     ],
     bgColor: "#ffe3a4",
     imgSrc: Project05,
     links: {
-      docs: "https://copilot-grading-tool.readthedocs.io/en/latest/",
+      docs: "https://copilot-grading-tool.readthedocs.io/en/dev/",
     },
   },
   {
@@ -68,7 +69,6 @@ export const projectData = [
     imgSrc: Project04,
     links: {
       github: "https://github.com/Peng-Yujie/purrfect-neighbors/",
-      demo: "http://purrfect-neighbors.ca-central-1.elasticbeanstalk.com",
     },
   },
   {
