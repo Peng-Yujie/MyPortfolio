@@ -1,147 +1,115 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
+import {
+  HiHome,
+  HiFolder,
+  HiCode,
+  HiBriefcase,
+  HiMail,
+  HiSun,
+  HiMoon,
+} from "react-icons/hi";
 import { links } from "@/lib/data";
 import { useActiveSection } from "@/context/active-section-context";
+import { useTheme } from "@/context/theme-context";
+
+const navIcons: Record<string, React.ComponentType<{ className?: string }>> = {
+  About: HiHome,
+  Projects: HiFolder,
+  Skills: HiCode,
+  Experience: HiBriefcase,
+  Contact: HiMail,
+};
 
 export default function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { activeSection, setActiveSection, setTimeOfLastClick } = useActiveSection();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const { activeSection, setActiveSection, setTimeOfLastClick } =
+    useActiveSection();
+  const { theme, toggleTheme } = useTheme();
 
   const handleLinkClick = (name: string) => {
     setActiveSection(name as typeof activeSection);
     setTimeOfLastClick(Date.now());
-    setIsMobileMenuOpen(false);
   };
+
+  const navLinks = links.slice(1);
 
   return (
     <motion.nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "py-3 backdrop-blur-xl bg-white/70 border-b border-white/50 shadow-sm"
-          : "py-5 bg-transparent"
-      }`}
-      initial={{ y: -100, opacity: 0 }}
+      className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-3"
+      initial={{ y: 100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
+      transition={{ duration: 0.5, delay: 0.2, ease: [0.4, 0, 0.2, 1] }}
     >
-      <div className="container-custom flex items-center justify-between">
-        {/* Logo */}
-        <Link
-          href="#home"
-          className="flex items-center gap-3 group"
-          onClick={() => handleLinkClick("Home")}
-        >
-          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-sky-400 to-teal-400 flex items-center justify-center text-white font-bold text-lg shadow-md">
-            Y
-          </div>
-          <span className="hidden md:block text-lg font-semibold text-text-primary">
-            Yujie Peng
-          </span>
-        </Link>
+      {/* Main Nav Dock */}
+      <div className="flex items-center gap-1 px-2 py-2 rounded-full bg-white/60 dark:bg-slate-800/60 backdrop-blur-xl border border-white/70 dark:border-slate-700/40 shadow-lg shadow-black/5 dark:shadow-black/20">
+        {navLinks.map((link) => {
+          const Icon = navIcons[link.name];
+          const isActive = activeSection === link.name;
 
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-1 bg-white/60 backdrop-blur-md rounded-full px-2 py-1.5 border border-white/80 shadow-sm">
-          {links.slice(1).map((link) => (
+          return (
             <Link
               key={link.name}
               href={link.href}
-              className="relative px-4 py-2 text-sm font-medium transition-colors duration-200"
               onClick={() => handleLinkClick(link.name)}
+              className="relative"
             >
-              <span
-                className={`relative z-10 ${
-                  activeSection === link.name
-                    ? "text-sky-600"
-                    : "text-text-secondary hover:text-text-primary"
-                }`}
+              <motion.div
+                className={`
+                  relative flex items-center gap-2 px-3 py-2.5 md:px-4 rounded-full
+                  transition-colors duration-200
+                  ${
+                    isActive
+                      ? "text-sky-600 dark:text-sky-400"
+                      : "text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200"
+                  }
+                `}
+                whileHover={{ scale: 0.95 }}
+                whileTap={{ scale: 0.9 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
               >
-                {link.name}
-              </span>
-              {activeSection === link.name && (
-                <motion.div
-                  className="absolute inset-0 rounded-full bg-white/80 shadow-sm"
-                  layoutId="navbar-indicator"
-                  transition={{ type: "spring", stiffness: 400, damping: 30 }}
-                />
-              )}
-            </Link>
-          ))}
-        </div>
+                {isActive && (
+                  <motion.div
+                    className="dock-indicator absolute inset-0"
+                    layoutId="dock-indicator"
+                    transition={{
+                      type: "spring",
+                      stiffness: 350,
+                      damping: 30,
+                      mass: 1,
+                    }}
+                  />
+                )}
 
-        {/* Mobile Menu Button */}
-        <button
-          className="md:hidden relative w-10 h-10 flex items-center justify-center rounded-full bg-white/70 backdrop-blur-md border border-white/80"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          aria-label="Toggle menu"
-        >
-          <div className="flex flex-col gap-1">
-            <motion.span
-              className="block w-5 h-0.5 bg-text-primary rounded-full"
-              animate={{
-                rotate: isMobileMenuOpen ? 45 : 0,
-                y: isMobileMenuOpen ? 6 : 0,
-              }}
-              transition={{ duration: 0.2 }}
-            />
-            <motion.span
-              className="block w-5 h-0.5 bg-text-primary rounded-full"
-              animate={{ opacity: isMobileMenuOpen ? 0 : 1 }}
-              transition={{ duration: 0.2 }}
-            />
-            <motion.span
-              className="block w-5 h-0.5 bg-text-primary rounded-full"
-              animate={{
-                rotate: isMobileMenuOpen ? -45 : 0,
-                y: isMobileMenuOpen ? -6 : 0,
-              }}
-              transition={{ duration: 0.2 }}
-            />
-          </div>
-        </button>
+                <span className="relative z-10">
+                  {Icon && <Icon className="w-5 h-5" />}
+                </span>
+
+                <span className="relative z-10 hidden md:block text-sm font-medium">
+                  {link.name}
+                </span>
+              </motion.div>
+            </Link>
+          );
+        })}
       </div>
 
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            className="absolute top-full left-0 right-0 md:hidden bg-white/90 backdrop-blur-xl border-b border-white/50 shadow-lg"
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.2 }}
-          >
-            <div className="container-custom py-4 flex flex-col gap-1">
-              {links.slice(1).map((link) => (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  className={`block py-3 px-4 rounded-xl text-base font-medium transition-all duration-200 ${
-                    activeSection === link.name
-                      ? "bg-sky-50 text-sky-600"
-                      : "text-text-secondary hover:bg-gray-50 hover:text-text-primary"
-                  }`}
-                  onClick={() => handleLinkClick(link.name)}
-                >
-                  {link.name}
-                </Link>
-              ))}
-            </div>
-          </motion.div>
+      {/* Theme Toggle - Separate Button */}
+      <motion.button
+        onClick={toggleTheme}
+        className="flex items-center justify-center w-12 h-12 rounded-full bg-white/60 dark:bg-slate-800/60 backdrop-blur-xl border border-white/70 dark:border-slate-700/40 shadow-lg shadow-black/5 dark:shadow-black/20 text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition-colors"
+        whileHover={{ scale: 0.95 }}
+        whileTap={{ scale: 0.9 }}
+        transition={{ type: "spring", stiffness: 400, damping: 17 }}
+        aria-label="Toggle theme"
+      >
+        {theme === "light" ? (
+          <HiMoon className="w-5 h-5" />
+        ) : (
+          <HiSun className="w-5 h-5" />
         )}
-      </AnimatePresence>
+      </motion.button>
     </motion.nav>
   );
 }

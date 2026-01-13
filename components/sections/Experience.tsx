@@ -16,39 +16,41 @@ function TimelineItem({ experience, index, isLast }: TimelineItemProps) {
 
   return (
     <motion.div
-      className="relative flex gap-5 md:gap-8"
+      className="relative flex gap-4 md:gap-6"
       initial={{ opacity: 0, x: -20 }}
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.4, delay: index * 0.1 }}
     >
-      {/* Timeline Line & Icon */}
       <div className="flex flex-col items-center">
-        {/* Icon */}
-        <div
-          className="relative z-10 w-11 h-11 md:w-12 md:h-12 rounded-full flex items-center justify-center bg-white border-2 shadow-sm"
+        <motion.div
+          className="relative z-10 w-10 h-10 rounded-full flex items-center justify-center bg-white dark:bg-slate-800 border-2 shadow-md"
           style={{ borderColor: experience.accentColor }}
+          whileHover={{ scale: 0.95 }}
         >
           <div
-            className="w-7 h-7 md:w-8 md:h-8 rounded-full flex items-center justify-center"
+            className="w-6 h-6 rounded-full flex items-center justify-center"
             style={{ backgroundColor: experience.accentColor }}
           >
-            <Icon className="w-3.5 h-3.5 md:w-4 md:h-4 text-white" />
+            <Icon className="w-3 h-3 text-white" />
           </div>
-        </div>
+        </motion.div>
 
-        {/* Connecting Line */}
         {!isLast && (
-          <div className="w-0.5 flex-1 min-h-[60px] bg-gradient-to-b from-gray-200 to-transparent" />
+          <div className="w-0.5 flex-1 min-h-[50px] bg-gradient-to-b from-slate-200 dark:from-slate-600 to-transparent" />
         )}
       </div>
 
-      {/* Content Card */}
-      <div className="flex-1 pb-10">
-        <div className="liquid-card p-5 md:p-6">
-          {/* Date Badge */}
+      <div className="flex-1 pb-8">
+        <motion.div 
+          className="liquid-card p-4 md:p-5"
+          whileHover={{ 
+            scale: [1, 0.98, 1.01, 1],
+            transition: { duration: 0.4, times: [0, 0.2, 0.6, 1] }
+          }}
+        >
           <div
-            className="inline-block px-3 py-1 rounded-full text-xs font-medium mb-3"
+            className="inline-block px-2.5 py-0.5 rounded-full text-xs font-medium mb-2"
             style={{
               backgroundColor: `${experience.accentColor}15`,
               color: experience.accentColor,
@@ -57,22 +59,16 @@ function TimelineItem({ experience, index, isLast }: TimelineItemProps) {
             {experience.date}
           </div>
 
-          {/* Title & Role */}
-          <h3 className="text-lg md:text-xl font-bold text-text-primary mb-1">
+          <h3 className="text-base md:text-lg font-bold mb-0.5">
             {experience.title}
           </h3>
-          <p
-            className="text-sm font-medium mb-3"
-            style={{ color: experience.accentColor }}
-          >
+          <p className="text-sm font-medium mb-2" style={{ color: experience.accentColor }}>
             {experience.role}
           </p>
-
-          {/* Description */}
           <p className="text-text-secondary text-sm leading-relaxed">
             {experience.description}
           </p>
-        </div>
+        </motion.div>
       </div>
     </motion.div>
   );
@@ -90,7 +86,7 @@ export default function Experience() {
   }, [isInView, setActiveSection, timeOfLastClick]);
 
   return (
-    <section id="experience" ref={sectionRef} className="py-20 scroll-mt-28">
+    <section id="experience" ref={sectionRef} className="py-16 scroll-mt-28">
       <motion.div
         initial={{ opacity: 0, y: 15 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -98,7 +94,7 @@ export default function Experience() {
         transition={{ duration: 0.4 }}
       >
         <p className="section-subtitle">My Journey</p>
-        <h2 className="section-title mb-10">
+        <h2 className="section-title mb-8">
           Work <span className="text-gradient">Experience</span>
         </h2>
       </motion.div>

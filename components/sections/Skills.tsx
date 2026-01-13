@@ -7,12 +7,12 @@ import { useActiveSection } from "@/context/active-section-context";
 import LiquidCard from "@/components/ui/LiquidCard";
 
 const categoryColors: Record<string, string> = {
-  frontend: "hover:border-sky-400 hover:text-sky-600",
-  backend: "hover:border-teal-400 hover:text-teal-600",
-  language: "hover:border-emerald-400 hover:text-emerald-600",
-  database: "hover:border-cyan-400 hover:text-cyan-600",
-  devops: "hover:border-sky-400 hover:text-sky-600",
-  design: "hover:border-teal-400 hover:text-teal-600",
+  frontend: "hover:border-sky-400 hover:text-sky-600 dark:hover:text-sky-400",
+  backend: "hover:border-teal-400 hover:text-teal-600 dark:hover:text-teal-400",
+  language: "hover:border-emerald-400 hover:text-emerald-600 dark:hover:text-emerald-400",
+  database: "hover:border-cyan-400 hover:text-cyan-600 dark:hover:text-cyan-400",
+  devops: "hover:border-sky-400 hover:text-sky-600 dark:hover:text-sky-400",
+  design: "hover:border-teal-400 hover:text-teal-600 dark:hover:text-teal-400",
 };
 
 const categoryDotColors: Record<string, string> = {
@@ -36,7 +36,7 @@ export default function Skills() {
   }, [isInView, setActiveSection, timeOfLastClick]);
 
   return (
-    <section id="skills" ref={sectionRef} className="py-20 scroll-mt-28">
+    <section id="skills" ref={sectionRef} className="py-16 scroll-mt-28">
       <motion.div
         initial={{ opacity: 0, y: 15 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -44,14 +44,14 @@ export default function Skills() {
         transition={{ duration: 0.4 }}
       >
         <p className="section-subtitle">What I Work With</p>
-        <h2 className="section-title mb-10">
+        <h2 className="section-title mb-8">
           Technical <span className="text-gradient">Skills</span>
         </h2>
       </motion.div>
 
-      <LiquidCard className="p-6 md:p-10">
+      <LiquidCard className="p-5 md:p-8">
         <motion.div
-          className="flex flex-wrap justify-center gap-3"
+          className="flex flex-wrap justify-center gap-2.5"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
@@ -59,9 +59,7 @@ export default function Skills() {
             hidden: { opacity: 0 },
             visible: {
               opacity: 1,
-              transition: {
-                staggerChildren: 0.03,
-              },
+              transition: { staggerChildren: 0.03 },
             },
           }}
         >
@@ -69,8 +67,9 @@ export default function Skills() {
             <motion.div
               key={skill.name}
               className={`
-                px-5 py-2.5 rounded-full
-                bg-white/70 border border-white/80
+                px-4 py-2 rounded-full cursor-default
+                bg-white/70 dark:bg-slate-700/50 
+                border border-white/80 dark:border-slate-600/50
                 text-sm text-text-secondary
                 transition-all duration-200
                 ${categoryColors[skill.category]}
@@ -79,20 +78,18 @@ export default function Skills() {
                 hidden: { opacity: 0, scale: 0.9 },
                 visible: { opacity: 1, scale: 1 },
               }}
+              whileHover={{ scale: 0.95 }}
             >
               {skill.name}
             </motion.div>
           ))}
         </motion.div>
 
-        {/* Category Legend */}
-        <div className="flex flex-wrap justify-center gap-5 mt-8 pt-6 border-t border-white/50">
+        <div className="flex flex-wrap justify-center gap-4 mt-6 pt-5 border-t border-white/50 dark:border-slate-600/30">
           {Object.entries(categoryDotColors).map(([category, color]) => (
-            <div key={category} className="flex items-center gap-2">
-              <div className={`w-2.5 h-2.5 rounded-full ${color}`} />
-              <span className="text-text-muted text-xs capitalize">
-                {category}
-              </span>
+            <div key={category} className="flex items-center gap-1.5">
+              <div className={`w-2 h-2 rounded-full ${color}`} />
+              <span className="text-text-muted text-xs capitalize">{category}</span>
             </div>
           ))}
         </div>
