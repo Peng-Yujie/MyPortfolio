@@ -1,0 +1,230 @@
+@import "tailwindcss";
+
+/* ===== DESIGN SYSTEM: LIQUID GLASS (Light Theme) ===== */
+
+@theme {
+  /* Primary Colors - Light & Airy */
+  --color-bg-primary: #f0f4f8;
+  --color-bg-secondary: #ffffff;
+  --color-bg-tertiary: #e8eef4;
+  
+  /* Glass Effect Colors - Light */
+  --color-glass-bg: rgba(255, 255, 255, 0.6);
+  --color-glass-border: rgba(255, 255, 255, 0.8);
+  --color-glass-highlight: rgba(255, 255, 255, 0.9);
+  --color-glass-shadow: rgba(0, 50, 100, 0.08);
+  
+  /* Accent Colors - Blue & Teal */
+  --color-accent-blue: #0ea5e9;
+  --color-accent-sky: #38bdf8;
+  --color-accent-teal: #14b8a6;
+  --color-accent-cyan: #22d3ee;
+  --color-accent-emerald: #10b981;
+  --color-accent-green: #22c55e;
+  
+  /* Text Colors */
+  --color-text-primary: #1e293b;
+  --color-text-secondary: #475569;
+  --color-text-muted: #94a3b8;
+  
+  /* Glass Blur */
+  --blur-glass: 20px;
+  --blur-glass-heavy: 40px;
+  
+  /* Border Radius */
+  --radius-card: 24px;
+  --radius-button: 12px;
+  --radius-pill: 9999px;
+  
+  /* Shadows - Soft & Subtle */
+  --shadow-glass: 0 8px 32px rgba(0, 50, 100, 0.08);
+  --shadow-card: 0 4px 24px rgba(0, 50, 100, 0.06);
+  --shadow-glow: 0 0 40px rgba(14, 165, 233, 0.15);
+  
+  /* Transitions */
+  --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ===== BASE STYLES ===== */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-bg-primary text-text-primary antialiased;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Selection styling */
+::selection {
+  background: rgba(14, 165, 233, 0.2);
+  color: var(--color-text-primary);
+}
+
+/* Custom scrollbar - subtle */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.4);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.6);
+}
+
+/* ===== UTILITY CLASSES ===== */
+
+/* Gradient Text - Blue/Teal */
+.text-gradient {
+  background: linear-gradient(135deg, var(--color-accent-blue) 0%, var(--color-accent-teal) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-green {
+  background: linear-gradient(135deg, var(--color-accent-teal) 0%, var(--color-accent-emerald) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Liquid Glass Card - Light */
+.liquid-card {
+  background: var(--color-glass-bg);
+  backdrop-filter: blur(var(--blur-glass));
+  -webkit-backdrop-filter: blur(var(--blur-glass));
+  border: 1px solid var(--color-glass-border);
+  border-radius: var(--radius-card);
+  box-shadow: 
+    var(--shadow-glass),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  transition: transform 0.3s var(--transition-smooth), box-shadow 0.3s var(--transition-smooth);
+}
+
+.liquid-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 12px 40px rgba(0, 50, 100, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+/* Glass Button - Light Gray Transparent */
+.glass-button {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: var(--radius-pill);
+  padding: 12px 24px;
+  color: var(--color-text-primary);
+  font-weight: 500;
+  transition: all 0.2s var(--transition-smooth);
+  cursor: pointer;
+}
+
+.glass-button:hover {
+  background: rgba(255, 255, 255, 0.85);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 50, 100, 0.1);
+}
+
+.glass-button-primary {
+  background: linear-gradient(135deg, var(--color-accent-blue), var(--color-accent-teal));
+  border: none;
+  color: white;
+}
+
+.glass-button-primary:hover {
+  background: linear-gradient(135deg, var(--color-accent-sky), var(--color-accent-cyan));
+  box-shadow: 0 8px 24px rgba(14, 165, 233, 0.25);
+}
+
+/* Glass Input - Light */
+.glass-input {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  border-radius: var(--radius-button);
+  padding: 16px 20px;
+  color: var(--color-text-primary);
+  transition: all 0.2s var(--transition-smooth);
+  width: 100%;
+}
+
+.glass-input::placeholder {
+  color: var(--color-text-muted);
+}
+
+.glass-input:focus {
+  outline: none;
+  border-color: var(--color-accent-blue);
+  box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.15);
+}
+
+/* Skill Badge - Light */
+.skill-badge {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(226, 232, 240, 0.6);
+  border-radius: var(--radius-pill);
+  padding: 8px 20px;
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  transition: all 0.2s var(--transition-smooth);
+}
+
+.skill-badge:hover {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: var(--color-accent-blue);
+  color: var(--color-accent-blue);
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.12);
+}
+
+/* Section Title */
+.section-title {
+  @apply text-4xl md:text-5xl font-bold mb-4 text-text-primary;
+}
+
+.section-subtitle {
+  @apply text-text-muted uppercase tracking-widest text-sm mb-6;
+}
+
+/* Container */
+.container-custom {
+  @apply max-w-6xl mx-auto px-6 md:px-8;
+}
+
+/* ===== RESPONSIVE UTILITIES ===== */
+
+@media (max-width: 768px) {
+  .liquid-card {
+    --blur-glass: 12px;
+  }
+  
+  .section-title {
+    @apply text-3xl;
+  }
+}
+
+/* Reduce motion for performance */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

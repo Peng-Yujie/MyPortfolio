@@ -1,24 +1,15 @@
-import React from "react";
-import { FaTiktok } from "react-icons/fa";
-import { FaLinkedin } from "react-icons/fa";
-import { FaRegFileAlt } from "react-icons/fa";
-import { FaGithub } from "react-icons/fa";
+import { FaTiktok, FaLinkedin, FaRegFileAlt, FaGithub } from "react-icons/fa";
 import { SiTripdotcom } from "react-icons/si";
 import { LuGraduationCap } from "react-icons/lu";
-// import Project01 from "public/project-1.png";
-// import Project02 from "public/project-2.png";
-import Project03 from "public/project-3.png";
-import Project04 from "public/project-4.png";
-import Project05 from "public/project-5.png";
-import Project06 from "public/project-6.png";
 
 export const links = [
-  { name: "Home", href: "#about" },
+  { name: "Home", href: "#home" },
   { name: "About", href: "#about" },
   { name: "Projects", href: "#projects" },
+  { name: "Skills", href: "#skills" },
   { name: "Experience", href: "#experience" },
   { name: "Contact", href: "#contact" },
-];
+] as const;
 
 export const projectData = [
   {
@@ -34,8 +25,9 @@ export const projectData = [
       "Plasmo",
       "Chrome Extension",
     ],
-    bgColor: "#ffe3a4",
-    imgSrc: Project05,
+    gradient: "from-sky-100/50 to-cyan-100/50",
+    accentColor: "#0ea5e9",
+    image: "/project-5.png",
     links: {
       docs: "https://copilot-grading-tool.readthedocs.io/en/dev/",
     },
@@ -45,8 +37,9 @@ export const projectData = [
     description:
       "A comprehensive hotel management system featuring a customer-facing website and an admin management system.",
     badges: ["Next.js", "Vercel", "Supabase", "Google OAuth", "Tailwind CSS"],
-    bgColor: "#c5ded5",
-    imgSrc: Project06,
+    gradient: "from-emerald-100/50 to-teal-100/50",
+    accentColor: "#10b981",
+    image: "/project-6.png",
     links: {
       github: "https://github.com/Peng-Yujie/the-wild-oasis-website",
       demo: "https://the-wild-oasis-website-clone.vercel.app/",
@@ -65,8 +58,9 @@ export const projectData = [
       "GraphQL",
       "Ant Design",
     ],
-    bgColor: "#ffd0c3",
-    imgSrc: Project04,
+    gradient: "from-teal-100/50 to-green-100/50",
+    accentColor: "#14b8a6",
+    image: "/project-4.png",
     links: {
       github: "https://github.com/Peng-Yujie/purrfect-neighbors/",
     },
@@ -82,117 +76,82 @@ export const projectData = [
       "OpenAI API",
       "Tailwind CSS",
     ],
-    imgSrc: Project03,
-    bgColor: "#f3e8ff",
+    gradient: "from-cyan-100/50 to-sky-100/50",
+    accentColor: "#22d3ee",
+    image: "/project-3.png",
     links: {
       github: "https://github.com/RileyC9/EasyGrammar",
       demo: "https://easygrammarapp.netlify.app/",
     },
   },
-  // {
-  //   name: "Eastern Explore",
-  //   description:
-  //     "Database for a company that organizes group hiking events, including queries for efficient data management.",
-  //   badges: ["Database", "MySQL", "PHP", "HTML", "CSS"],
-  //   imgSrc: Project02,
-  //   bgColor: "#6ed2b7",
-  //   links: {
-  //     github: "https://github.com/Peng-Yujie/Eastern-Explore-Database",
-  //   },
-  // },
-  // {
-  //   name: "Tireder",
-  //   description:
-  //     "A web application for tracking and measuring daily stress, incorporating real-time communication with an AI Chatbot.",
-  //   badges: [
-  //     "Python",
-  //     "Flask",
-  //     "Socket.IO",
-  //     "MongoDB",
-  //     "OpenAI API",
-  //     "JavaScript",
-  //   ],
-  //   imgSrc: Project01,
-  //   bgColor: "#ffe3a4",
-  //   links: {
-  //     github: "https://github.com/Peng-Yujie/Tireder",
-  //   },
-  // },
 ];
 
 export const experienceData = [
   {
     title: "Langara College",
+    role: "Computer Science Diploma",
     date: "2023 - 2024",
     description:
       "Recently graduated from Langara College with a Diploma in Computer Science. Currently working on various projects to improve my skills.",
-    icon: React.createElement(LuGraduationCap),
-    iconStyle: {
-      background: "#f15a23",
-      color: "#fff",
-    },
+    icon: LuGraduationCap,
+    accentColor: "#0ea5e9",
   },
   {
-    title: "E-Commerce Operations Manager - ByteDance",
+    title: "ByteDance",
+    role: "E-Commerce Operations Manager",
     date: "2021 - 2022",
     description:
       "Platform Marketing and Operation, including planning and execution of marketing campaigns, and supporting the development of the platform.",
-    icon: React.createElement(FaTiktok),
-    iconStyle: {
-      background: "#000",
-      color: "#fff",
-    },
+    icon: FaTiktok,
+    accentColor: "#14b8a6",
   },
   {
-    title: "Marketing Manager - Trip.com",
+    title: "Trip.com",
+    role: "Marketing Manager",
     date: "2017 - 2021",
     description:
-      "Led the planning and execution of integrated marketing campaigns and seasonal events. Project Management and Collaboration",
-    icon: React.createElement(SiTripdotcom),
-    iconStyle: {
-      background: "#1E4BF2",
-      color: "#fff",
-    },
+      "Led the planning and execution of integrated marketing campaigns and seasonal events. Project Management and Collaboration.",
+    icon: SiTripdotcom,
+    accentColor: "#0ea5e9",
   },
   {
     title: "Wuhan University of Technology",
+    role: "Master's & Bachelor's Degrees",
     date: "2011 - 2017",
     description:
       "Graduated with a Master's degree in Journalism and Communication, and a Bachelor's degree in Law.",
-    icon: React.createElement(LuGraduationCap),
-    iconStyle: {
-      background: "#0600ff",
-      color: "#fff",
-    },
+    icon: LuGraduationCap,
+    accentColor: "#10b981",
   },
 ];
 
 export const skillsData = [
-  "HTML5/CSS3",
-  "JavaScript",
-  "TypeScript",
-  "Python",
-  "C++",
-  "React",
-  "Next.js",
-  "Node.js",
-  "GraphQL",
-  "RESTful API",
-  "Redis",
-  "Docker",
-  "AWS",
-  "MySQL",
-  "MongoDB",
-  "Tailwind",
-  "Figma",
+  { name: "React", category: "frontend" },
+  { name: "Next.js", category: "frontend" },
+  { name: "TypeScript", category: "language" },
+  { name: "JavaScript", category: "language" },
+  { name: "Python", category: "language" },
+  { name: "Node.js", category: "backend" },
+  { name: "GraphQL", category: "backend" },
+  { name: "RESTful API", category: "backend" },
+  { name: "MySQL", category: "database" },
+  { name: "MongoDB", category: "database" },
+  { name: "Redis", category: "database" },
+  { name: "Docker", category: "devops" },
+  { name: "AWS", category: "devops" },
+  { name: "Tailwind CSS", category: "frontend" },
+  { name: "Framer Motion", category: "frontend" },
+  { name: "Figma", category: "design" },
+  { name: "HTML5/CSS3", category: "frontend" },
 ];
 
 export const socialMediaData = [
-  { name: "resume", icon: FaRegFileAlt, url: "/MyPortfolio/resume.pdf" },
+  { name: "resume", icon: FaRegFileAlt, url: "/resume.pdf", label: "Resume" },
   {
     name: "linkedin",
     icon: FaLinkedin,
     url: "https://www.linkedin.com/in/yujie-peng-8276b1279/",
+    label: "LinkedIn",
   },
-  { name: "github", icon: FaGithub, url: "https://github.com/Peng-Yujie" },
+  { name: "github", icon: FaGithub, url: "https://github.com/Peng-Yujie", label: "GitHub" },
 ];
