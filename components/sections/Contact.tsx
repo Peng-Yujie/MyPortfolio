@@ -50,10 +50,7 @@ export default function Contact() {
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-5">
         <LiquidCard className="p-5 md:p-6 flex flex-col">
           <div className="flex-1 flex flex-col items-center justify-center text-center mb-5">
-            <motion.div
-              className="relative w-24 h-24 mb-4"
-              whileHover={{ scale: 0.95 }}
-            >
+            <div className="relative w-24 h-24 mb-4">
               <div className="absolute inset-0 rounded-full bg-gradient-to-br from-sky-400 to-teal-400 p-0.5">
                 <div className="w-full h-full rounded-full bg-white dark:bg-slate-800 p-0.5">
                   <div className="relative w-full h-full rounded-full overflow-hidden">
@@ -61,7 +58,7 @@ export default function Contact() {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
 
             <h3 className="text-lg font-bold mb-0.5">Yujie Peng</h3>
             <p className="text-text-secondary text-sm mb-4">Full Stack Developer</p>
@@ -70,18 +67,16 @@ export default function Contact() {
               {socialMediaData.map((social) => {
                 const Icon = social.icon;
                 return (
-                  <motion.a
+                  <a
                     key={social.name}
                     href={social.url}
                     target={social.url.startsWith("http") ? "_blank" : undefined}
                     rel={social.url.startsWith("http") ? "noopener noreferrer" : undefined}
                     className="glass-button p-2.5"
-                    whileHover={{ scale: 0.95 }}
-                    whileTap={{ scale: 0.9 }}
                     aria-label={social.label}
                   >
                     <Icon className="w-4 h-4" />
-                  </motion.a>
+                  </a>
                 );
               })}
             </div>
@@ -136,12 +131,10 @@ export default function Contact() {
               <ValidationError prefix="Message" field="message" errors={state.errors} className="text-red-500 text-sm mt-1" />
             </div>
 
-            <motion.button
+            <button
               type="submit"
               disabled={state.submitting}
-              className="glass-button-primary w-full py-2.5 text-sm font-medium flex items-center justify-center gap-2 disabled:opacity-50"
-              whileHover={{ scale: 0.98 }}
-              whileTap={{ scale: 0.95 }}
+              className="glass-button-primary rounded-full w-full py-2.5 text-sm font-medium flex items-center justify-center gap-2 disabled:opacity-50"
             >
               <AnimatePresence mode="wait">
                 {state.submitting ? (
@@ -156,7 +149,7 @@ export default function Contact() {
                   </motion.span>
                 )}
               </AnimatePresence>
-            </motion.button>
+            </button>
           </form>
 
           <AnimatePresence>

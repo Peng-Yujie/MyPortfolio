@@ -21,15 +21,6 @@ export default function LiquidCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.4, delay, ease: [0.4, 0, 0.2, 1] }}
-      whileHover={{
-        scale: [1, 0.98, 1.01, 1],
-        transition: {
-          duration: 0.4,
-          times: [0, 0.2, 0.6, 1],
-          ease: "easeOut",
-        },
-      }}
-      whileTap={{ scale: 0.98 }}
     >
       {children}
     </motion.div>

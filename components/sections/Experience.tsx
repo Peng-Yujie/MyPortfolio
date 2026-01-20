@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { experienceData } from "@/lib/data";
 import { useActiveSection } from "@/context/active-section-context";
@@ -13,6 +13,18 @@ interface TimelineItemProps {
 
 function TimelineItem({ experience, index, isLast }: TimelineItemProps) {
   const Icon = experience.icon;
+  const cardRef = useRef<HTMLDivElement>(null);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    setMousePos({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    });
+  };
 
   return (
     <motion.div
@@ -26,7 +38,8 @@ function TimelineItem({ experience, index, isLast }: TimelineItemProps) {
         <motion.div
           className="relative z-10 w-10 h-10 rounded-full flex items-center justify-center bg-white dark:bg-slate-800 border-2 shadow-md"
           style={{ borderColor: experience.accentColor }}
-          whileHover={{ scale: 0.95 }}
+          whileHover={{ scale: 0.97 }}
+          whileTap={{ scale: 0.95 }}
         >
           <div
             className="w-6 h-6 rounded-full flex items-center justify-center"
@@ -42,13 +55,20 @@ function TimelineItem({ experience, index, isLast }: TimelineItemProps) {
       </div>
 
       <div className="flex-1 pb-8">
-        <motion.div 
+        <motion.div
+          ref={cardRef}
           className="liquid-card p-4 md:p-5"
-          whileHover={{ 
-            scale: [1, 0.98, 1.01, 1],
-            transition: { duration: 0.4, times: [0, 0.2, 0.6, 1] }
-          }}
+          onMouseMove={handleMouseMove}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+          style={{
+            "--mouse-x": `${mousePos.x}px`,
+            "--mouse-y": `${mousePos.y}px`,
+            "--opacity": isHovered ? 1 : 0,
+          } as React.CSSProperties}
         >
+          <div className="glow-border" />
+          <div className="glow-inner" />
           <div
             className="inline-block px-2.5 py-0.5 rounded-full text-xs font-medium mb-2"
             style={{

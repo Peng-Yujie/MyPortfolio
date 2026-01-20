@@ -72,20 +72,18 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.3 }}
             >
-              <motion.button
+              <button
                 onClick={scrollToContact}
-                className="glass-button-primary px-6 py-3 text-sm font-medium"
-                whileHover={{ scale: 0.98 }}
-                whileTap={{ scale: 0.95 }}
+                className="glass-button-primary rounded-full px-6 py-3 text-sm font-medium"
               >
                 Get in Touch
-              </motion.button>
+              </button>
 
               <div className="flex items-center gap-2">
                 {socialMediaData.map((social) => {
                   const Icon = social.icon;
                   return (
-                    <motion.a
+                    <a
                       key={social.name}
                       href={social.url}
                       target={
@@ -97,12 +95,10 @@ export default function Hero() {
                           : undefined
                       }
                       className="glass-button p-2.5"
-                      whileHover={{ scale: 0.95 }}
-                      whileTap={{ scale: 0.9 }}
                       aria-label={social.label}
                     >
                       <Icon className="w-4 h-4" />
-                    </motion.a>
+                    </a>
                   );
                 })}
               </div>

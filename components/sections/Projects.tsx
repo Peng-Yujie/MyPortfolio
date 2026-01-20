@@ -23,10 +23,6 @@ function ProjectCard({ project, index }: ProjectCardProps) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.4, delay: index * 0.05 }}
-      whileHover={{ 
-        scale: [1, 0.98, 1.01, 1],
-        transition: { duration: 0.4, times: [0, 0.2, 0.6, 1] }
-      }}
     >
       <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-40 dark:opacity-20`} />
 
@@ -48,43 +44,37 @@ function ProjectCard({ project, index }: ProjectCardProps) {
           
           <div className="flex gap-1.5 flex-shrink-0">
             {project.links.github && (
-              <motion.a
+              <a
                 href={project.links.github}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="glass-button p-2"
-                whileHover={{ scale: 0.95 }}
-                whileTap={{ scale: 0.9 }}
                 aria-label="GitHub"
               >
                 <FaGithub className="w-3.5 h-3.5" />
-              </motion.a>
+              </a>
             )}
             {project.links.demo && (
-              <motion.a
+              <a
                 href={project.links.demo}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="glass-button p-2"
-                whileHover={{ scale: 0.95 }}
-                whileTap={{ scale: 0.9 }}
                 aria-label="Demo"
               >
                 <FaExternalLinkAlt className="w-3 h-3" />
-              </motion.a>
+              </a>
             )}
             {project.links.docs && (
-              <motion.a
+              <a
                 href={project.links.docs}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="glass-button p-2"
-                whileHover={{ scale: 0.95 }}
-                whileTap={{ scale: 0.9 }}
                 aria-label="Docs"
               >
                 <HiDocumentText className="w-3.5 h-3.5" />
-              </motion.a>
+              </a>
             )}
           </div>
         </div>

@@ -1,52 +1,45 @@
 "use client";
 
 import { useTheme } from "@/context/theme-context";
+import { useScroll, useTransform, motion } from "framer-motion";
 
 export default function FluidBackground() {
   const { theme } = useTheme();
+  const isDark = theme === "dark";
+  const { scrollY } = useScroll();
+
+  // Parallax transform for dot pattern
+  const dotY = useTransform(scrollY, [0, 3000], [0, -150]);
 
   return (
     <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
-      {/* Background gradient based on theme */}
+      {/* Base color - notebook paper yellow / dark blue */}
       <div
         className="absolute inset-0 transition-colors duration-500"
         style={{
-          background:
-            theme === "dark"
-              ? "linear-gradient(135deg, #020617 0%, #0f172a 30%, #1e293b 60%, #0f172a 100%)"
-              : "linear-gradient(135deg, #e0f2fe 0%, #f0fdfa 25%, #f0f4f8 50%, #ecfeff 75%, #e0f7fa 100%)",
+          background: isDark ? "#0a0f1a" : "#f5f3e8",
         }}
       />
 
-      {/* Gradient orbs */}
-      <div
-        className="absolute w-[700px] h-[700px] -top-40 -left-40 rounded-full transition-opacity duration-500"
+      {/* Dot grid pattern - moves with scroll for parallax effect */}
+      <motion.div
+        className="absolute inset-0"
         style={{
-          background:
-            theme === "dark"
-              ? "radial-gradient(circle, rgba(56, 189, 248, 0.08) 0%, transparent 70%)"
-              : "radial-gradient(circle, rgba(14, 165, 233, 0.12) 0%, transparent 70%)",
-          opacity: theme === "dark" ? 0.6 : 0.4,
+          y: dotY,
+          backgroundImage: isDark
+            ? `radial-gradient(circle, rgba(100, 120, 150, 0.2) 1px, transparent 1px)`
+            : `radial-gradient(circle, rgba(180, 170, 140, 0.35) 1px, transparent 1px)`,
+          backgroundSize: "24px 24px",
         }}
       />
+
+      {/* Subtle gradient overlay for depth - very subtle */}
       <div
-        className="absolute w-[500px] h-[500px] top-1/4 -right-20 rounded-full transition-opacity duration-500"
+        className="absolute inset-0 transition-opacity duration-500"
         style={{
-          background:
-            theme === "dark"
-              ? "radial-gradient(circle, rgba(94, 234, 212, 0.06) 0%, transparent 70%)"
-              : "radial-gradient(circle, rgba(20, 184, 166, 0.1) 0%, transparent 70%)",
-          opacity: theme === "dark" ? 0.5 : 0.3,
-        }}
-      />
-      <div
-        className="absolute w-[600px] h-[600px] bottom-0 left-1/3 rounded-full transition-opacity duration-500"
-        style={{
-          background:
-            theme === "dark"
-              ? "radial-gradient(circle, rgba(125, 211, 252, 0.05) 0%, transparent 70%)"
-              : "radial-gradient(circle, rgba(34, 211, 238, 0.08) 0%, transparent 70%)",
-          opacity: theme === "dark" ? 0.4 : 0.25,
+          background: isDark
+            ? "radial-gradient(ellipse at 30% 20%, rgba(56, 189, 248, 0.03) 0%, transparent 50%)"
+            : "radial-gradient(ellipse at 70% 30%, rgba(255, 250, 230, 0.4) 0%, transparent 50%)",
         }}
       />
     </div>

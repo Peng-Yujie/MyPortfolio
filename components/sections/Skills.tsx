@@ -67,18 +67,14 @@ export default function Skills() {
             <motion.div
               key={skill.name}
               className={`
-                px-4 py-2 rounded-full cursor-default
-                bg-white/70 dark:bg-slate-700/50 
-                border border-white/80 dark:border-slate-600/50
+                skill-pill px-4 py-2 rounded-full cursor-default
                 text-sm text-text-secondary
-                transition-all duration-200
                 ${categoryColors[skill.category]}
               `}
               variants={{
                 hidden: { opacity: 0, scale: 0.9 },
                 visible: { opacity: 1, scale: 1 },
               }}
-              whileHover={{ scale: 0.95 }}
             >
               {skill.name}
             </motion.div>

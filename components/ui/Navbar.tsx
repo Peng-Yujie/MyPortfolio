@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import {
   HiHome,
   HiFolder,
@@ -27,6 +27,11 @@ export default function Navbar() {
   const { activeSection, setActiveSection, setTimeOfLastClick } =
     useActiveSection();
   const { theme, toggleTheme } = useTheme();
+  const { scrollY } = useScroll();
+
+  // Navbar shrinks slightly when scrolling
+  const navScale = useTransform(scrollY, [0, 100], [1, 0.95]);
+  const navY = useTransform(scrollY, [0, 100], [0, 4]);
 
   const handleLinkClick = (name: string) => {
     setActiveSection(name as typeof activeSection);
@@ -37,13 +42,14 @@ export default function Navbar() {
 
   return (
     <motion.nav
-      className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-3"
-      initial={{ y: 100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
+      className="fixed bottom-6 left-1/2 z-50 flex items-center gap-3 origin-center"
+      initial={{ x: "-50%", y: 100, opacity: 0 }}
+      animate={{ x: "-50%", y: 0, opacity: 1 }}
+      style={{ scale: navScale, y: navY }}
       transition={{ duration: 0.5, delay: 0.2, ease: [0.4, 0, 0.2, 1] }}
     >
       {/* Main Nav Dock */}
-      <div className="flex items-center gap-1 px-2 py-2 rounded-full bg-white/60 dark:bg-slate-800/60 backdrop-blur-xl border border-white/70 dark:border-slate-700/40 shadow-lg shadow-black/5 dark:shadow-black/20">
+      <div className="nav-dock flex items-center gap-1 h-12 px-2 rounded-full">
         {navLinks.map((link) => {
           const Icon = navIcons[link.name];
           const isActive = activeSection === link.name;
@@ -55,19 +61,15 @@ export default function Navbar() {
               onClick={() => handleLinkClick(link.name)}
               className="relative"
             >
-              <motion.div
+              <div
                 className={`
-                  relative flex items-center gap-2 px-3 py-2.5 md:px-4 rounded-full
-                  transition-colors duration-200
+                  nav-item relative flex items-center gap-2 px-3 py-2.5 md:px-4 rounded-full
                   ${
                     isActive
                       ? "text-sky-600 dark:text-sky-400"
                       : "text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200"
                   }
                 `}
-                whileHover={{ scale: 0.95 }}
-                whileTap={{ scale: 0.9 }}
-                transition={{ type: "spring", stiffness: 400, damping: 17 }}
               >
                 {isActive && (
                   <motion.div
@@ -89,19 +91,16 @@ export default function Navbar() {
                 <span className="relative z-10 hidden md:block text-sm font-medium">
                   {link.name}
                 </span>
-              </motion.div>
+              </div>
             </Link>
           );
         })}
       </div>
 
-      {/* Theme Toggle - Separate Button */}
-      <motion.button
+      {/* Theme Toggle */}
+      <button
         onClick={toggleTheme}
-        className="flex items-center justify-center w-12 h-12 rounded-full bg-white/60 dark:bg-slate-800/60 backdrop-blur-xl border border-white/70 dark:border-slate-700/40 shadow-lg shadow-black/5 dark:shadow-black/20 text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition-colors"
-        whileHover={{ scale: 0.95 }}
-        whileTap={{ scale: 0.9 }}
-        transition={{ type: "spring", stiffness: 400, damping: 17 }}
+        className="nav-dock flex items-center justify-center w-12 h-12 rounded-full text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition-all duration-200"
         aria-label="Toggle theme"
       >
         {theme === "light" ? (
@@ -109,7 +108,7 @@ export default function Navbar() {
         ) : (
           <HiSun className="w-5 h-5" />
         )}
-      </motion.button>
+      </button>
     </motion.nav>
   );
 }
