@@ -72,12 +72,15 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.3 }}
             >
-              <button
-                onClick={scrollToContact}
-                className="glass-button-primary rounded-full px-6 py-3 text-sm font-medium"
+              <div 
+                className="liquid-cta-wrap"
+                style={{ '--global--size': 'clamp(0.875rem, 1.5vw, 1rem)' } as React.CSSProperties}
               >
-                Get in Touch
-              </button>
+                <button onClick={scrollToContact}>
+                  <span>Get in Touch</span>
+                </button>
+                <div className="liquid-cta-shadow"></div>
+              </div>
 
               <div className="flex items-center gap-2">
                 {socialMediaData.map((social) => {

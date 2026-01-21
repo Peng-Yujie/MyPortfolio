@@ -16,13 +16,16 @@ export default function LiquidCard({
 }: LiquidCardProps) {
   return (
     <motion.div
-      className={`liquid-card ${className}`}
+      className="liquid-card-wrap"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.4, delay, ease: [0.4, 0, 0.2, 1] }}
     >
-      {children}
+      <div className={`liquid-card ${className}`}>
+        {children}
+      </div>
+      <div className="liquid-card-shadow"></div>
     </motion.div>
   );
 }
