@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import {
   VerticalTimeline,
@@ -5,10 +7,10 @@ import {
 } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
 import { motion } from "framer-motion";
-import { motionProps } from "../lib/motionSettings";
-import { experienceData } from "../lib/data";
-import { useTheme } from "../context/theme-context";
-import { useSectionInView } from "../lib/motionSettings";
+import { motionProps } from "@/lib/motionSettings";
+import { experienceData } from "@/lib/data";
+import { useTheme } from "@/context/theme-context";
+import { useSectionInView } from "@/lib/motionSettings";
 
 const Experience = () => {
   const { theme } = useTheme();

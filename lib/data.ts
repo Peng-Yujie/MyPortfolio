@@ -1,24 +1,20 @@
 import React from "react";
-import { FaTiktok } from "react-icons/fa";
-import { FaLinkedin } from "react-icons/fa";
-import { FaRegFileAlt } from "react-icons/fa";
-import { FaGithub } from "react-icons/fa";
+import { FaTiktok, FaLinkedin, FaRegFileAlt, FaGithub } from "react-icons/fa";
 import { SiTripdotcom } from "react-icons/si";
 import { LuGraduationCap } from "react-icons/lu";
-// import Project01 from "public/project-1.png";
-// import Project02 from "public/project-2.png";
-import Project03 from "public/project-3.png";
-import Project04 from "public/project-4.png";
-import Project05 from "public/project-5.png";
-import Project06 from "public/project-6.png";
+import Project03 from "@/public/project-3.png";
+import Project04 from "@/public/project-4.png";
+import Project05 from "@/public/project-5.png";
+import Project06 from "@/public/project-6.png";
 
 export const links = [
-  { name: "Home", href: "#about" },
+  { name: "Home", href: "#home" },
   { name: "About", href: "#about" },
   { name: "Projects", href: "#projects" },
+  { name: "Skills", href: "#skills" },
   { name: "Experience", href: "#experience" },
   { name: "Contact", href: "#contact" },
-];
+] as const;
 
 export const projectData = [
   {
@@ -89,35 +85,6 @@ export const projectData = [
       demo: "https://easygrammarapp.netlify.app/",
     },
   },
-  // {
-  //   name: "Eastern Explore",
-  //   description:
-  //     "Database for a company that organizes group hiking events, including queries for efficient data management.",
-  //   badges: ["Database", "MySQL", "PHP", "HTML", "CSS"],
-  //   imgSrc: Project02,
-  //   bgColor: "#6ed2b7",
-  //   links: {
-  //     github: "https://github.com/Peng-Yujie/Eastern-Explore-Database",
-  //   },
-  // },
-  // {
-  //   name: "Tireder",
-  //   description:
-  //     "A web application for tracking and measuring daily stress, incorporating real-time communication with an AI Chatbot.",
-  //   badges: [
-  //     "Python",
-  //     "Flask",
-  //     "Socket.IO",
-  //     "MongoDB",
-  //     "OpenAI API",
-  //     "JavaScript",
-  //   ],
-  //   imgSrc: Project01,
-  //   bgColor: "#ffe3a4",
-  //   links: {
-  //     github: "https://github.com/Peng-Yujie/Tireder",
-  //   },
-  // },
 ];
 
 export const experienceData = [
@@ -188,11 +155,12 @@ export const skillsData = [
 ];
 
 export const socialMediaData = [
-  { name: "resume", icon: FaRegFileAlt, url: "/MyPortfolio/resume.pdf" },
+  { name: "resume", icon: FaRegFileAlt, url: "/resume.pdf", label: "Resume" },
   {
     name: "linkedin",
     icon: FaLinkedin,
     url: "https://www.linkedin.com/in/yujie-peng-8276b1279/",
+    label: "LinkedIn",
   },
-  { name: "github", icon: FaGithub, url: "https://github.com/Peng-Yujie" },
+  { name: "github", icon: FaGithub, url: "https://github.com/Peng-Yujie", label: "GitHub" },
 ];

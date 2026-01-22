@@ -1,7 +1,9 @@
+"use client";
+
 import React from "react";
-import ProjectPreview from "./ProjectPreview";
-import { projectData } from "../lib/data";
-import { useSectionInView } from "../lib/motionSettings";
+import ProjectPreview from "@/components/ui/ProjectPreview";
+import { projectData } from "@/lib/data";
+import { useSectionInView } from "@/lib/motionSettings";
 
 const ProjectList = () => {
   const { ref } = useSectionInView("Projects");

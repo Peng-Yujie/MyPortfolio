@@ -1,10 +1,12 @@
+"use client";
+
 import React from "react";
 
 const Footer = () => {
   return (
     <footer className="my-12 text-center text-gray-400 text-sm">
       <p className="text-gray-400 dark:text-white">
-        © 2024 Yujie Peng. All rights reserved.
+        © {new Date().getFullYear()} Yujie Peng. All rights reserved.
       </p>
       <p className="text-gray-500 dark:text-white font-semibold">
         Built with React & Next.js, TypeScript, Tailwind CSS, and Framer Motion

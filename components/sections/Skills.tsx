@@ -1,17 +1,19 @@
+"use client";
+
 import React from "react";
 import { motion } from "framer-motion";
 import {
   motionProps,
   skillsMotionProps,
   useScroll,
-} from "../lib/motionSettings";
-import { skillsData } from "../lib/data";
+} from "@/lib/motionSettings";
+import { skillsData } from "@/lib/data";
 
 const Skills = () => {
   const { ref, isInView } = useScroll();
 
   return (
-    <section className="skills mb-4">
+    <section className="skills mb-4" id="skills">
       <motion.div
         className="rounded-3xl overflow-hidden bg-gray-50 dark:bg-none dark:bg-gray-600 dark:outline dark:outline-2 dark:outline-gray-500"
         {...motionProps}

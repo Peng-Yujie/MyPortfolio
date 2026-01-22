@@ -1,11 +1,13 @@
+"use client";
+
 import React from "react";
 import Image, { StaticImageData } from "next/image";
 import { FaGithub } from "react-icons/fa";
 import { BsLink } from "react-icons/bs";
 import { motion } from "framer-motion";
-import { motionProps } from "../lib/motionSettings";
-import { useTheme } from "../context/theme-context";
-import projectPic from "../public/project-1.png";
+import { motionProps } from "@/lib/motionSettings";
+import { useTheme } from "@/context/theme-context";
+import projectPic from "@/public/project-1.png";
 
 interface Props {
   name?: string;
