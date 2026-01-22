@@ -14,6 +14,7 @@ import {
 import { links } from "@/lib/data";
 import { useActiveSection } from "@/context/active-section-context";
 import { useTheme } from "@/context/theme-context";
+import GlassButton from "./GlassButton";
 
 const navIcons: Record<string, React.ComponentType<{ className?: string }>> = {
   About: HiHome,
@@ -98,9 +99,10 @@ export default function Navbar() {
       </div>
 
       {/* Theme Toggle */}
-      <button
+      <GlassButton
+        variant="liquid-icon"
+        size="md"
         onClick={toggleTheme}
-        className="nav-dock flex items-center justify-center w-12 h-12 rounded-full text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition-all duration-200"
         aria-label="Toggle theme"
       >
         {theme === "light" ? (
@@ -108,7 +110,7 @@ export default function Navbar() {
         ) : (
           <HiSun className="w-5 h-5" />
         )}
-      </button>
+      </GlassButton>
     </motion.nav>
   );
 }

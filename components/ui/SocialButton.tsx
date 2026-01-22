@@ -1,43 +1,49 @@
 "use client";
 
 import React from "react";
+import GlassButton from "./GlassButton";
 
 interface Props {
   children: React.ReactNode;
-  bgColor?: string | undefined;
+  bgColor?: string;
   href?: string;
 }
 
 const SocialButton: React.FC<Props> = ({
   children,
-  bgColor = "f8fafb",
+  bgColor = "github",
   href,
 }) => {
-  let bgHoverColorClass;
+  // Hover color classes for brand colors
+  let hoverColorClass = "";
 
   switch (bgColor) {
     case "resume":
-      bgHoverColorClass = "hover:bg-resume dark:hover:bg-resume";
+      hoverColorClass = "hover:bg-resume! hover:text-white";
       break;
     case "linkedin":
-      bgHoverColorClass = "hover:bg-linkedin dark:hover:bg-linkedin";
+      hoverColorClass = "hover:bg-linkedin! hover:text-white";
       break;
     case "github":
-      bgHoverColorClass = "hover:bg-github dark:hover:bg-github";
+      hoverColorClass = "hover:bg-github! hover:text-white";
       break;
     default:
-      bgHoverColorClass = "hover:bg-github dark:hover:bg-github";
+      hoverColorClass = "hover:bg-github! hover:text-white";
   }
 
   return (
-    <a
-      className={`h-12 w-12 bg-white ${bgHoverColorClass} rounded-full transition-colors duration-200 ease-in-out flex justify-center items-center text-black hover:text-white`}
-      target="_blank"
+    <GlassButton
+      as="a"
+      variant="liquid-icon"
+      size="md"
       href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={hoverColorClass}
       aria-label={`Visit my ${bgColor}`}
     >
       {children}
-    </a>
+    </GlassButton>
   );
 };
 

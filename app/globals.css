@@ -51,30 +51,40 @@ html {
 
 body {
   @apply text-text-primary antialiased;
-  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto,
+    sans-serif;
   overflow-x: hidden;
   /* Notebook paper with dot grid pattern */
   background-color: #f5f3e8;
-  background-image: radial-gradient(circle, rgba(180, 170, 140, 0.3) 1px, transparent 1px);
+  background-image: radial-gradient(
+    circle,
+    rgba(180, 170, 140, 0.3) 1px,
+    transparent 1px
+  );
   background-size: 20px 20px;
 }
 
 /* Dark mode */
 html.dark {
-  --color-bg-primary: #0a0f1a;
-  --color-bg-secondary: #151c2c;
-  --color-bg-tertiary: #1e293b;
-  --color-text-primary: #f8fafc;
-  --color-text-secondary: #e2e8f0;
-  --color-text-muted: #94a3b8;
+  --color-bg-primary: #0f1419;
+  --color-bg-secondary: #1a2028;
+  --color-bg-tertiary: #252d38;
+  --color-text-primary: #f1f5f9;
+  --color-text-secondary: #cbd5e1;
+  --color-text-muted: #64748b;
 }
 
 html.dark body {
-  /* Dark mode: subtle dot grid on dark background */
-  background-color: #0a0f1a;
-  background-image: radial-gradient(circle, rgba(100, 120, 150, 0.15) 1px, transparent 1px);
+  /* Dark mode: subtle dot grid on dark background with warmer gray */
+  background-color: #0f1419;
+  background-image: radial-gradient(
+    circle,
+    rgba(100, 116, 139, 0.12) 1px,
+    transparent 1px
+  );
   background-size: 20px 20px;
-  color: #f8fafc;
+  color: #f1f5f9;
 }
 
 ::selection {
@@ -136,8 +146,12 @@ html.dark body {
   left: calc(var(--shadow-cuttoff-fix) - 1rem);
   padding: 0.25rem;
   box-sizing: border-box;
-  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
   mask-composite: exclude;
   -webkit-mask-composite: xor;
   transition: all var(--anim--hover-time) var(--anim--hover-ease);
@@ -200,7 +214,9 @@ html.dark body {
   background-size: 200% 200%;
   background-position: 0% 50%;
   background-repeat: no-repeat;
-  transition: background-position calc(var(--anim-hover-time) * 1.25) var(--anim-hover-ease),
+  transition:
+    background-position calc(var(--anim-hover-time) * 1.25)
+      var(--anim-hover-ease),
     --angle-2 calc(var(--anim-hover-time) * 1.25) var(--anim-hover-ease);
 }
 
@@ -215,7 +231,7 @@ html.dark body {
 
 /* Border Gradient */
 .liquid-card::after {
-  content: '';
+  content: "";
   position: absolute;
   z-index: 3;
   inset: 0;
@@ -236,12 +252,17 @@ html.dark body {
       rgba(0, 0, 0, 0.5)
     ),
     linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5));
-  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
   mask-composite: exclude;
   -webkit-mask-composite: xor;
   pointer-events: none;
-  transition: all var(--anim-hover-time) var(--anim-hover-ease),
+  transition:
+    all var(--anim-hover-time) var(--anim-hover-ease),
     --angle-1 500ms ease;
   box-shadow: inset 0 0 0 calc(var(--border-width) / 2) rgba(255, 255, 255, 0.5);
 }
@@ -308,32 +329,36 @@ html.dark body {
 /* Dark Mode Card */
 html.dark .liquid-card {
   background: linear-gradient(
-    -75deg,
-    rgba(255, 255, 255, 0.02),
-    rgba(255, 255, 255, 0.1),
-    rgba(255, 255, 255, 0.02)
+    -70deg,
+    rgba(255, 255, 255, 0.012),
+    rgba(200, 210, 225, 0.055) 30%,
+    rgba(180, 200, 220, 0.065) 50%,
+    rgba(200, 210, 225, 0.055) 70%,
+    rgba(255, 255, 255, 0.012)
   );
   box-shadow:
-    inset 0 0.15rem 0.15rem rgba(0, 0, 0, 0.15),
-    inset 0 -0.15rem 0.15rem rgba(255, 255, 255, 0.15),
-    0 0.3rem 0.15rem -0.15rem rgba(0, 0, 0, 0.4),
-    0 0 0.15rem 0.3rem inset rgba(255, 255, 255, 0.06);
+    inset 0 0.15rem 0.15rem rgba(0, 0, 0, 0.12),
+    inset 0 -0.15rem 0.15rem rgba(255, 255, 255, 0.06),
+    0 0.3rem 0.15rem -0.15rem rgba(0, 0, 0, 0.35),
+    0 0 0.15rem 0.3rem inset rgba(255, 255, 255, 0.025);
 }
 
 html.dark .liquid-card:hover {
   box-shadow:
-    inset 0 0.15rem 0.15rem rgba(0, 0, 0, 0.15),
-    inset 0 -0.15rem 0.15rem rgba(255, 255, 255, 0.15),
-    0 0.2rem 0.08rem -0.12rem rgba(0, 0, 0, 0.5),
-    0 0 0.08rem 0.15rem inset rgba(255, 255, 255, 0.1);
+    inset 0 0.15rem 0.15rem rgba(0, 0, 0, 0.12),
+    inset 0 -0.15rem 0.15rem rgba(255, 255, 255, 0.06),
+    0 0.2rem 0.08rem -0.12rem rgba(0, 0, 0, 0.4),
+    0 0 0.08rem 0.15rem inset rgba(255, 255, 255, 0.04);
 }
 
 html.dark .liquid-card::before {
   background: linear-gradient(
     var(--angle-2),
     rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.15) 35% 45%,
-    rgba(255, 255, 255, 0) 50%
+    rgba(200, 220, 240, 0.04) 25%,
+    rgba(180, 210, 235, 0.07) 40%,
+    rgba(200, 220, 240, 0.04) 50%,
+    rgba(255, 255, 255, 0) 60%
   );
 }
 
@@ -341,29 +366,34 @@ html.dark .liquid-card::after {
   background:
     conic-gradient(
       from var(--angle-1) at 50% 50%,
-      rgba(255, 255, 255, 0.25),
-      rgba(255, 255, 255, 0) 5% 40%,
-      rgba(255, 255, 255, 0.25) 50%,
-      rgba(255, 255, 255, 0) 60% 95%,
-      rgba(255, 255, 255, 0.25)
+      rgba(200, 215, 235, 0.1),
+      rgba(255, 255, 255, 0) 8% 42%,
+      rgba(200, 215, 235, 0.1) 50%,
+      rgba(255, 255, 255, 0) 58% 92%,
+      rgba(200, 215, 235, 0.1)
     ),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.12));
-  box-shadow: inset 0 0 0 calc(var(--border-width) / 2) rgba(255, 255, 255, 0.12);
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.055),
+      rgba(255, 255, 255, 0.035)
+    );
+  box-shadow: inset 0 0 0 calc(var(--border-width) / 2)
+    rgba(255, 255, 255, 0.055);
 }
 
 html.dark .liquid-card-shadow::after {
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.2));
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.15));
 }
 
 html.dark .liquid-card-wrap:has(.liquid-card:active) .liquid-card {
   box-shadow:
-    inset 0 0.15rem 0.15rem rgba(0, 0, 0, 0.15),
-    inset 0 -0.15rem 0.15rem rgba(255, 255, 255, 0.15),
-    0 0.15rem 0.15rem -0.15rem rgba(0, 0, 0, 0.4),
-    0 0 0.15rem 0.3rem inset rgba(255, 255, 255, 0.06),
-    0 0.3rem 0.08rem 0 rgba(0, 0, 0, 0.1),
-    0 0.35rem 0 0 rgba(255, 255, 255, 0.2),
-    inset 0 0.3rem 0.08rem 0 rgba(0, 0, 0, 0.2);
+    inset 0 0.15rem 0.15rem rgba(0, 0, 0, 0.12),
+    inset 0 -0.15rem 0.15rem rgba(255, 255, 255, 0.06),
+    0 0.15rem 0.15rem -0.15rem rgba(0, 0, 0, 0.35),
+    0 0 0.15rem 0.3rem inset rgba(255, 255, 255, 0.025),
+    0 0.3rem 0.08rem 0 rgba(0, 0, 0, 0.08),
+    0 0.35rem 0 0 rgba(255, 255, 255, 0.08),
+    inset 0 0.3rem 0.08rem 0 rgba(0, 0, 0, 0.15);
 }
 
 /* Card Text Styling - matches button text shadow effect */
@@ -402,7 +432,7 @@ html.dark .liquid-card h3,
 html.dark .liquid-card h4,
 html.dark .liquid-card p,
 html.dark .liquid-card span {
-  text-shadow: 0 0.15em 0.05em rgba(0, 0, 0, 0.25);
+  text-shadow: 0 0.12em 0.06em rgba(0, 0, 0, 0.2);
 }
 
 html.dark .liquid-card:hover h1,
@@ -411,7 +441,7 @@ html.dark .liquid-card:hover h3,
 html.dark .liquid-card:hover h4,
 html.dark .liquid-card:hover p,
 html.dark .liquid-card:hover span {
-  text-shadow: 0.02em 0.02em 0.02em rgba(0, 0, 0, 0.2);
+  text-shadow: 0.02em 0.02em 0.03em rgba(0, 0, 0, 0.18);
 }
 
 html.dark .liquid-card:active h1,
@@ -420,7 +450,7 @@ html.dark .liquid-card:active h3,
 html.dark .liquid-card:active h4,
 html.dark .liquid-card:active p,
 html.dark .liquid-card:active span {
-  text-shadow: 0.02em 0.2em 0.05em rgba(0, 0, 0, 0.2);
+  text-shadow: 0.02em 0.18em 0.05em rgba(0, 0, 0, 0.18);
 }
 
 /* ===== GLASS BUTTON ===== */
@@ -480,7 +510,7 @@ html.dark .liquid-card:active span {
 
 /* Border gradient for button */
 .glass-button::after {
-  content: '';
+  content: "";
   position: absolute;
   z-index: 1;
   inset: 0;
@@ -496,8 +526,12 @@ html.dark .liquid-card:active span {
       rgba(0, 0, 0, 0.35)
     ),
     linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.3));
-  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
   mask-composite: exclude;
   -webkit-mask-composite: xor;
   pointer-events: none;
@@ -516,49 +550,51 @@ html.dark .liquid-card:active span {
 /* Dark mode button */
 html.dark .glass-button {
   background: linear-gradient(
-    -75deg,
-    rgba(255, 255, 255, 0.02),
-    rgba(255, 255, 255, 0.08),
-    rgba(255, 255, 255, 0.02)
+    -70deg,
+    rgba(255, 255, 255, 0.01),
+    rgba(200, 210, 225, 0.045) 30%,
+    rgba(180, 200, 220, 0.055) 50%,
+    rgba(200, 210, 225, 0.045) 70%,
+    rgba(255, 255, 255, 0.01)
   );
   box-shadow:
-    inset 0 1px 1px rgba(0, 0, 0, 0.2),
-    inset 0 -1px 1px rgba(255, 255, 255, 0.1),
-    0 3px 2px -2px rgba(0, 0, 0, 0.4),
-    0 0 1px 3px inset rgba(255, 255, 255, 0.05);
+    inset 0 1px 1px rgba(0, 0, 0, 0.15),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.04),
+    0 3px 2px -2px rgba(0, 0, 0, 0.32),
+    0 0 1px 3px inset rgba(255, 255, 255, 0.02);
 }
 
 html.dark .glass-button:hover {
   box-shadow:
-    inset 0 1px 1px rgba(0, 0, 0, 0.2),
-    inset 0 -1px 1px rgba(255, 255, 255, 0.1),
-    0 2px 1px -1px rgba(0, 0, 0, 0.5),
-    0 0 0.5px 1.5px inset rgba(255, 255, 255, 0.1);
+    inset 0 1px 1px rgba(0, 0, 0, 0.15),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.04),
+    0 2px 1px -1px rgba(0, 0, 0, 0.4),
+    0 0 0.5px 1.5px inset rgba(255, 255, 255, 0.04);
 }
 
 html.dark .glass-button:active {
   box-shadow:
-    inset 0 1px 1px rgba(0, 0, 0, 0.2),
-    inset 0 -1px 1px rgba(255, 255, 255, 0.1),
-    0 2px 2px -2px rgba(0, 0, 0, 0.4),
-    0 0 1px 3px inset rgba(255, 255, 255, 0.05),
-    0 3px 0.5px 0 rgba(0, 0, 0, 0.1),
-    0 3px 0 0 rgba(255, 255, 255, 0.15),
-    inset 0 2px 1px 0 rgba(0, 0, 0, 0.15);
+    inset 0 1px 1px rgba(0, 0, 0, 0.15),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.04),
+    0 2px 2px -2px rgba(0, 0, 0, 0.32),
+    0 0 1px 3px inset rgba(255, 255, 255, 0.02),
+    0 3px 0.5px 0 rgba(0, 0, 0, 0.08),
+    0 3px 0 0 rgba(255, 255, 255, 0.06),
+    inset 0 2px 1px 0 rgba(0, 0, 0, 0.12);
 }
 
 html.dark .glass-button::after {
   background:
     conic-gradient(
       from var(--angle-1) at 50% 50%,
-      rgba(255, 255, 255, 0.12),
-      rgba(255, 255, 255, 0) 5% 40%,
-      rgba(255, 255, 255, 0.12) 50%,
-      rgba(255, 255, 255, 0) 60% 95%,
-      rgba(255, 255, 255, 0.12)
+      rgba(200, 215, 235, 0.08),
+      rgba(255, 255, 255, 0) 8% 42%,
+      rgba(200, 215, 235, 0.08) 50%,
+      rgba(255, 255, 255, 0) 58% 92%,
+      rgba(200, 215, 235, 0.08)
     ),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
-  box-shadow: inset 0 0 0 calc(var(--border-width) / 2) rgba(255, 255, 255, 0.1);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.025));
+  box-shadow: inset 0 0 0 calc(var(--border-width) / 2) rgba(255, 255, 255, 0.045);
 }
 
 /* ===== PRIMARY BUTTON ===== */
@@ -570,7 +606,11 @@ html.dark .glass-button::after {
   position: relative;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   z-index: 1;
-  background: linear-gradient(135deg, var(--color-accent-blue), var(--color-accent-teal));
+  background: linear-gradient(
+    135deg,
+    var(--color-accent-blue),
+    var(--color-accent-teal)
+  );
   border-radius: var(--radius-pill);
   box-shadow:
     inset 0 1px 1px rgba(255, 255, 255, 0.3),
@@ -609,7 +649,7 @@ html.dark .glass-button::after {
 
 /* Border gradient for primary button */
 .glass-button-primary::after {
-  content: '';
+  content: "";
   position: absolute;
   z-index: 1;
   inset: 0;
@@ -621,8 +661,12 @@ html.dark .glass-button::after {
     rgba(255, 255, 255, 0.1) 50%,
     transparent 100%
   );
-  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
   mask-composite: exclude;
   -webkit-mask-composite: xor;
   pointer-events: none;
@@ -669,23 +713,25 @@ html.dark .glass-button::after {
 
 html.dark .glass-input {
   background: linear-gradient(
-    -75deg,
-    rgba(255, 255, 255, 0.01),
-    rgba(255, 255, 255, 0.05),
-    rgba(255, 255, 255, 0.01)
+    -70deg,
+    rgba(255, 255, 255, 0.008),
+    rgba(200, 210, 225, 0.028) 30%,
+    rgba(180, 200, 220, 0.035) 50%,
+    rgba(200, 210, 225, 0.028) 70%,
+    rgba(255, 255, 255, 0.008)
   );
   box-shadow:
-    inset 0 2px 3px rgba(0, 0, 0, 0.25),
-    inset 0 -1px 1px rgba(255, 255, 255, 0.08),
-    0 0 1px 2px inset rgba(255, 255, 255, 0.03);
+    inset 0 2px 3px rgba(0, 0, 0, 0.2),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.035),
+    0 0 1px 2px inset rgba(255, 255, 255, 0.015);
 }
 
 html.dark .glass-input:focus {
   box-shadow:
-    inset 0 2px 4px rgba(0, 0, 0, 0.3),
-    inset 0 -1px 1px rgba(255, 255, 255, 0.08),
-    0 0 0 2px rgba(56, 189, 248, 0.3),
-    0 0 1px 2px inset rgba(255, 255, 255, 0.05);
+    inset 0 2px 4px rgba(0, 0, 0, 0.24),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.035),
+    0 0 0 2px rgba(56, 189, 248, 0.22),
+    0 0 1px 2px inset rgba(255, 255, 255, 0.025);
 }
 
 /* ===== NAV DOCK ===== */
@@ -722,7 +768,7 @@ html.dark .glass-input:focus {
 
 /* Border gradient for nav dock */
 .nav-dock::after {
-  content: '';
+  content: "";
   position: absolute;
   z-index: 0;
   inset: 0;
@@ -738,48 +784,60 @@ html.dark .glass-input:focus {
       rgba(0, 0, 0, 0.25)
     ),
     linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.3));
-  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
   mask-composite: exclude;
   -webkit-mask-composite: xor;
   pointer-events: none;
-  box-shadow: inset 0 0 0 calc(var(--border-width) / 2) rgba(255, 255, 255, 0.35);
+  box-shadow: inset 0 0 0 calc(var(--border-width) / 2)
+    rgba(255, 255, 255, 0.35);
 }
 
 html.dark .nav-dock {
   background: linear-gradient(
-    -75deg,
-    rgba(255, 255, 255, 0.02),
-    rgba(255, 255, 255, 0.08),
-    rgba(255, 255, 255, 0.02)
+    -70deg,
+    rgba(255, 255, 255, 0.01),
+    rgba(200, 210, 225, 0.04) 30%,
+    rgba(180, 200, 220, 0.05) 50%,
+    rgba(200, 210, 225, 0.04) 70%,
+    rgba(255, 255, 255, 0.01)
   );
   box-shadow:
-    inset 0 1px 1px rgba(0, 0, 0, 0.2),
-    inset 0 -1px 1px rgba(255, 255, 255, 0.08),
-    0 4px 3px -2px rgba(0, 0, 0, 0.35),
-    0 0 1px 4px inset rgba(255, 255, 255, 0.04);
+    inset 0 1px 1px rgba(0, 0, 0, 0.15),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.035),
+    0 4px 3px -2px rgba(0, 0, 0, 0.28),
+    0 0 1px 4px inset rgba(255, 255, 255, 0.018);
 }
 
 html.dark .nav-dock:hover {
   box-shadow:
-    inset 0 1px 1px rgba(0, 0, 0, 0.2),
-    inset 0 -1px 1px rgba(255, 255, 255, 0.08),
-    0 2px 2px -1px rgba(0, 0, 0, 0.4),
-    0 0 0.5px 2px inset rgba(255, 255, 255, 0.08);
+    inset 0 1px 1px rgba(0, 0, 0, 0.15),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.035),
+    0 2px 2px -1px rgba(0, 0, 0, 0.32),
+    0 0 0.5px 2px inset rgba(255, 255, 255, 0.035);
 }
 
 html.dark .nav-dock::after {
   background:
     conic-gradient(
       from var(--angle-1) at 50% 50%,
-      rgba(255, 255, 255, 0.1),
-      rgba(255, 255, 255, 0) 5% 40%,
-      rgba(255, 255, 255, 0.1) 50%,
-      rgba(255, 255, 255, 0) 60% 95%,
-      rgba(255, 255, 255, 0.1)
+      rgba(200, 215, 235, 0.06),
+      rgba(255, 255, 255, 0) 8% 42%,
+      rgba(200, 215, 235, 0.06) 50%,
+      rgba(255, 255, 255, 0) 58% 92%,
+      rgba(200, 215, 235, 0.06)
     ),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04));
-  box-shadow: inset 0 0 0 calc(var(--border-width) / 2) rgba(255, 255, 255, 0.08);
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.04),
+      rgba(255, 255, 255, 0.02)
+    );
+  box-shadow: inset 0 0 0 calc(var(--border-width) / 2)
+    rgba(255, 255, 255, 0.04);
 }
 
 /* ===== NAV ITEM ===== */
@@ -823,31 +881,34 @@ html.dark .nav-dock::after {
 
 html.dark .nav-item:hover {
   background: linear-gradient(
-    -75deg,
-    rgba(255, 255, 255, 0.01),
-    rgba(255, 255, 255, 0.04),
-    rgba(255, 255, 255, 0.01)
+    -70deg,
+    rgba(255, 255, 255, 0.008),
+    rgba(200, 210, 225, 0.025) 30%,
+    rgba(180, 200, 220, 0.032) 50%,
+    rgba(200, 210, 225, 0.025) 70%,
+    rgba(255, 255, 255, 0.008)
   );
   box-shadow:
-    inset 0 0.5px 0.5px rgba(0, 0, 0, 0.15),
-    inset 0 -0.5px 0.5px rgba(255, 255, 255, 0.06),
-    0 2px 1px -1px rgba(0, 0, 0, 0.25),
-    0 0 0.5px 1.5px inset rgba(255, 255, 255, 0.03);
+    inset 0 0.5px 0.5px rgba(0, 0, 0, 0.12),
+    inset 0 -0.5px 0.5px rgba(255, 255, 255, 0.028),
+    0 2px 1px -1px rgba(0, 0, 0, 0.2),
+    0 0 0.5px 1.5px inset rgba(255, 255, 255, 0.015);
 }
 
 html.dark .nav-item:active {
   box-shadow:
-    inset 0 0.5px 0.5px rgba(0, 0, 0, 0.15),
-    inset 0 -0.5px 0.5px rgba(255, 255, 255, 0.06),
-    0 1px 1px -1px rgba(0, 0, 0, 0.2),
-    0 0 0.5px 1.5px inset rgba(255, 255, 255, 0.03),
-    0 2px 0 0 rgba(255, 255, 255, 0.1),
-    inset 0 1px 0.5px 0 rgba(0, 0, 0, 0.12);
+    inset 0 0.5px 0.5px rgba(0, 0, 0, 0.12),
+    inset 0 -0.5px 0.5px rgba(255, 255, 255, 0.028),
+    0 1px 1px -1px rgba(0, 0, 0, 0.16),
+    0 0 0.5px 1.5px inset rgba(255, 255, 255, 0.015),
+    0 2px 0 0 rgba(255, 255, 255, 0.045),
+    inset 0 1px 0.5px 0 rgba(0, 0, 0, 0.1);
 }
 
 /* ===== DOCK INDICATOR ===== */
 
 .dock-indicator {
+  --border-width: 1px;
   background: linear-gradient(
     -75deg,
     rgba(255, 255, 255, 0.1),
@@ -864,18 +925,122 @@ html.dark .nav-item:active {
     0 0 0.5px 2px inset rgba(255, 255, 255, 0.15);
 }
 
+/* Light Reflection */
+.dock-indicator::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  width: calc(100% - var(--border-width));
+  height: calc(100% - var(--border-width));
+  top: calc(var(--border-width) / 2);
+  left: calc(var(--border-width) / 2);
+  border-radius: inherit;
+  overflow: hidden;
+  background: linear-gradient(
+    var(--angle-2),
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.35) 35% 45%,
+    rgba(255, 255, 255, 0) 50%
+  );
+  mix-blend-mode: screen;
+  pointer-events: none;
+  background-size: 200% 200%;
+  background-position: 0% 50%;
+  background-repeat: no-repeat;
+  transition: background-position calc(var(--anim-hover-time) * 1.25)
+    var(--anim-hover-ease);
+}
+
+.nav-item:hover .dock-indicator::before {
+  background-position: 20% 50%;
+}
+
+/* Border Gradient */
+.dock-indicator::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  border-radius: inherit;
+  width: calc(100% + var(--border-width));
+  height: calc(100% + var(--border-width));
+  top: calc(0% - var(--border-width) / 2);
+  left: calc(0% - var(--border-width) / 2);
+  padding: var(--border-width);
+  box-sizing: border-box;
+  background:
+    conic-gradient(
+      from var(--angle-1) at 50% 50%,
+      rgba(0, 0, 0, 0.35),
+      rgba(0, 0, 0, 0) 5% 40%,
+      rgba(0, 0, 0, 0.35) 50%,
+      rgba(0, 0, 0, 0) 60% 95%,
+      rgba(0, 0, 0, 0.35)
+    ),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.3));
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+  pointer-events: none;
+  transition:
+    all var(--anim-hover-time) var(--anim-hover-ease),
+    --angle-1 500ms ease;
+  box-shadow: inset 0 0 0 calc(var(--border-width) / 2) rgba(255, 255, 255, 0.4);
+}
+
+.nav-item:hover .dock-indicator::after {
+  --angle-1: -125deg;
+}
+
 html.dark .dock-indicator {
   background: linear-gradient(
-    -75deg,
-    rgba(255, 255, 255, 0.03),
-    rgba(255, 255, 255, 0.1),
-    rgba(255, 255, 255, 0.03)
+    -70deg,
+    rgba(255, 255, 255, 0.015),
+    rgba(200, 210, 225, 0.05) 30%,
+    rgba(180, 200, 220, 0.06) 50%,
+    rgba(200, 210, 225, 0.05) 70%,
+    rgba(255, 255, 255, 0.015)
   );
   box-shadow:
-    inset 0 1px 1px rgba(0, 0, 0, 0.15),
-    inset 0 -1px 1px rgba(255, 255, 255, 0.06),
-    0 2px 1px -1px rgba(0, 0, 0, 0.2),
-    0 0 0.5px 2px inset rgba(255, 255, 255, 0.04);
+    inset 0 1px 1px rgba(0, 0, 0, 0.12),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.028),
+    0 2px 1px -1px rgba(0, 0, 0, 0.16),
+    0 0 0.5px 2px inset rgba(255, 255, 255, 0.018);
+}
+
+html.dark .dock-indicator::before {
+  background: linear-gradient(
+    var(--angle-2),
+    rgba(255, 255, 255, 0) 0%,
+    rgba(200, 220, 240, 0.03) 25%,
+    rgba(180, 210, 235, 0.055) 40%,
+    rgba(200, 220, 240, 0.03) 50%,
+    rgba(255, 255, 255, 0) 60%
+  );
+}
+
+html.dark .dock-indicator::after {
+  background:
+    conic-gradient(
+      from var(--angle-1) at 50% 50%,
+      rgba(200, 215, 235, 0.08),
+      rgba(255, 255, 255, 0) 8% 42%,
+      rgba(200, 215, 235, 0.08) 50%,
+      rgba(255, 255, 255, 0) 58% 92%,
+      rgba(200, 215, 235, 0.08)
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.04),
+      rgba(255, 255, 255, 0.02)
+    );
+  box-shadow: inset 0 0 0 calc(var(--border-width) / 2)
+    rgba(255, 255, 255, 0.04);
 }
 
 /* ===== SKILL PILL ===== */
@@ -920,34 +1085,36 @@ html.dark .dock-indicator {
 
 html.dark .skill-pill {
   background: linear-gradient(
-    -75deg,
-    rgba(255, 255, 255, 0.02),
-    rgba(255, 255, 255, 0.08),
-    rgba(255, 255, 255, 0.02)
+    -70deg,
+    rgba(255, 255, 255, 0.01),
+    rgba(200, 210, 225, 0.04) 30%,
+    rgba(180, 200, 220, 0.05) 50%,
+    rgba(200, 210, 225, 0.04) 70%,
+    rgba(255, 255, 255, 0.01)
   );
   box-shadow:
-    inset 0 0.5px 0.5px rgba(0, 0, 0, 0.15),
-    inset 0 -0.5px 0.5px rgba(255, 255, 255, 0.08),
-    0 2px 1px -1px rgba(0, 0, 0, 0.25),
-    0 0 0.5px 1.5px inset rgba(255, 255, 255, 0.04);
+    inset 0 0.5px 0.5px rgba(0, 0, 0, 0.12),
+    inset 0 -0.5px 0.5px rgba(255, 255, 255, 0.035),
+    0 2px 1px -1px rgba(0, 0, 0, 0.2),
+    0 0 0.5px 1.5px inset rgba(255, 255, 255, 0.018);
 }
 
 html.dark .skill-pill:hover {
   box-shadow:
-    inset 0 0.5px 0.5px rgba(0, 0, 0, 0.15),
-    inset 0 -0.5px 0.5px rgba(255, 255, 255, 0.08),
-    0 1px 0.5px -0.5px rgba(0, 0, 0, 0.3),
-    0 0 0.25px 0.75px inset rgba(255, 255, 255, 0.08);
+    inset 0 0.5px 0.5px rgba(0, 0, 0, 0.12),
+    inset 0 -0.5px 0.5px rgba(255, 255, 255, 0.035),
+    0 1px 0.5px -0.5px rgba(0, 0, 0, 0.24),
+    0 0 0.25px 0.75px inset rgba(255, 255, 255, 0.035);
 }
 
 html.dark .skill-pill:active {
   box-shadow:
-    inset 0 0.5px 0.5px rgba(0, 0, 0, 0.15),
-    inset 0 -0.5px 0.5px rgba(255, 255, 255, 0.08),
-    0 0.5px 0.5px -0.5px rgba(0, 0, 0, 0.2),
-    0 0 0.5px 1.5px inset rgba(255, 255, 255, 0.04),
-    0 1.5px 0 0 rgba(255, 255, 255, 0.12),
-    inset 0 0.5px 0.25px 0 rgba(0, 0, 0, 0.1);
+    inset 0 0.5px 0.5px rgba(0, 0, 0, 0.12),
+    inset 0 -0.5px 0.5px rgba(255, 255, 255, 0.035),
+    0 0.5px 0.5px -0.5px rgba(0, 0, 0, 0.16),
+    0 0 0.5px 1.5px inset rgba(255, 255, 255, 0.018),
+    0 1.5px 0 0 rgba(255, 255, 255, 0.055),
+    inset 0 0.5px 0.25px 0 rgba(0, 0, 0, 0.08);
 }
 
 /* ===== GRADIENT TEXT ===== */
@@ -985,7 +1152,8 @@ html.dark .text-gradient {
 /* ===== FLOATING ANIMATIONS ===== */
 
 @keyframes float-slow {
-  0%, 100% {
+  0%,
+  100% {
     transform: translate(0, 0) scale(1);
   }
   25% {
@@ -1000,7 +1168,8 @@ html.dark .text-gradient {
 }
 
 @keyframes float-medium {
-  0%, 100% {
+  0%,
+  100% {
     transform: translate(0, 0) scale(1);
   }
   33% {
@@ -1012,7 +1181,8 @@ html.dark .text-gradient {
 }
 
 @keyframes float-fast {
-  0%, 100% {
+  0%,
+  100% {
     transform: translate(0, 0) scale(1);
   }
   50% {
@@ -1033,7 +1203,7 @@ html.dark .text-gradient {
 }
 
 /* ===== LIQUID CTA BUTTON ===== */
-/* Isolated glass button with shadow layer - ignores all other styles */
+/* Isolated glass button with shadow layer - supports both button and anchor elements */
 
 .liquid-cta-wrap {
   --global--size: clamp(2rem, 4vw, 5rem);
@@ -1076,8 +1246,12 @@ html.dark .text-gradient {
   left: calc(var(--shadow-cuttoff-fix) - 0.875em);
   padding: 0.125em;
   box-sizing: border-box;
-  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
   mask-composite: exclude;
   -webkit-mask-composite: xor;
   transition: all var(--anim--hover-time) var(--anim--hover-ease);
@@ -1085,8 +1259,8 @@ html.dark .text-gradient {
   opacity: 1;
 }
 
-/* Button Base Styles */
-.liquid-cta-wrap button {
+/* Button/Anchor Base Styles */
+.liquid-cta-wrap :is(button, a) {
   --border-width: clamp(1px, 0.0625em, 4px);
   all: unset;
   cursor: pointer;
@@ -1101,7 +1275,8 @@ html.dark .text-gradient {
     rgba(255, 255, 255, 0.05)
   );
   border-radius: 999vw;
-  box-shadow: inset 0 0.125em 0.125em rgba(0, 0, 0, 0.05),
+  box-shadow:
+    inset 0 0.125em 0.125em rgba(0, 0, 0, 0.05),
     inset 0 -0.125em 0.125em rgba(255, 255, 255, 0.5),
     0 0.25em 0.125em -0.125em rgba(0, 0, 0, 0.2),
     0 0 0.1em 0.25em inset rgba(255, 255, 255, 0.2),
@@ -1111,24 +1286,29 @@ html.dark .text-gradient {
   transition: all var(--anim--hover-time) var(--anim--hover-ease);
 }
 
-.liquid-cta-wrap button:hover {
+.liquid-cta-wrap :is(button, a):hover {
   transform: scale(0.975);
   backdrop-filter: blur(0.01em);
   -webkit-backdrop-filter: blur(0.01em);
-  box-shadow: inset 0 0.125em 0.125em rgba(0, 0, 0, 0.05),
+  box-shadow:
+    inset 0 0.125em 0.125em rgba(0, 0, 0, 0.05),
     inset 0 -0.125em 0.125em rgba(255, 255, 255, 0.5),
     0 0.15em 0.05em -0.1em rgba(0, 0, 0, 0.25),
     0 0 0.05em 0.1em inset rgba(255, 255, 255, 0.5),
     0 0 0 0 rgba(255, 255, 255, 1);
 }
 
-/* Button Text */
-.liquid-cta-wrap button span {
+/* Button/Anchor Text */
+.liquid-cta-wrap :is(button, a) span {
   position: relative;
   display: block;
   user-select: none;
   -webkit-user-select: none;
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
   letter-spacing: -0.05em;
   font-weight: 500;
   font-size: 1em;
@@ -1141,12 +1321,12 @@ html.dark .text-gradient {
   padding-block: 0.875em;
 }
 
-.liquid-cta-wrap button:hover span {
+.liquid-cta-wrap :is(button, a):hover span {
   text-shadow: 0.025em 0.025em 0.025em rgba(0, 0, 0, 0.12);
 }
 
 /* Text light reflection */
-.liquid-cta-wrap button span::after {
+.liquid-cta-wrap :is(button, a) span::after {
   content: "";
   display: block;
   position: absolute;
@@ -1170,30 +1350,31 @@ html.dark .text-gradient {
   background-size: 200% 200%;
   background-position: 0% 50%;
   background-repeat: no-repeat;
-  transition: background-position calc(var(--anim--hover-time) * 1.25)
+  transition:
+    background-position calc(var(--anim--hover-time) * 1.25)
       var(--anim--hover-ease),
     --angle-2 calc(var(--anim--hover-time) * 1.25) var(--anim--hover-ease);
 }
 
-.liquid-cta-wrap button:hover span::after {
+.liquid-cta-wrap :is(button, a):hover span::after {
   background-position: 25% 50%;
 }
 
-.liquid-cta-wrap button:active span::after {
+.liquid-cta-wrap :is(button, a):active span::after {
   background-position: 50% 15%;
   --angle-2: -15deg;
 }
 
 /* Touch Devices */
 @media (hover: none) and (pointer: coarse) {
-  .liquid-cta-wrap button span::after,
-  .liquid-cta-wrap button:active span::after {
+  .liquid-cta-wrap :is(button, a) span::after,
+  .liquid-cta-wrap :is(button, a):active span::after {
     --angle-2: -45deg;
   }
 }
 
-/* Button Border Outline */
-.liquid-cta-wrap button::after {
+/* Button/Anchor Border Outline */
+.liquid-cta-wrap :is(button, a)::after {
   content: "";
   position: absolute;
   z-index: 1;
@@ -1205,7 +1386,8 @@ html.dark .text-gradient {
   left: calc(0% - var(--border-width) / 2);
   padding: var(--border-width);
   box-sizing: border-box;
-  background: conic-gradient(
+  background:
+    conic-gradient(
       from var(--angle-1) at 50% 50%,
       rgba(0, 0, 0, 0.5),
       rgba(0, 0, 0, 0) 5% 40%,
@@ -1214,50 +1396,56 @@ html.dark .text-gradient {
       rgba(0, 0, 0, 0.5)
     ),
     linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5));
-  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
   mask-composite: exclude;
   -webkit-mask-composite: xor;
-  transition: all var(--anim--hover-time) var(--anim--hover-ease),
+  transition:
+    all var(--anim--hover-time) var(--anim--hover-ease),
     --angle-1 500ms ease;
   box-shadow: inset 0 0 0 calc(var(--border-width) / 2) rgba(255, 255, 255, 0.5);
 }
 
-.liquid-cta-wrap button:hover::after {
+.liquid-cta-wrap :is(button, a):hover::after {
   --angle-1: -125deg;
 }
 
-.liquid-cta-wrap button:active::after {
+.liquid-cta-wrap :is(button, a):active::after {
   --angle-1: -75deg;
 }
 
 @media (hover: none) and (pointer: coarse) {
-  .liquid-cta-wrap button::after,
-  .liquid-cta-wrap button:hover::after,
-  .liquid-cta-wrap button:active::after {
+  .liquid-cta-wrap :is(button, a)::after,
+  .liquid-cta-wrap :is(button, a):hover::after,
+  .liquid-cta-wrap :is(button, a):active::after {
     --angle-1: -75deg;
   }
 }
 
 /* Shadow Hover Effects */
-.liquid-cta-wrap:has(button:hover) .liquid-cta-shadow {
+.liquid-cta-wrap:has(:is(button, a):hover) .liquid-cta-shadow {
   filter: blur(clamp(2px, 0.0625em, 6px));
   -webkit-filter: blur(clamp(2px, 0.0625em, 6px));
   transition: filter var(--anim--hover-time) var(--anim--hover-ease);
 }
 
-.liquid-cta-wrap:has(button:hover) .liquid-cta-shadow::after {
+.liquid-cta-wrap:has(:is(button, a):hover) .liquid-cta-shadow::after {
   top: calc(var(--shadow-cuttoff-fix) - 0.875em);
   opacity: 1;
 }
 
 /* 3D Rotation on Active */
-.liquid-cta-wrap:has(button:active) {
+.liquid-cta-wrap:has(:is(button, a):active) {
   transform: rotate3d(1, 0, 0, 25deg);
 }
 
-.liquid-cta-wrap:has(button:active) button {
-  box-shadow: inset 0 0.125em 0.125em rgba(0, 0, 0, 0.05),
+.liquid-cta-wrap:has(:is(button, a):active) :is(button, a) {
+  box-shadow:
+    inset 0 0.125em 0.125em rgba(0, 0, 0, 0.05),
     inset 0 -0.125em 0.125em rgba(255, 255, 255, 0.5),
     0 0.125em 0.125em -0.125em rgba(0, 0, 0, 0.2),
     0 0 0.1em 0.25em inset rgba(255, 255, 255, 0.2),
@@ -1266,54 +1454,419 @@ html.dark .text-gradient {
     inset 0 0.25em 0.05em 0 rgba(0, 0, 0, 0.15);
 }
 
-.liquid-cta-wrap:has(button:active) .liquid-cta-shadow {
+.liquid-cta-wrap:has(:is(button, a):active) .liquid-cta-shadow {
   filter: blur(clamp(2px, 0.125em, 12px));
   -webkit-filter: blur(clamp(2px, 0.125em, 12px));
 }
 
-.liquid-cta-wrap:has(button:active) .liquid-cta-shadow::after {
+.liquid-cta-wrap:has(:is(button, a):active) .liquid-cta-shadow::after {
   top: calc(var(--shadow-cuttoff-fix) - 0.5em);
   opacity: 0.75;
 }
 
-.liquid-cta-wrap:has(button:active) span {
+.liquid-cta-wrap:has(:is(button, a):active) span {
   text-shadow: 0.025em 0.25em 0.05em rgba(0, 0, 0, 0.12);
 }
 
 /* Dark Mode */
-html.dark .liquid-cta-wrap button {
+html.dark .liquid-cta-wrap :is(button, a) {
   background: linear-gradient(
-    -75deg,
-    rgba(255, 255, 255, 0.03),
-    rgba(255, 255, 255, 0.12),
-    rgba(255, 255, 255, 0.03)
+    -70deg,
+    rgba(255, 255, 255, 0.015),
+    rgba(200, 210, 225, 0.055) 30%,
+    rgba(180, 200, 220, 0.07) 50%,
+    rgba(200, 210, 225, 0.055) 70%,
+    rgba(255, 255, 255, 0.015)
   );
-  box-shadow: inset 0 0.125em 0.125em rgba(0, 0, 0, 0.15),
-    inset 0 -0.125em 0.125em rgba(255, 255, 255, 0.2),
-    0 0.25em 0.125em -0.125em rgba(0, 0, 0, 0.4),
-    0 0 0.1em 0.25em inset rgba(255, 255, 255, 0.08);
+  box-shadow:
+    inset 0 0.125em 0.125em rgba(0, 0, 0, 0.12),
+    inset 0 -0.125em 0.125em rgba(255, 255, 255, 0.045),
+    0 0.25em 0.125em -0.125em rgba(0, 0, 0, 0.32),
+    0 0 0.1em 0.25em inset rgba(255, 255, 255, 0.02);
 }
 
-html.dark .liquid-cta-wrap button span {
-  color: rgba(240, 240, 240, 1);
-  text-shadow: 0em 0.25em 0.05em rgba(0, 0, 0, 0.3);
+html.dark .liquid-cta-wrap :is(button, a):hover {
+  box-shadow:
+    inset 0 0.125em 0.125em rgba(0, 0, 0, 0.12),
+    inset 0 -0.125em 0.125em rgba(255, 255, 255, 0.045),
+    0 0.15em 0.05em -0.1em rgba(0, 0, 0, 0.38),
+    0 0 0.05em 0.1em inset rgba(255, 255, 255, 0.035);
 }
 
-html.dark .liquid-cta-wrap button::after {
-  background: conic-gradient(
+html.dark .liquid-cta-wrap :is(button, a) span {
+  color: rgba(235, 240, 245, 1);
+  text-shadow: 0em 0.2em 0.06em rgba(0, 0, 0, 0.22);
+}
+
+/* Dark mode light reflection on CTA button */
+html.dark .liquid-cta-wrap :is(button, a) span::after {
+  background: linear-gradient(
+    var(--angle-2),
+    rgba(255, 255, 255, 0) 0%,
+    rgba(200, 220, 240, 0.04) 30%,
+    rgba(180, 210, 235, 0.08) 45%,
+    rgba(200, 220, 240, 0.04) 55%,
+    rgba(255, 255, 255, 0) 65%
+  );
+}
+
+html.dark .liquid-cta-wrap :is(button, a):hover span {
+  text-shadow: 0.02em 0.02em 0.03em rgba(0, 0, 0, 0.18);
+}
+
+html.dark .liquid-cta-wrap :is(button, a):active span {
+  text-shadow: 0.02em 0.18em 0.05em rgba(0, 0, 0, 0.18);
+}
+
+html.dark .liquid-cta-wrap :is(button, a)::after {
+  background:
+    conic-gradient(
       from var(--angle-1) at 50% 50%,
-      rgba(255, 255, 255, 0.3),
-      rgba(255, 255, 255, 0) 5% 40%,
-      rgba(255, 255, 255, 0.3) 50%,
-      rgba(255, 255, 255, 0) 60% 95%,
-      rgba(255, 255, 255, 0.3)
+      rgba(200, 215, 235, 0.12),
+      rgba(255, 255, 255, 0) 8% 42%,
+      rgba(200, 215, 235, 0.12) 50%,
+      rgba(255, 255, 255, 0) 58% 92%,
+      rgba(200, 215, 235, 0.12)
     ),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.15));
-  box-shadow: inset 0 0 0 calc(var(--border-width) / 2) rgba(255, 255, 255, 0.15);
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.06),
+      rgba(255, 255, 255, 0.04)
+    );
+  box-shadow: inset 0 0 0 calc(var(--border-width) / 2)
+    rgba(255, 255, 255, 0.06);
 }
 
 html.dark .liquid-cta-shadow::after {
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.25));
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.32), rgba(0, 0, 0, 0.18));
+}
+
+html.dark .liquid-cta-wrap:has(:is(button, a):active) :is(button, a) {
+  box-shadow:
+    inset 0 0.125em 0.125em rgba(0, 0, 0, 0.12),
+    inset 0 -0.125em 0.125em rgba(255, 255, 255, 0.045),
+    0 0.125em 0.125em -0.125em rgba(0, 0, 0, 0.32),
+    0 0 0.1em 0.25em inset rgba(255, 255, 255, 0.02),
+    0 0.225em 0.05em 0 rgba(0, 0, 0, 0.08),
+    0 0.25em 0 0 rgba(255, 255, 255, 0.08),
+    inset 0 0.25em 0.05em 0 rgba(0, 0, 0, 0.12);
+}
+
+html.dark .liquid-cta-wrap:has(:is(button, a):active) span {
+  text-shadow: 0.02em 0.22em 0.05em rgba(0, 0, 0, 0.16);
+}
+
+/* ===== LIQUID ICON BUTTON ===== */
+/* Circular icon button with full liquid glass effect including shadow layer */
+
+.liquid-icon-wrap {
+  --global--size: 1rem;
+  --anim--hover-time: 400ms;
+  --anim--hover-ease: cubic-bezier(0.25, 1, 0.5, 1);
+  position: relative;
+  z-index: 2;
+  border-radius: 999vw;
+  background: transparent;
+  pointer-events: none;
+  transition: all var(--anim--hover-time) var(--anim--hover-ease);
+  font-size: var(--global--size);
+}
+
+/* Icon Shadow Container */
+.liquid-icon-shadow {
+  --shadow-cuttoff-fix: 1.5em;
+  position: absolute;
+  width: calc(100% + var(--shadow-cuttoff-fix));
+  height: calc(100% + var(--shadow-cuttoff-fix));
+  top: calc(0% - var(--shadow-cuttoff-fix) / 2);
+  left: calc(0% - var(--shadow-cuttoff-fix) / 2);
+  filter: blur(clamp(2px, 0.1em, 8px));
+  -webkit-filter: blur(clamp(2px, 0.1em, 8px));
+  overflow: visible;
+  pointer-events: none;
+}
+
+.liquid-icon-shadow::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  border-radius: 999vw;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.08));
+  width: calc(100% - var(--shadow-cuttoff-fix) - 0.2em);
+  height: calc(100% - var(--shadow-cuttoff-fix) - 0.2em);
+  top: calc(var(--shadow-cuttoff-fix) - 0.4em);
+  left: calc(var(--shadow-cuttoff-fix) - 0.65em);
+  padding: 0.1em;
+  box-sizing: border-box;
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+  transition: all var(--anim--hover-time) var(--anim--hover-ease);
+  overflow: visible;
+  opacity: 1;
+}
+
+/* Icon Button/Anchor Base */
+.liquid-icon-wrap :is(button, a) {
+  --border-width: 1px;
+  --icon-size: 3em;
+  all: unset;
+  cursor: pointer;
+  position: relative;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  pointer-events: auto;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--icon-size);
+  height: var(--icon-size);
+  background: linear-gradient(
+    -75deg,
+    rgba(255, 255, 255, 0.05),
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.05)
+  );
+  border-radius: 999vw;
+  box-shadow:
+    inset 0 0.1em 0.1em rgba(0, 0, 0, 0.05),
+    inset 0 -0.1em 0.1em rgba(255, 255, 255, 0.5),
+    0 0.2em 0.1em -0.1em rgba(0, 0, 0, 0.2),
+    0 0 0.08em 0.2em inset rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(clamp(1px, 0.1em, 4px));
+  -webkit-backdrop-filter: blur(clamp(1px, 0.1em, 4px));
+  transition: all var(--anim--hover-time) var(--anim--hover-ease);
+  color: var(--color-text-primary);
+}
+
+.liquid-icon-wrap :is(button, a):hover {
+  transform: scale(0.975);
+  backdrop-filter: blur(0.02em);
+  -webkit-backdrop-filter: blur(0.02em);
+  box-shadow:
+    inset 0 0.1em 0.1em rgba(0, 0, 0, 0.05),
+    inset 0 -0.1em 0.1em rgba(255, 255, 255, 0.5),
+    0 0.12em 0.04em -0.08em rgba(0, 0, 0, 0.25),
+    0 0 0.04em 0.08em inset rgba(255, 255, 255, 0.5);
+}
+
+/* Icon Light Reflection */
+.liquid-icon-wrap :is(button, a)::before {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  width: calc(100% - var(--border-width));
+  height: calc(100% - var(--border-width));
+  top: calc(var(--border-width) / 2);
+  left: calc(var(--border-width) / 2);
+  border-radius: inherit;
+  overflow: hidden;
+  background: linear-gradient(
+    var(--angle-2),
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.4) 35% 45%,
+    rgba(255, 255, 255, 0) 50%
+  );
+  mix-blend-mode: screen;
+  pointer-events: none;
+  background-size: 200% 200%;
+  background-position: 0% 50%;
+  background-repeat: no-repeat;
+  transition:
+    background-position calc(var(--anim--hover-time) * 1.25)
+      var(--anim--hover-ease),
+    --angle-2 calc(var(--anim--hover-time) * 1.25) var(--anim--hover-ease);
+}
+
+.liquid-icon-wrap :is(button, a):hover::before {
+  background-position: 20% 50%;
+}
+
+.liquid-icon-wrap :is(button, a):active::before {
+  background-position: 40% 20%;
+  --angle-2: -15deg;
+}
+
+/* Icon Border Gradient */
+.liquid-icon-wrap :is(button, a)::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  border-radius: inherit;
+  width: calc(100% + var(--border-width));
+  height: calc(100% + var(--border-width));
+  top: calc(0% - var(--border-width) / 2);
+  left: calc(0% - var(--border-width) / 2);
+  padding: var(--border-width);
+  box-sizing: border-box;
+  background:
+    conic-gradient(
+      from var(--angle-1) at 50% 50%,
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0) 5% 40%,
+      rgba(0, 0, 0, 0.5) 50%,
+      rgba(0, 0, 0, 0) 60% 95%,
+      rgba(0, 0, 0, 0.5)
+    ),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5));
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+  pointer-events: none;
+  transition:
+    all var(--anim--hover-time) var(--anim--hover-ease),
+    --angle-1 500ms ease;
+  box-shadow: inset 0 0 0 calc(var(--border-width) / 2) rgba(255, 255, 255, 0.5);
+}
+
+.liquid-icon-wrap :is(button, a):hover::after {
+  --angle-1: -125deg;
+}
+
+.liquid-icon-wrap :is(button, a):active::after {
+  --angle-1: -75deg;
+}
+
+/* Touch Devices */
+@media (hover: none) and (pointer: coarse) {
+  .liquid-icon-wrap :is(button, a)::before,
+  .liquid-icon-wrap :is(button, a):active::before {
+    --angle-2: -45deg;
+  }
+  .liquid-icon-wrap :is(button, a)::after,
+  .liquid-icon-wrap :is(button, a):hover::after,
+  .liquid-icon-wrap :is(button, a):active::after {
+    --angle-1: -75deg;
+  }
+}
+
+/* Shadow Hover Effects */
+.liquid-icon-wrap:has(:is(button, a):hover) .liquid-icon-shadow {
+  filter: blur(clamp(2px, 0.05em, 4px));
+  -webkit-filter: blur(clamp(2px, 0.05em, 4px));
+  transition: filter var(--anim--hover-time) var(--anim--hover-ease);
+}
+
+.liquid-icon-wrap:has(:is(button, a):hover) .liquid-icon-shadow::after {
+  top: calc(var(--shadow-cuttoff-fix) - 0.6em);
+  opacity: 1;
+}
+
+/* 3D Rotation on Active */
+.liquid-icon-wrap:has(:is(button, a):active) {
+  transform: rotate3d(1, 0, 0, 15deg);
+}
+
+.liquid-icon-wrap:has(:is(button, a):active) :is(button, a) {
+  box-shadow:
+    inset 0 0.1em 0.1em rgba(0, 0, 0, 0.05),
+    inset 0 -0.1em 0.1em rgba(255, 255, 255, 0.5),
+    0 0.1em 0.1em -0.1em rgba(0, 0, 0, 0.2),
+    0 0 0.08em 0.2em inset rgba(255, 255, 255, 0.2),
+    0 0.18em 0.04em 0 rgba(0, 0, 0, 0.05),
+    0 0.2em 0 0 rgba(255, 255, 255, 0.75),
+    inset 0 0.2em 0.04em 0 rgba(0, 0, 0, 0.15);
+}
+
+.liquid-icon-wrap:has(:is(button, a):active) .liquid-icon-shadow {
+  filter: blur(clamp(2px, 0.1em, 8px));
+  -webkit-filter: blur(clamp(2px, 0.1em, 8px));
+}
+
+.liquid-icon-wrap:has(:is(button, a):active) .liquid-icon-shadow::after {
+  top: calc(var(--shadow-cuttoff-fix) - 0.4em);
+  opacity: 0.75;
+}
+
+/* Dark Mode Icon */
+html.dark .liquid-icon-wrap :is(button, a) {
+  background: linear-gradient(
+    -70deg,
+    rgba(255, 255, 255, 0.012),
+    rgba(200, 210, 225, 0.05) 30%,
+    rgba(180, 200, 220, 0.06) 50%,
+    rgba(200, 210, 225, 0.05) 70%,
+    rgba(255, 255, 255, 0.012)
+  );
+  box-shadow:
+    inset 0 0.1em 0.1em rgba(0, 0, 0, 0.12),
+    inset 0 -0.1em 0.1em rgba(255, 255, 255, 0.055),
+    0 0.2em 0.1em -0.1em rgba(0, 0, 0, 0.32),
+    0 0 0.08em 0.2em inset rgba(255, 255, 255, 0.025);
+}
+
+html.dark .liquid-icon-wrap :is(button, a):hover {
+  box-shadow:
+    inset 0 0.1em 0.1em rgba(0, 0, 0, 0.12),
+    inset 0 -0.1em 0.1em rgba(255, 255, 255, 0.055),
+    0 0.12em 0.04em -0.08em rgba(0, 0, 0, 0.4),
+    0 0 0.04em 0.08em inset rgba(255, 255, 255, 0.045);
+}
+
+html.dark .liquid-icon-wrap :is(button, a)::before {
+  background: linear-gradient(
+    var(--angle-2),
+    rgba(255, 255, 255, 0) 0%,
+    rgba(200, 220, 240, 0.035) 25%,
+    rgba(180, 210, 235, 0.065) 40%,
+    rgba(200, 220, 240, 0.035) 50%,
+    rgba(255, 255, 255, 0) 60%
+  );
+}
+
+html.dark .liquid-icon-wrap :is(button, a)::after {
+  background:
+    conic-gradient(
+      from var(--angle-1) at 50% 50%,
+      rgba(200, 215, 235, 0.1),
+      rgba(255, 255, 255, 0) 8% 42%,
+      rgba(200, 215, 235, 0.1) 50%,
+      rgba(255, 255, 255, 0) 58% 92%,
+      rgba(200, 215, 235, 0.1)
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.055),
+      rgba(255, 255, 255, 0.035)
+    );
+  box-shadow: inset 0 0 0 calc(var(--border-width) / 2)
+    rgba(255, 255, 255, 0.055);
+}
+
+html.dark .liquid-icon-shadow::after {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.15));
+}
+
+html.dark .liquid-icon-wrap:has(:is(button, a):active) :is(button, a) {
+  box-shadow:
+    inset 0 0.1em 0.1em rgba(0, 0, 0, 0.12),
+    inset 0 -0.1em 0.1em rgba(255, 255, 255, 0.055),
+    0 0.1em 0.1em -0.1em rgba(0, 0, 0, 0.32),
+    0 0 0.08em 0.2em inset rgba(255, 255, 255, 0.025),
+    0 0.18em 0.04em 0 rgba(0, 0, 0, 0.08),
+    0 0.2em 0 0 rgba(255, 255, 255, 0.08),
+    inset 0 0.2em 0.04em 0 rgba(0, 0, 0, 0.15);
+}
+
+/* Icon Size Variants */
+.liquid-icon-wrap.liquid-icon-sm :is(button, a) {
+  --icon-size: 2.5em;
+}
+
+.liquid-icon-wrap.liquid-icon-lg :is(button, a) {
+  --icon-size: 3.5em;
 }
 
 /* ===== RESPONSIVE ===== */
@@ -1325,7 +1878,9 @@ html.dark .liquid-cta-shadow::after {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }

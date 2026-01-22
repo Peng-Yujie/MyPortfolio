@@ -6,6 +6,7 @@ import { motion, useInView } from "framer-motion";
 import { useActiveSection } from "@/context/active-section-context";
 import { socialMediaData } from "@/lib/data";
 import LiquidCard from "@/components/ui/LiquidCard";
+import GlassButton from "@/components/ui/GlassButton";
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -67,27 +68,28 @@ export default function Hero() {
             </div>
 
             <motion.div
-              className="flex flex-wrap gap-3"
+              className="flex flex-wrap gap-3 items-center"
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.3 }}
             >
-              <div 
-                className="liquid-cta-wrap"
-                style={{ '--global--size': 'clamp(0.875rem, 1.5vw, 1rem)' } as React.CSSProperties}
+              <GlassButton
+                variant="cta"
+                size="md"
+                onClick={scrollToContact}
               >
-                <button onClick={scrollToContact}>
-                  <span>Get in Touch</span>
-                </button>
-                <div className="liquid-cta-shadow"></div>
-              </div>
+                Get in Touch
+              </GlassButton>
 
               <div className="flex items-center gap-2">
                 {socialMediaData.map((social) => {
                   const Icon = social.icon;
                   return (
-                    <a
+                    <GlassButton
                       key={social.name}
+                      as="a"
+                      variant="liquid-icon"
+                      size="sm"
                       href={social.url}
                       target={
                         social.url.startsWith("http") ? "_blank" : undefined
@@ -97,11 +99,10 @@ export default function Hero() {
                           ? "noopener noreferrer"
                           : undefined
                       }
-                      className="glass-button p-2.5"
                       aria-label={social.label}
                     >
                       <Icon className="w-4 h-4" />
-                    </a>
+                    </GlassButton>
                   );
                 })}
               </div>
