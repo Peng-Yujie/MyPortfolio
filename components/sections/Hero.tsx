@@ -24,11 +24,7 @@ export default function Hero() {
   };
 
   return (
-    <section
-      id="about"
-      ref={sectionRef}
-      className="min-h-screen pt-24 pb-16 flex items-center scroll-mt-28"
-    >
+    <section id="about" ref={sectionRef} className="pt-24 scroll-mt-28">
       <div className="w-full">
         <div className="grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] gap-5">
           {/* Main Hero Card */}
@@ -73,11 +69,7 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.3 }}
             >
-              <GlassButton
-                variant="cta"
-                size="md"
-                onClick={scrollToContact}
-              >
+              <GlassButton variant="cta" size="md" onClick={scrollToContact}>
                 Get in Touch
               </GlassButton>
 

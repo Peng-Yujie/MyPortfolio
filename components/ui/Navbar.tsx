@@ -67,7 +67,7 @@ export default function Navbar() {
                   nav-item relative flex items-center gap-2 px-3 py-2.5 md:px-4 rounded-full
                   ${
                     isActive
-                      ? "text-sky-600 dark:text-sky-400"
+                      ? "text-yellow-600 dark:text-yellow-400"
                       : "text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200"
                   }
                 `}

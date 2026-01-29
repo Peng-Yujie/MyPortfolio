@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import Logo from "@/public/logo-yellow.svg";
 
 export default function Header() {
   return (
@@ -16,12 +15,18 @@ export default function Header() {
         {/* Logo */}
         <a href="#about" className="flex items-center gap-2">
           <motion.div
-            className="w-10 h-10 bg-yellow-400 rounded-full flex items-center justify-center shadow-md"
+            className="w-10 h-10 bg-yellow-400 rounded-full flex items-center justify-center shadow-md overflow-hidden"
             whileHover={{ scale: 0.95 }}
             whileTap={{ scale: 0.9 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
           >
-            <Logo className="w-10 h-10" />
+            <Image
+              src="/logo-yellow.svg"
+              alt="Logo"
+              width={40}
+              height={40}
+              className="w-10 h-10"
+            />
           </motion.div>
           <span className="hidden md:block text-lg font-semibold">
             Yujie Peng

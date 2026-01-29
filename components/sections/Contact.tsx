@@ -37,20 +37,21 @@ const Contact = () => {
   return (
     <section className="scroll-mt-28" id="contact" ref={ref}>
       <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-4">
-        <LiquidCard className="flex flex-col justify-begin" delay={0}>
-          <div className="mt-12 h-4/6 max-h-64 rounded-t-3xl bg-[url('/me.png')] bg-contain bg-center bg-no-repeat hidden md:block" />
-          <div className="m-6 md:m-12">
-            <h1 className="text-3xl font-semibold mb-4">
+        <LiquidCard
+          className="flex flex-col items-center justify-center p-6 md:p-8"
+          delay={0}
+        >
+          <div className="relative z-10 w-32 h-32 lg:w-40 lg:h-40 rounded-2xl bg-[url('/me.png')] bg-contain bg-center bg-no-repeat hidden md:block" />
+          <div className="relative z-10 text-center mt-4">
+            <h1 className="text-2xl lg:text-3xl font-semibold mb-3">
               Meet me <span className="text-gradient">Here</span>
             </h1>
-            <div className="flex flex-col lg:flex-row item-center gap-4 justify-self-end">
-              <div className="flex items-center gap-4">
-                {socialMediaData.map(({ name, icon: Icon, url }) => (
-                  <SocialButton key={name} bgColor={name} href={url}>
-                    <Icon className="w-5 h-5" />
-                  </SocialButton>
-                ))}
-              </div>
+            <div className="flex items-center justify-center gap-3">
+              {socialMediaData.map(({ name, icon: Icon, url }) => (
+                <SocialButton key={name} bgColor={name} href={url}>
+                  <Icon className="w-5 h-5" />
+                </SocialButton>
+              ))}
             </div>
           </div>
         </LiquidCard>

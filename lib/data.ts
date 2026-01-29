@@ -134,24 +134,54 @@ export const experienceData = [
   },
 ];
 
-export const skillsData = [
-  "HTML5/CSS3",
-  "JavaScript",
-  "TypeScript",
-  "Python",
-  "C++",
-  "React",
-  "Next.js",
-  "Node.js",
-  "GraphQL",
-  "RESTful API",
-  "Redis",
-  "Docker",
-  "AWS",
-  "MySQL",
-  "MongoDB",
-  "Tailwind",
-  "Figma",
+export type SkillCategory =
+  | "frontend"
+  | "backend"
+  | "database"
+  | "devops"
+  | "design";
+
+export const skillCategoryColors: Record<
+  SkillCategory,
+  { light: string; dark: string }
+> = {
+  frontend: {
+    light: "rgba(251, 191, 36, 0.25)",
+    dark: "rgba(251, 191, 36, 0.2)",
+  }, // amber
+  backend: { light: "rgba(34, 197, 94, 0.25)", dark: "rgba(34, 197, 94, 0.2)" }, // green
+  database: {
+    light: "rgba(59, 130, 246, 0.25)",
+    dark: "rgba(59, 130, 246, 0.2)",
+  }, // blue
+  devops: {
+    light: "rgba(168, 85, 247, 0.25)",
+    dark: "rgba(168, 85, 247, 0.2)",
+  }, // purple
+  design: {
+    light: "rgba(244, 114, 182, 0.25)",
+    dark: "rgba(244, 114, 182, 0.2)",
+  }, // pink
+};
+
+export const skillsData: { name: string; category: SkillCategory }[] = [
+  { name: "HTML5/CSS3", category: "frontend" },
+  { name: "JavaScript", category: "frontend" },
+  { name: "TypeScript", category: "frontend" },
+  { name: "React", category: "frontend" },
+  { name: "Next.js", category: "frontend" },
+  { name: "Tailwind", category: "frontend" },
+  { name: "Python", category: "backend" },
+  { name: "C++", category: "backend" },
+  { name: "Node.js", category: "backend" },
+  { name: "GraphQL", category: "backend" },
+  { name: "RESTful API", category: "backend" },
+  { name: "MySQL", category: "database" },
+  { name: "MongoDB", category: "database" },
+  { name: "Redis", category: "database" },
+  { name: "Docker", category: "devops" },
+  { name: "AWS", category: "devops" },
+  { name: "Figma", category: "design" },
 ];
 
 export const socialMediaData = [
@@ -162,5 +192,10 @@ export const socialMediaData = [
     url: "https://www.linkedin.com/in/yujie-peng-8276b1279/",
     label: "LinkedIn",
   },
-  { name: "github", icon: FaGithub, url: "https://github.com/Peng-Yujie", label: "GitHub" },
+  {
+    name: "github",
+    icon: FaGithub,
+    url: "https://github.com/Peng-Yujie",
+    label: "GitHub",
+  },
 ];

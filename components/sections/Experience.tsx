@@ -44,6 +44,7 @@ const Experience = () => {
                       : "1px solid rgba(255, 255, 255, 0.1)",
                   textAlign: "left",
                   padding: "1.3rem 2rem",
+                  borderRadius: "16px",
                 }}
                 contentArrowStyle={{
                   borderRight:
