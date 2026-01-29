@@ -68,7 +68,7 @@ All main section cards SHALL use the LiquidCard component for consistent glass s
 - **AND** form inputs display with `glass-input` styling
 - **AND** the send button displays with glass primary styling
 
-## MODIFIED Requirements
+## ADDED Requirements (continued)
 
 ### Requirement: Dark Mode Support
 
