@@ -1,10 +1,12 @@
+"use client";
+
 import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { motionProps } from "../lib/motionSettings";
-import SocialButton from "./SocialButton";
-import { socialMediaData } from "../lib/data";
+import SocialButton from "@/components/ui/SocialButton";
+import GlassButton from "@/components/ui/GlassButton";
+import LiquidCard from "@/components/ui/LiquidCard";
+import { socialMediaData } from "@/lib/data";
 import { useForm, ValidationError } from "@formspree/react";
-import { useSectionInView } from "../lib/motionSettings";
+import { useSectionInView } from "@/lib/motionSettings";
 
 const Contact = () => {
   const { ref } = useSectionInView("Contact");
@@ -35,36 +37,33 @@ const Contact = () => {
   return (
     <section className="scroll-mt-28" id="contact" ref={ref}>
       <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-4">
-        <motion.div
-          {...motionProps}
-          className="rounded-3xl flex flex-col justify-begin bg-gray-50 dark:bg-none dark:bg-gray-600 dark:outline dark:outline-2 dark:outline-gray-500"
+        <LiquidCard
+          className="flex flex-col items-center justify-center p-6 md:p-8"
+          delay={0}
         >
-          <div className="mt-12 h-4/6 max-h-64 rounded-t-3xl bg-[url('/MyPortfolio/me.png')] bg-contain bg-center bg-no-repeat hidden md:block" />
-          <div className="m-6 md:m-12">
-            <h1 className="text-3xl font-semibold mb-4">
+          <div className="relative z-10 w-32 h-32 lg:w-40 lg:h-40 rounded-2xl bg-[url('/me.png')] bg-contain bg-center bg-no-repeat hidden md:block" />
+          <div className="relative z-10 text-center mt-4">
+            <h1 className="text-2xl lg:text-3xl font-semibold mb-3">
               Meet me <span className="text-gradient">Here</span>
             </h1>
-            <div className="flex flex-col lg:flex-row item-center gap-4 justify-self-end">
-              <div className="flex items-center gap-4">
-                {socialMediaData.map(({ name, icon: Icon, url }) => (
-                  <SocialButton key={name} bgColor={name} href={url}>
-                    <Icon className="w-5 h-5" />
-                  </SocialButton>
-                ))}
-              </div>
+            <div className="flex items-center justify-center gap-3">
+              {socialMediaData.map(({ name, icon: Icon, url }) => (
+                <SocialButton key={name} bgColor={name} href={url}>
+                  <Icon className="w-5 h-5" />
+                </SocialButton>
+              ))}
             </div>
           </div>
-        </motion.div>
-        <motion.div
-          {...motionProps}
-          className="rounded-3xl overflow-hidden bg-gradient p-6 md:p-12 dark:bg-none dark:bg-gray-600 dark:outline dark:outline-2 dark:outline-gray-500"
-        >
+        </LiquidCard>
+        <LiquidCard className="p-6 md:p-12" delay={0.1}>
           <h1 className="text-3xl font-semibold mb-6">
             Send me a <span className="text-gradient">Message</span>
           </h1>
           <form onSubmit={handleSubmit} className="flex flex-col gap-4">
             <div className="flex flex-col gap-2">
-              <label htmlFor="email">Email</label>
+              <label htmlFor="email" className="text-text-secondary">
+                Email
+              </label>
               <input
                 type="email"
                 id="email"
@@ -74,7 +73,7 @@ const Contact = () => {
                 onChange={(e) =>
                   setFormValues({ ...formValues, email: e.target.value })
                 }
-                className="py-3 px-4 rounded-lg outline outline-gray-100 outline-2 focus:outline-teal-200 focus:ring focus:ring-2 focus:ring-lime-200"
+                className="glass-input"
               />
               <ValidationError
                 prefix="Email"
@@ -83,7 +82,9 @@ const Contact = () => {
               />
             </div>
             <div className="flex flex-col gap-2">
-              <label htmlFor="message">Message</label>
+              <label htmlFor="message" className="text-text-secondary">
+                Message
+              </label>
               <textarea
                 name="message"
                 id="message"
@@ -93,7 +94,7 @@ const Contact = () => {
                 onChange={(e) =>
                   setFormValues({ ...formValues, message: e.target.value })
                 }
-                className="py-3 px-4 rounded-lg text-gray-700 outline outline-gray-100 outline-2 focus:outline-teal-200 focus:ring focus:ring-2 focus:ring-lime-200"
+                className="glass-input resize-none"
               />
               <ValidationError
                 prefix="Message"
@@ -102,20 +103,22 @@ const Contact = () => {
               />
             </div>
             <div className="flex flex-col lg:flex-row items-center gap-4 justify-self-end">
-              <button
-                className="bg-black text-white font-medium py-3 px-6 rounded-full w-40 lg:w-auto self-start dark:bg-gray-500 hover:scale-105"
+              <GlassButton
+                variant="cta"
                 type="submit"
                 aria-label="Send Message"
                 disabled={state.submitting}
               >
                 Send
-              </button>
+              </GlassButton>
               {feedback && (
-                <p>You message has been sent! Thanks for reaching out!</p>
+                <p className="text-text-secondary">
+                  Your message has been sent! Thanks for reaching out!
+                </p>
               )}
             </div>
           </form>
-        </motion.div>
+        </LiquidCard>
       </div>
     </section>
   );

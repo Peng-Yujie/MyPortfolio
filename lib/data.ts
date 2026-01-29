@@ -1,24 +1,20 @@
 import React from "react";
-import { FaTiktok } from "react-icons/fa";
-import { FaLinkedin } from "react-icons/fa";
-import { FaRegFileAlt } from "react-icons/fa";
-import { FaGithub } from "react-icons/fa";
+import { FaTiktok, FaLinkedin, FaRegFileAlt, FaGithub } from "react-icons/fa";
 import { SiTripdotcom } from "react-icons/si";
 import { LuGraduationCap } from "react-icons/lu";
-// import Project01 from "public/project-1.png";
-// import Project02 from "public/project-2.png";
-import Project03 from "public/project-3.png";
-import Project04 from "public/project-4.png";
-import Project05 from "public/project-5.png";
-import Project06 from "public/project-6.png";
+import Project03 from "@/public/project-3.png";
+import Project04 from "@/public/project-4.png";
+import Project05 from "@/public/project-5.png";
+import Project06 from "@/public/project-6.png";
 
 export const links = [
-  { name: "Home", href: "#about" },
+  { name: "Home", href: "#home" },
   { name: "About", href: "#about" },
   { name: "Projects", href: "#projects" },
+  { name: "Skills", href: "#skills" },
   { name: "Experience", href: "#experience" },
   { name: "Contact", href: "#contact" },
-];
+] as const;
 
 export const projectData = [
   {
@@ -89,35 +85,6 @@ export const projectData = [
       demo: "https://easygrammarapp.netlify.app/",
     },
   },
-  // {
-  //   name: "Eastern Explore",
-  //   description:
-  //     "Database for a company that organizes group hiking events, including queries for efficient data management.",
-  //   badges: ["Database", "MySQL", "PHP", "HTML", "CSS"],
-  //   imgSrc: Project02,
-  //   bgColor: "#6ed2b7",
-  //   links: {
-  //     github: "https://github.com/Peng-Yujie/Eastern-Explore-Database",
-  //   },
-  // },
-  // {
-  //   name: "Tireder",
-  //   description:
-  //     "A web application for tracking and measuring daily stress, incorporating real-time communication with an AI Chatbot.",
-  //   badges: [
-  //     "Python",
-  //     "Flask",
-  //     "Socket.IO",
-  //     "MongoDB",
-  //     "OpenAI API",
-  //     "JavaScript",
-  //   ],
-  //   imgSrc: Project01,
-  //   bgColor: "#ffe3a4",
-  //   links: {
-  //     github: "https://github.com/Peng-Yujie/Tireder",
-  //   },
-  // },
 ];
 
 export const experienceData = [
@@ -167,32 +134,68 @@ export const experienceData = [
   },
 ];
 
-export const skillsData = [
-  "HTML5/CSS3",
-  "JavaScript",
-  "TypeScript",
-  "Python",
-  "C++",
-  "React",
-  "Next.js",
-  "Node.js",
-  "GraphQL",
-  "RESTful API",
-  "Redis",
-  "Docker",
-  "AWS",
-  "MySQL",
-  "MongoDB",
-  "Tailwind",
-  "Figma",
+export type SkillCategory =
+  | "frontend"
+  | "backend"
+  | "database"
+  | "devops"
+  | "design";
+
+export const skillCategoryColors: Record<
+  SkillCategory,
+  { light: string; dark: string }
+> = {
+  frontend: {
+    light: "rgba(251, 191, 36, 0.25)",
+    dark: "rgba(251, 191, 36, 0.2)",
+  }, // amber
+  backend: { light: "rgba(34, 197, 94, 0.25)", dark: "rgba(34, 197, 94, 0.2)" }, // green
+  database: {
+    light: "rgba(59, 130, 246, 0.25)",
+    dark: "rgba(59, 130, 246, 0.2)",
+  }, // blue
+  devops: {
+    light: "rgba(168, 85, 247, 0.25)",
+    dark: "rgba(168, 85, 247, 0.2)",
+  }, // purple
+  design: {
+    light: "rgba(244, 114, 182, 0.25)",
+    dark: "rgba(244, 114, 182, 0.2)",
+  }, // pink
+};
+
+export const skillsData: { name: string; category: SkillCategory }[] = [
+  { name: "HTML5/CSS3", category: "frontend" },
+  { name: "JavaScript", category: "frontend" },
+  { name: "TypeScript", category: "frontend" },
+  { name: "React", category: "frontend" },
+  { name: "Next.js", category: "frontend" },
+  { name: "Tailwind", category: "frontend" },
+  { name: "Python", category: "backend" },
+  { name: "C++", category: "backend" },
+  { name: "Node.js", category: "backend" },
+  { name: "GraphQL", category: "backend" },
+  { name: "RESTful API", category: "backend" },
+  { name: "MySQL", category: "database" },
+  { name: "MongoDB", category: "database" },
+  { name: "Redis", category: "database" },
+  { name: "Docker", category: "devops" },
+  { name: "AWS", category: "devops" },
+  { name: "Figma", category: "design" },
 ];
 
 export const socialMediaData = [
-  { name: "resume", icon: FaRegFileAlt, url: "/MyPortfolio/resume.pdf" },
+  { name: "resume", icon: FaRegFileAlt, url: "/resume.pdf", label: "Resume" },
   {
     name: "linkedin",
     icon: FaLinkedin,
     url: "https://www.linkedin.com/in/yujie-peng-8276b1279/",
+    label: "LinkedIn",
   },
-  { name: "github", icon: FaGithub, url: "https://github.com/Peng-Yujie" },
+  {
+    name: "github",
+    icon: FaGithub,
+    url: "https://github.com/Peng-Yujie",
+    label: "GitHub",
+  },
 ];

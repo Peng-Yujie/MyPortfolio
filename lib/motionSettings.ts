@@ -1,6 +1,8 @@
+"use client";
+
 import { useEffect, useRef } from "react";
 import { useInView } from "framer-motion";
-import { useActiveSection } from "../context/active-section-context";
+import { useActiveSection } from "@/context/active-section-context";
 
 export const PreviewAnimation = {
   initial: { y: 30, opacity: 0, scale: 0.9 },
@@ -42,7 +44,8 @@ export const useSectionInView = (section: string) => {
   const { setActiveSection, timeOfLastClick } = useActiveSection();
   useEffect(() => {
     if (isInView && timeOfLastClick < Date.now() - 1000) {
-      setActiveSection(section);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      setActiveSection(section as any);
     }
   }, [isInView, section, setActiveSection, timeOfLastClick]);
   return { ref };

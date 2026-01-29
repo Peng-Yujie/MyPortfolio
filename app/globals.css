@@ -1,0 +1,1894 @@
+@import "tailwindcss";
+
+/* ===== DESIGN SYSTEM: LIQUID GLASS ===== */
+
+/* Animation timing properties */
+@property --angle-1 {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: -75deg;
+}
+
+@property --angle-2 {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: -45deg;
+}
+
+@theme {
+  /* Light Theme Colors - Notebook paper yellow */
+  --color-bg-primary: #f5f3e8;
+  --color-bg-secondary: #fdfcf7;
+  --color-bg-tertiary: #f0edd8;
+
+  /* Accent Colors - Blue & Teal */
+  --color-accent-blue: #0ea5e9;
+  --color-accent-sky: #38bdf8;
+  --color-accent-teal: #14b8a6;
+  --color-accent-cyan: #22d3ee;
+  --color-accent-emerald: #10b981;
+
+  /* Text Colors */
+  --color-text-primary: #1e293b;
+  --color-text-secondary: #475569;
+  --color-text-muted: #94a3b8;
+
+  /* Border Radius */
+  --radius-card: 24px;
+  --radius-button: 14px;
+  --radius-pill: 9999px;
+
+  /* Animation */
+  --anim-hover-time: 400ms;
+  --anim-hover-ease: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* ===== BASE STYLES ===== */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply text-text-primary antialiased;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto,
+    sans-serif;
+  overflow-x: hidden;
+  /* Notebook paper with dot grid pattern */
+  background-color: #f5f3e8;
+  background-image: radial-gradient(
+    circle,
+    rgba(180, 170, 140, 0.3) 1px,
+    transparent 1px
+  );
+  background-size: 20px 20px;
+}
+
+/* Dark mode */
+html.dark {
+  --color-bg-primary: #0f1419;
+  --color-bg-secondary: #1a2028;
+  --color-bg-tertiary: #252d38;
+  --color-text-primary: #f1f5f9;
+  --color-text-secondary: #cbd5e1;
+  --color-text-muted: #64748b;
+}
+
+html.dark body {
+  /* Dark mode: subtle dot grid on dark background with warmer gray */
+  background-color: #0f1419;
+  background-image: radial-gradient(
+    circle,
+    rgba(100, 116, 139, 0.12) 1px,
+    transparent 1px
+  );
+  background-size: 20px 20px;
+  color: #f1f5f9;
+}
+
+::selection {
+  background: rgba(14, 165, 233, 0.25);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.4);
+  border-radius: 3px;
+}
+
+/* ===== LIQUID GLASS CARD ===== */
+/* Enhanced liquid glass with shadow layer, light reflection, and 3D effects */
+
+/* Card Wrap Container */
+.liquid-card-wrap {
+  --anim--hover-time: 400ms;
+  --anim--hover-ease: cubic-bezier(0.25, 1, 0.5, 1);
+  position: relative;
+  z-index: 2;
+  border-radius: var(--radius-card);
+  background: transparent;
+  transition: all var(--anim--hover-time) var(--anim--hover-ease);
+}
+
+/* Card Shadow Container */
+.liquid-card-shadow {
+  --shadow-cuttoff-fix: 3rem;
+  position: absolute;
+  width: calc(100% + var(--shadow-cuttoff-fix));
+  height: calc(100% + var(--shadow-cuttoff-fix));
+  top: calc(0% - var(--shadow-cuttoff-fix) / 2);
+  left: calc(0% - var(--shadow-cuttoff-fix) / 2);
+  filter: blur(clamp(4px, 0.5rem, 16px));
+  -webkit-filter: blur(clamp(4px, 0.5rem, 16px));
+  overflow: visible;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Shadow pseudo-element */
+.liquid-card-shadow::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  border-radius: var(--radius-card);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.08));
+  width: calc(100% - var(--shadow-cuttoff-fix) - 0.5rem);
+  height: calc(100% - var(--shadow-cuttoff-fix) - 0.5rem);
+  top: calc(var(--shadow-cuttoff-fix) - 0.25rem);
+  left: calc(var(--shadow-cuttoff-fix) - 1rem);
+  padding: 0.25rem;
+  box-sizing: border-box;
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+  transition: all var(--anim--hover-time) var(--anim--hover-ease);
+  overflow: visible;
+  opacity: 1;
+}
+
+/* Card Base */
+.liquid-card {
+  --border-width: clamp(1px, 0.1rem, 2px);
+  position: relative;
+  z-index: 1;
+  border-radius: var(--radius-card);
+  background: linear-gradient(
+    -75deg,
+    rgba(255, 255, 255, 0.05),
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.05)
+  );
+  backdrop-filter: blur(clamp(4px, 0.5rem, 12px));
+  -webkit-backdrop-filter: blur(clamp(4px, 0.5rem, 12px));
+  box-shadow:
+    inset 0 0.15rem 0.15rem rgba(0, 0, 0, 0.05),
+    inset 0 -0.15rem 0.15rem rgba(255, 255, 255, 0.5),
+    0 0.3rem 0.15rem -0.15rem rgba(0, 0, 0, 0.2),
+    0 0 0.15rem 0.3rem inset rgba(255, 255, 255, 0.2);
+  transition: all var(--anim-hover-time) var(--anim-hover-ease);
+}
+
+.liquid-card:hover {
+  transform: scale(0.985);
+  backdrop-filter: blur(clamp(1px, 0.1rem, 4px));
+  -webkit-backdrop-filter: blur(clamp(1px, 0.1rem, 4px));
+  box-shadow:
+    inset 0 0.15rem 0.15rem rgba(0, 0, 0, 0.05),
+    inset 0 -0.15rem 0.15rem rgba(255, 255, 255, 0.5),
+    0 0.2rem 0.08rem -0.12rem rgba(0, 0, 0, 0.25),
+    0 0 0.08rem 0.15rem inset rgba(255, 255, 255, 0.5);
+}
+
+/* Light Reflection on Card */
+.liquid-card::before {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  width: calc(100% - var(--border-width));
+  height: calc(100% - var(--border-width));
+  top: calc(var(--border-width) / 2);
+  left: calc(var(--border-width) / 2);
+  border-radius: inherit;
+  overflow: hidden;
+  background: linear-gradient(
+    var(--angle-2),
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.4) 35% 45%,
+    rgba(255, 255, 255, 0) 50%
+  );
+  mix-blend-mode: screen;
+  pointer-events: none;
+  background-size: 200% 200%;
+  background-position: 0% 50%;
+  background-repeat: no-repeat;
+  transition:
+    background-position calc(var(--anim-hover-time) * 1.25)
+      var(--anim-hover-ease),
+    --angle-2 calc(var(--anim-hover-time) * 1.25) var(--anim-hover-ease);
+}
+
+.liquid-card:hover::before {
+  background-position: 20% 50%;
+}
+
+.liquid-card:active::before {
+  background-position: 40% 20%;
+  --angle-2: -15deg;
+}
+
+/* Border Gradient */
+.liquid-card::after {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  border-radius: inherit;
+  width: calc(100% + var(--border-width));
+  height: calc(100% + var(--border-width));
+  top: calc(0% - var(--border-width) / 2);
+  left: calc(0% - var(--border-width) / 2);
+  padding: var(--border-width);
+  box-sizing: border-box;
+  background:
+    conic-gradient(
+      from var(--angle-1) at 50% 50%,
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0) 5% 40%,
+      rgba(0, 0, 0, 0.5) 50%,
+      rgba(0, 0, 0, 0) 60% 95%,
+      rgba(0, 0, 0, 0.5)
+    ),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5));
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+  pointer-events: none;
+  transition:
+    all var(--anim-hover-time) var(--anim-hover-ease),
+    --angle-1 500ms ease;
+  box-shadow: inset 0 0 0 calc(var(--border-width) / 2) rgba(255, 255, 255, 0.5);
+}
+
+.liquid-card:hover::after {
+  --angle-1: -125deg;
+}
+
+.liquid-card:active::after {
+  --angle-1: -75deg;
+}
+
+/* Touch Devices */
+@media (hover: none) and (pointer: coarse) {
+  .liquid-card::before,
+  .liquid-card:active::before {
+    --angle-2: -45deg;
+  }
+  .liquid-card::after,
+  .liquid-card:hover::after,
+  .liquid-card:active::after {
+    --angle-1: -75deg;
+  }
+}
+
+/* Shadow Hover Effects */
+.liquid-card-wrap:has(.liquid-card:hover) .liquid-card-shadow {
+  filter: blur(clamp(2px, 0.25rem, 8px));
+  -webkit-filter: blur(clamp(2px, 0.25rem, 8px));
+  transition: filter var(--anim--hover-time) var(--anim--hover-ease);
+}
+
+.liquid-card-wrap:has(.liquid-card:hover) .liquid-card-shadow::after {
+  top: calc(var(--shadow-cuttoff-fix) - 0.75rem);
+  opacity: 1;
+}
+
+/* 3D Rotation on Active */
+.liquid-card-wrap:has(.liquid-card:active) {
+  transform: rotate3d(1, 0, 0, 8deg);
+}
+
+.liquid-card-wrap:has(.liquid-card:active) .liquid-card {
+  box-shadow:
+    inset 0 0.15rem 0.15rem rgba(0, 0, 0, 0.05),
+    inset 0 -0.15rem 0.15rem rgba(255, 255, 255, 0.5),
+    0 0.15rem 0.15rem -0.15rem rgba(0, 0, 0, 0.2),
+    0 0 0.15rem 0.3rem inset rgba(255, 255, 255, 0.2),
+    0 0.3rem 0.08rem 0 rgba(0, 0, 0, 0.05),
+    0 0.35rem 0 0 rgba(255, 255, 255, 0.75),
+    inset 0 0.3rem 0.08rem 0 rgba(0, 0, 0, 0.15);
+}
+
+.liquid-card-wrap:has(.liquid-card:active) .liquid-card-shadow {
+  filter: blur(clamp(4px, 0.5rem, 16px));
+  -webkit-filter: blur(clamp(4px, 0.5rem, 16px));
+}
+
+.liquid-card-wrap:has(.liquid-card:active) .liquid-card-shadow::after {
+  top: calc(var(--shadow-cuttoff-fix) - 0.25rem);
+  opacity: 0.75;
+}
+
+/* Dark Mode Card */
+html.dark .liquid-card {
+  background: linear-gradient(
+    -70deg,
+    rgba(255, 255, 255, 0.012),
+    rgba(200, 210, 225, 0.055) 30%,
+    rgba(180, 200, 220, 0.065) 50%,
+    rgba(200, 210, 225, 0.055) 70%,
+    rgba(255, 255, 255, 0.012)
+  );
+  box-shadow:
+    inset 0 0.15rem 0.15rem rgba(0, 0, 0, 0.12),
+    inset 0 -0.15rem 0.15rem rgba(255, 255, 255, 0.06),
+    0 0.3rem 0.15rem -0.15rem rgba(0, 0, 0, 0.35),
+    0 0 0.15rem 0.3rem inset rgba(255, 255, 255, 0.025);
+}
+
+html.dark .liquid-card:hover {
+  box-shadow:
+    inset 0 0.15rem 0.15rem rgba(0, 0, 0, 0.12),
+    inset 0 -0.15rem 0.15rem rgba(255, 255, 255, 0.06),
+    0 0.2rem 0.08rem -0.12rem rgba(0, 0, 0, 0.4),
+    0 0 0.08rem 0.15rem inset rgba(255, 255, 255, 0.04);
+}
+
+html.dark .liquid-card::before {
+  background: linear-gradient(
+    var(--angle-2),
+    rgba(255, 255, 255, 0) 0%,
+    rgba(200, 220, 240, 0.04) 25%,
+    rgba(180, 210, 235, 0.07) 40%,
+    rgba(200, 220, 240, 0.04) 50%,
+    rgba(255, 255, 255, 0) 60%
+  );
+}
+
+html.dark .liquid-card::after {
+  background:
+    conic-gradient(
+      from var(--angle-1) at 50% 50%,
+      rgba(200, 215, 235, 0.1),
+      rgba(255, 255, 255, 0) 8% 42%,
+      rgba(200, 215, 235, 0.1) 50%,
+      rgba(255, 255, 255, 0) 58% 92%,
+      rgba(200, 215, 235, 0.1)
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.055),
+      rgba(255, 255, 255, 0.035)
+    );
+  box-shadow: inset 0 0 0 calc(var(--border-width) / 2)
+    rgba(255, 255, 255, 0.055);
+}
+
+html.dark .liquid-card-shadow::after {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.15));
+}
+
+html.dark .liquid-card-wrap:has(.liquid-card:active) .liquid-card {
+  box-shadow:
+    inset 0 0.15rem 0.15rem rgba(0, 0, 0, 0.12),
+    inset 0 -0.15rem 0.15rem rgba(255, 255, 255, 0.06),
+    0 0.15rem 0.15rem -0.15rem rgba(0, 0, 0, 0.35),
+    0 0 0.15rem 0.3rem inset rgba(255, 255, 255, 0.025),
+    0 0.3rem 0.08rem 0 rgba(0, 0, 0, 0.08),
+    0 0.35rem 0 0 rgba(255, 255, 255, 0.08),
+    inset 0 0.3rem 0.08rem 0 rgba(0, 0, 0, 0.15);
+}
+
+/* Card Text Styling - matches button text shadow effect */
+.liquid-card h1,
+.liquid-card h2,
+.liquid-card h3,
+.liquid-card h4,
+.liquid-card p,
+.liquid-card span {
+  text-shadow: 0 0.15em 0.05em rgba(0, 0, 0, 0.08);
+  transition: text-shadow var(--anim-hover-time) var(--anim-hover-ease);
+}
+
+.liquid-card:hover h1,
+.liquid-card:hover h2,
+.liquid-card:hover h3,
+.liquid-card:hover h4,
+.liquid-card:hover p,
+.liquid-card:hover span {
+  text-shadow: 0.02em 0.02em 0.02em rgba(0, 0, 0, 0.1);
+}
+
+.liquid-card:active h1,
+.liquid-card:active h2,
+.liquid-card:active h3,
+.liquid-card:active h4,
+.liquid-card:active p,
+.liquid-card:active span {
+  text-shadow: 0.02em 0.2em 0.05em rgba(0, 0, 0, 0.1);
+}
+
+/* Dark Mode Card Text */
+html.dark .liquid-card h1,
+html.dark .liquid-card h2,
+html.dark .liquid-card h3,
+html.dark .liquid-card h4,
+html.dark .liquid-card p,
+html.dark .liquid-card span {
+  text-shadow: 0 0.12em 0.06em rgba(0, 0, 0, 0.2);
+}
+
+html.dark .liquid-card:hover h1,
+html.dark .liquid-card:hover h2,
+html.dark .liquid-card:hover h3,
+html.dark .liquid-card:hover h4,
+html.dark .liquid-card:hover p,
+html.dark .liquid-card:hover span {
+  text-shadow: 0.02em 0.02em 0.03em rgba(0, 0, 0, 0.18);
+}
+
+html.dark .liquid-card:active h1,
+html.dark .liquid-card:active h2,
+html.dark .liquid-card:active h3,
+html.dark .liquid-card:active h4,
+html.dark .liquid-card:active p,
+html.dark .liquid-card:active span {
+  text-shadow: 0.02em 0.18em 0.05em rgba(0, 0, 0, 0.18);
+}
+
+/* ===== GLASS BUTTON ===== */
+
+.glass-button {
+  --border-width: 1px;
+  all: unset;
+  cursor: pointer;
+  position: relative;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  z-index: 1;
+  background: linear-gradient(
+    -75deg,
+    rgba(255, 255, 255, 0.05),
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.05)
+  );
+  border-radius: var(--radius-pill);
+  box-shadow:
+    inset 0 1px 1px rgba(0, 0, 0, 0.05),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.5),
+    0 3px 2px -2px rgba(0, 0, 0, 0.15),
+    0 0 1px 3px inset rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  transition: all var(--anim-hover-time) var(--anim-hover-ease);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  color: var(--color-text-primary);
+  font-weight: 500;
+}
+
+.glass-button:hover {
+  transform: scale(0.975);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+  box-shadow:
+    inset 0 1px 1px rgba(0, 0, 0, 0.05),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.5),
+    0 2px 1px -1px rgba(0, 0, 0, 0.2),
+    0 0 0.5px 1.5px inset rgba(255, 255, 255, 0.35);
+}
+
+.glass-button:active {
+  transform: scale(0.96) perspective(300px) rotateX(3deg);
+  box-shadow:
+    inset 0 1px 1px rgba(0, 0, 0, 0.05),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.5),
+    0 2px 2px -2px rgba(0, 0, 0, 0.15),
+    0 0 1px 3px inset rgba(255, 255, 255, 0.15),
+    0 3px 0.5px 0 rgba(0, 0, 0, 0.03),
+    0 3px 0 0 rgba(255, 255, 255, 0.6),
+    inset 0 2px 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* Border gradient for button */
+.glass-button::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  border-radius: inherit;
+  padding: var(--border-width);
+  background:
+    conic-gradient(
+      from var(--angle-1) at 50% 50%,
+      rgba(0, 0, 0, 0.35),
+      rgba(0, 0, 0, 0) 5% 40%,
+      rgba(0, 0, 0, 0.35) 50%,
+      rgba(0, 0, 0, 0) 60% 95%,
+      rgba(0, 0, 0, 0.35)
+    ),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.3));
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+  pointer-events: none;
+  transition: all var(--anim-hover-time) var(--anim-hover-ease);
+  box-shadow: inset 0 0 0 calc(var(--border-width) / 2) rgba(255, 255, 255, 0.4);
+}
+
+.glass-button:hover::after {
+  --angle-1: -125deg;
+}
+
+.glass-button:active::after {
+  --angle-1: -75deg;
+}
+
+/* Dark mode button */
+html.dark .glass-button {
+  background: linear-gradient(
+    -70deg,
+    rgba(255, 255, 255, 0.01),
+    rgba(200, 210, 225, 0.045) 30%,
+    rgba(180, 200, 220, 0.055) 50%,
+    rgba(200, 210, 225, 0.045) 70%,
+    rgba(255, 255, 255, 0.01)
+  );
+  box-shadow:
+    inset 0 1px 1px rgba(0, 0, 0, 0.15),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.04),
+    0 3px 2px -2px rgba(0, 0, 0, 0.32),
+    0 0 1px 3px inset rgba(255, 255, 255, 0.02);
+}
+
+html.dark .glass-button:hover {
+  box-shadow:
+    inset 0 1px 1px rgba(0, 0, 0, 0.15),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.04),
+    0 2px 1px -1px rgba(0, 0, 0, 0.4),
+    0 0 0.5px 1.5px inset rgba(255, 255, 255, 0.04);
+}
+
+html.dark .glass-button:active {
+  box-shadow:
+    inset 0 1px 1px rgba(0, 0, 0, 0.15),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.04),
+    0 2px 2px -2px rgba(0, 0, 0, 0.32),
+    0 0 1px 3px inset rgba(255, 255, 255, 0.02),
+    0 3px 0.5px 0 rgba(0, 0, 0, 0.08),
+    0 3px 0 0 rgba(255, 255, 255, 0.06),
+    inset 0 2px 1px 0 rgba(0, 0, 0, 0.12);
+}
+
+html.dark .glass-button::after {
+  background:
+    conic-gradient(
+      from var(--angle-1) at 50% 50%,
+      rgba(200, 215, 235, 0.08),
+      rgba(255, 255, 255, 0) 8% 42%,
+      rgba(200, 215, 235, 0.08) 50%,
+      rgba(255, 255, 255, 0) 58% 92%,
+      rgba(200, 215, 235, 0.08)
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.045),
+      rgba(255, 255, 255, 0.025)
+    );
+  box-shadow: inset 0 0 0 calc(var(--border-width) / 2)
+    rgba(255, 255, 255, 0.045);
+}
+
+/* ===== PRIMARY BUTTON ===== */
+
+.glass-button-primary {
+  --border-width: 1px;
+  all: unset;
+  cursor: pointer;
+  position: relative;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  z-index: 1;
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  border-radius: var(--radius-pill);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.3),
+    inset 0 -1px 1px rgba(0, 0, 0, 0.15),
+    0 4px 3px -2px rgba(245, 158, 11, 0.35),
+    0 0 1px 3px inset rgba(255, 255, 255, 0.2);
+  transition: all var(--anim-hover-time) var(--anim-hover-ease);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  color: white;
+  font-weight: 500;
+}
+
+.glass-button-primary:hover {
+  transform: scale(0.975);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.3),
+    inset 0 -1px 1px rgba(0, 0, 0, 0.15),
+    0 2px 2px -1px rgba(245, 158, 11, 0.4),
+    0 0 0.5px 1.5px inset rgba(255, 255, 255, 0.35);
+}
+
+.glass-button-primary:active {
+  transform: scale(0.96) perspective(300px) rotateX(3deg);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.3),
+    inset 0 -1px 1px rgba(0, 0, 0, 0.15),
+    0 2px 2px -2px rgba(245, 158, 11, 0.3),
+    0 0 1px 3px inset rgba(255, 255, 255, 0.2),
+    0 3px 0.5px 0 rgba(0, 0, 0, 0.05),
+    0 3px 0 0 rgba(255, 255, 255, 0.4),
+    inset 0 2px 1px 0 rgba(0, 0, 0, 0.12);
+}
+
+/* Border gradient for primary button */
+.glass-button-primary::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  border-radius: inherit;
+  padding: var(--border-width);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.4) 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 100%
+  );
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+  pointer-events: none;
+}
+
+/* ===== GLASS INPUT ===== */
+
+.glass-input {
+  --border-width: 1px;
+  width: 100%;
+  position: relative;
+  background: linear-gradient(
+    -75deg,
+    rgba(255, 255, 255, 0.03),
+    rgba(255, 255, 255, 0.12),
+    rgba(255, 255, 255, 0.03)
+  );
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: none;
+  border-radius: var(--radius-button);
+  padding: 14px 18px;
+  color: var(--color-text-primary);
+  /* Input has inset shadow to show it's recessed */
+  box-shadow:
+    inset 0 2px 3px rgba(0, 0, 0, 0.08),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.4),
+    0 0 1px 2px inset rgba(255, 255, 255, 0.1);
+  transition: all var(--anim-hover-time) var(--anim-hover-ease);
+}
+
+.glass-input::placeholder {
+  color: var(--color-text-muted);
+}
+
+.glass-input:focus {
+  outline: none;
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.1),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.4),
+    0 0 0 2px rgba(245, 158, 11, 0.25),
+    0 0 1px 2px inset rgba(255, 255, 255, 0.15);
+}
+
+html.dark .glass-input {
+  background: linear-gradient(
+    -70deg,
+    rgba(255, 255, 255, 0.008),
+    rgba(200, 210, 225, 0.028) 30%,
+    rgba(180, 200, 220, 0.035) 50%,
+    rgba(200, 210, 225, 0.028) 70%,
+    rgba(255, 255, 255, 0.008)
+  );
+  box-shadow:
+    inset 0 2px 3px rgba(0, 0, 0, 0.2),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.035),
+    0 0 1px 2px inset rgba(255, 255, 255, 0.015);
+}
+
+html.dark .glass-input:focus {
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.24),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.035),
+    0 0 0 2px rgba(251, 191, 36, 0.22),
+    0 0 1px 2px inset rgba(255, 255, 255, 0.025);
+}
+
+/* ===== NAV DOCK ===== */
+
+.nav-dock {
+  --border-width: 1px;
+  position: relative;
+  background: linear-gradient(
+    -75deg,
+    rgba(255, 255, 255, 0.05),
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.05)
+  );
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: var(--radius-pill);
+  box-shadow:
+    inset 0 1px 1px rgba(0, 0, 0, 0.05),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.5),
+    0 4px 3px -2px rgba(0, 0, 0, 0.12),
+    0 0 1px 4px inset rgba(255, 255, 255, 0.12);
+  transition: all var(--anim-hover-time) var(--anim-hover-ease);
+}
+
+.nav-dock:hover {
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  box-shadow:
+    inset 0 1px 1px rgba(0, 0, 0, 0.05),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.5),
+    0 2px 2px -1px rgba(0, 0, 0, 0.15),
+    0 0 0.5px 2px inset rgba(255, 255, 255, 0.2);
+}
+
+/* Border gradient for nav dock */
+.nav-dock::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  border-radius: inherit;
+  padding: var(--border-width);
+  background:
+    conic-gradient(
+      from var(--angle-1) at 50% 50%,
+      rgba(0, 0, 0, 0.25),
+      rgba(0, 0, 0, 0) 5% 40%,
+      rgba(0, 0, 0, 0.25) 50%,
+      rgba(0, 0, 0, 0) 60% 95%,
+      rgba(0, 0, 0, 0.25)
+    ),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.3));
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+  pointer-events: none;
+  box-shadow: inset 0 0 0 calc(var(--border-width) / 2)
+    rgba(255, 255, 255, 0.35);
+}
+
+html.dark .nav-dock {
+  background: linear-gradient(
+    -70deg,
+    rgba(255, 255, 255, 0.01),
+    rgba(200, 210, 225, 0.04) 30%,
+    rgba(180, 200, 220, 0.05) 50%,
+    rgba(200, 210, 225, 0.04) 70%,
+    rgba(255, 255, 255, 0.01)
+  );
+  box-shadow:
+    inset 0 1px 1px rgba(0, 0, 0, 0.15),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.035),
+    0 4px 3px -2px rgba(0, 0, 0, 0.28),
+    0 0 1px 4px inset rgba(255, 255, 255, 0.018);
+}
+
+html.dark .nav-dock:hover {
+  box-shadow:
+    inset 0 1px 1px rgba(0, 0, 0, 0.15),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.035),
+    0 2px 2px -1px rgba(0, 0, 0, 0.32),
+    0 0 0.5px 2px inset rgba(255, 255, 255, 0.035);
+}
+
+html.dark .nav-dock::after {
+  background:
+    conic-gradient(
+      from var(--angle-1) at 50% 50%,
+      rgba(200, 215, 235, 0.06),
+      rgba(255, 255, 255, 0) 8% 42%,
+      rgba(200, 215, 235, 0.06) 50%,
+      rgba(255, 255, 255, 0) 58% 92%,
+      rgba(200, 215, 235, 0.06)
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.04),
+      rgba(255, 255, 255, 0.02)
+    );
+  box-shadow: inset 0 0 0 calc(var(--border-width) / 2)
+    rgba(255, 255, 255, 0.04);
+}
+
+/* ===== NAV ITEM ===== */
+
+.nav-item {
+  position: relative;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  box-shadow:
+    inset 0 0 0 rgba(0, 0, 0, 0),
+    inset 0 0 0 rgba(255, 255, 255, 0),
+    0 0 0 rgba(0, 0, 0, 0),
+    0 0 0 inset rgba(255, 255, 255, 0);
+  transition: all var(--anim-hover-time) var(--anim-hover-ease);
+}
+
+.nav-item:hover {
+  background: linear-gradient(
+    -75deg,
+    rgba(255, 255, 255, 0.02),
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.02)
+  );
+  box-shadow:
+    inset 0 0.5px 0.5px rgba(0, 0, 0, 0.03),
+    inset 0 -0.5px 0.5px rgba(255, 255, 255, 0.4),
+    0 2px 1px -1px rgba(0, 0, 0, 0.1),
+    0 0 0.5px 1.5px inset rgba(255, 255, 255, 0.1);
+}
+
+.nav-item:active {
+  transform: scale(0.96) perspective(200px) rotateX(2deg);
+  box-shadow:
+    inset 0 0.5px 0.5px rgba(0, 0, 0, 0.03),
+    inset 0 -0.5px 0.5px rgba(255, 255, 255, 0.4),
+    0 1px 1px -1px rgba(0, 0, 0, 0.08),
+    0 0 0.5px 1.5px inset rgba(255, 255, 255, 0.1),
+    0 2px 0 0 rgba(255, 255, 255, 0.5),
+    inset 0 1px 0.5px 0 rgba(0, 0, 0, 0.06);
+}
+
+html.dark .nav-item:hover {
+  background: linear-gradient(
+    -70deg,
+    rgba(255, 255, 255, 0.008),
+    rgba(200, 210, 225, 0.025) 30%,
+    rgba(180, 200, 220, 0.032) 50%,
+    rgba(200, 210, 225, 0.025) 70%,
+    rgba(255, 255, 255, 0.008)
+  );
+  box-shadow:
+    inset 0 0.5px 0.5px rgba(0, 0, 0, 0.12),
+    inset 0 -0.5px 0.5px rgba(255, 255, 255, 0.028),
+    0 2px 1px -1px rgba(0, 0, 0, 0.2),
+    0 0 0.5px 1.5px inset rgba(255, 255, 255, 0.015);
+}
+
+html.dark .nav-item:active {
+  box-shadow:
+    inset 0 0.5px 0.5px rgba(0, 0, 0, 0.12),
+    inset 0 -0.5px 0.5px rgba(255, 255, 255, 0.028),
+    0 1px 1px -1px rgba(0, 0, 0, 0.16),
+    0 0 0.5px 1.5px inset rgba(255, 255, 255, 0.015),
+    0 2px 0 0 rgba(255, 255, 255, 0.045),
+    inset 0 1px 0.5px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* ===== DOCK INDICATOR ===== */
+
+.dock-indicator {
+  --border-width: 1px;
+  background: linear-gradient(
+    -75deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.25),
+    rgba(255, 255, 255, 0.1)
+  );
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: var(--radius-pill);
+  box-shadow:
+    inset 0 1px 1px rgba(0, 0, 0, 0.04),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.5),
+    0 2px 1px -1px rgba(0, 0, 0, 0.08),
+    0 0 0.5px 2px inset rgba(255, 255, 255, 0.15);
+}
+
+/* Light Reflection */
+.dock-indicator::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  width: calc(100% - var(--border-width));
+  height: calc(100% - var(--border-width));
+  top: calc(var(--border-width) / 2);
+  left: calc(var(--border-width) / 2);
+  border-radius: inherit;
+  overflow: hidden;
+  background: linear-gradient(
+    var(--angle-2),
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.35) 35% 45%,
+    rgba(255, 255, 255, 0) 50%
+  );
+  mix-blend-mode: screen;
+  pointer-events: none;
+  background-size: 200% 200%;
+  background-position: 0% 50%;
+  background-repeat: no-repeat;
+  transition: background-position calc(var(--anim-hover-time) * 1.25)
+    var(--anim-hover-ease);
+}
+
+.nav-item:hover .dock-indicator::before {
+  background-position: 20% 50%;
+}
+
+/* Border Gradient */
+.dock-indicator::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  border-radius: inherit;
+  width: calc(100% + var(--border-width));
+  height: calc(100% + var(--border-width));
+  top: calc(0% - var(--border-width) / 2);
+  left: calc(0% - var(--border-width) / 2);
+  padding: var(--border-width);
+  box-sizing: border-box;
+  background:
+    conic-gradient(
+      from var(--angle-1) at 50% 50%,
+      rgba(0, 0, 0, 0.35),
+      rgba(0, 0, 0, 0) 5% 40%,
+      rgba(0, 0, 0, 0.35) 50%,
+      rgba(0, 0, 0, 0) 60% 95%,
+      rgba(0, 0, 0, 0.35)
+    ),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.3));
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+  pointer-events: none;
+  transition:
+    all var(--anim-hover-time) var(--anim-hover-ease),
+    --angle-1 500ms ease;
+  box-shadow: inset 0 0 0 calc(var(--border-width) / 2) rgba(255, 255, 255, 0.4);
+}
+
+.nav-item:hover .dock-indicator::after {
+  --angle-1: -125deg;
+}
+
+html.dark .dock-indicator {
+  background: linear-gradient(
+    -70deg,
+    rgba(255, 255, 255, 0.015),
+    rgba(200, 210, 225, 0.05) 30%,
+    rgba(180, 200, 220, 0.06) 50%,
+    rgba(200, 210, 225, 0.05) 70%,
+    rgba(255, 255, 255, 0.015)
+  );
+  box-shadow:
+    inset 0 1px 1px rgba(0, 0, 0, 0.12),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.028),
+    0 2px 1px -1px rgba(0, 0, 0, 0.16),
+    0 0 0.5px 2px inset rgba(255, 255, 255, 0.018);
+}
+
+html.dark .dock-indicator::before {
+  background: linear-gradient(
+    var(--angle-2),
+    rgba(255, 255, 255, 0) 0%,
+    rgba(200, 220, 240, 0.03) 25%,
+    rgba(180, 210, 235, 0.055) 40%,
+    rgba(200, 220, 240, 0.03) 50%,
+    rgba(255, 255, 255, 0) 60%
+  );
+}
+
+html.dark .dock-indicator::after {
+  background:
+    conic-gradient(
+      from var(--angle-1) at 50% 50%,
+      rgba(200, 215, 235, 0.08),
+      rgba(255, 255, 255, 0) 8% 42%,
+      rgba(200, 215, 235, 0.08) 50%,
+      rgba(255, 255, 255, 0) 58% 92%,
+      rgba(200, 215, 235, 0.08)
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.04),
+      rgba(255, 255, 255, 0.02)
+    );
+  box-shadow: inset 0 0 0 calc(var(--border-width) / 2)
+    rgba(255, 255, 255, 0.04);
+}
+
+/* ===== SKILL PILL ===== */
+
+.skill-pill {
+  --border-width: 1px;
+  position: relative;
+  background: linear-gradient(
+    -75deg,
+    rgba(255, 255, 255, 0.05),
+    rgba(255, 255, 255, 0.18),
+    rgba(255, 255, 255, 0.05)
+  );
+  border-radius: var(--radius-pill);
+  box-shadow:
+    inset 0 0.5px 0.5px rgba(0, 0, 0, 0.04),
+    inset 0 -0.5px 0.5px rgba(255, 255, 255, 0.45),
+    0 2px 1px -1px rgba(0, 0, 0, 0.1),
+    0 0 0.5px 1.5px inset rgba(255, 255, 255, 0.12);
+  transition: all var(--anim-hover-time) var(--anim-hover-ease);
+}
+
+.skill-pill:hover {
+  transform: scale(0.98);
+  box-shadow:
+    inset 0 0.5px 0.5px rgba(0, 0, 0, 0.04),
+    inset 0 -0.5px 0.5px rgba(255, 255, 255, 0.45),
+    0 1px 0.5px -0.5px rgba(0, 0, 0, 0.12),
+    0 0 0.25px 0.75px inset rgba(255, 255, 255, 0.25);
+}
+
+.skill-pill:active {
+  transform: scale(0.96) perspective(200px) rotateX(2deg);
+  box-shadow:
+    inset 0 0.5px 0.5px rgba(0, 0, 0, 0.04),
+    inset 0 -0.5px 0.5px rgba(255, 255, 255, 0.45),
+    0 0.5px 0.5px -0.5px rgba(0, 0, 0, 0.08),
+    0 0 0.5px 1.5px inset rgba(255, 255, 255, 0.12),
+    0 1.5px 0 0 rgba(255, 255, 255, 0.5),
+    inset 0 0.5px 0.25px 0 rgba(0, 0, 0, 0.05);
+}
+
+html.dark .skill-pill {
+  background: linear-gradient(
+    -70deg,
+    rgba(255, 255, 255, 0.01),
+    rgba(200, 210, 225, 0.04) 30%,
+    rgba(180, 200, 220, 0.05) 50%,
+    rgba(200, 210, 225, 0.04) 70%,
+    rgba(255, 255, 255, 0.01)
+  );
+  box-shadow:
+    inset 0 0.5px 0.5px rgba(0, 0, 0, 0.12),
+    inset 0 -0.5px 0.5px rgba(255, 255, 255, 0.035),
+    0 2px 1px -1px rgba(0, 0, 0, 0.2),
+    0 0 0.5px 1.5px inset rgba(255, 255, 255, 0.018);
+}
+
+html.dark .skill-pill:hover {
+  box-shadow:
+    inset 0 0.5px 0.5px rgba(0, 0, 0, 0.12),
+    inset 0 -0.5px 0.5px rgba(255, 255, 255, 0.035),
+    0 1px 0.5px -0.5px rgba(0, 0, 0, 0.24),
+    0 0 0.25px 0.75px inset rgba(255, 255, 255, 0.035);
+}
+
+html.dark .skill-pill:active {
+  box-shadow:
+    inset 0 0.5px 0.5px rgba(0, 0, 0, 0.12),
+    inset 0 -0.5px 0.5px rgba(255, 255, 255, 0.035),
+    0 0.5px 0.5px -0.5px rgba(0, 0, 0, 0.16),
+    0 0 0.5px 1.5px inset rgba(255, 255, 255, 0.018),
+    0 1.5px 0 0 rgba(255, 255, 255, 0.055),
+    inset 0 0.5px 0.25px 0 rgba(0, 0, 0, 0.08);
+}
+
+/* ===== GRADIENT TEXT ===== */
+
+.text-gradient {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+html.dark .text-gradient {
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===== SECTION STYLES ===== */
+
+.section-title {
+  @apply text-4xl md:text-5xl font-bold mb-4;
+  color: var(--color-text-primary);
+}
+
+.section-subtitle {
+  @apply uppercase tracking-widest text-sm mb-6;
+  color: var(--color-text-muted);
+}
+
+.container-custom {
+  @apply max-w-6xl mx-auto px-6 md:px-8;
+}
+
+/* ===== FLOATING ANIMATIONS ===== */
+
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(30px, -20px) scale(1.02);
+  }
+  50% {
+    transform: translate(15px, 25px) scale(0.98);
+  }
+  75% {
+    transform: translate(-20px, 10px) scale(1.01);
+  }
+}
+
+@keyframes float-medium {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(-25px, 15px) scale(1.03);
+  }
+  66% {
+    transform: translate(20px, -15px) scale(0.97);
+  }
+}
+
+@keyframes float-fast {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(25px, -30px) scale(1.02);
+  }
+}
+
+.animate-float-slow {
+  animation: float-slow 45s ease-in-out infinite;
+}
+
+.animate-float-medium {
+  animation: float-medium 35s ease-in-out infinite;
+}
+
+.animate-float-fast {
+  animation: float-fast 25s ease-in-out infinite;
+}
+
+/* ===== LIQUID CTA BUTTON ===== */
+/* Isolated glass button with shadow layer - supports both button and anchor elements */
+
+.liquid-cta-wrap {
+  --global--size: clamp(2rem, 4vw, 5rem);
+  --anim--hover-time: 400ms;
+  --anim--hover-ease: cubic-bezier(0.25, 1, 0.5, 1);
+  position: relative;
+  z-index: 2;
+  border-radius: 999vw;
+  background: transparent;
+  pointer-events: none;
+  transition: all var(--anim--hover-time) var(--anim--hover-ease);
+  font-size: var(--global--size);
+}
+
+/* Button Shadow Container */
+.liquid-cta-shadow {
+  --shadow-cuttoff-fix: 2em;
+  position: absolute;
+  width: calc(100% + var(--shadow-cuttoff-fix));
+  height: calc(100% + var(--shadow-cuttoff-fix));
+  top: calc(0% - var(--shadow-cuttoff-fix) / 2);
+  left: calc(0% - var(--shadow-cuttoff-fix) / 2);
+  filter: blur(clamp(2px, 0.125em, 12px));
+  -webkit-filter: blur(clamp(2px, 0.125em, 12px));
+  overflow: visible;
+  pointer-events: none;
+}
+
+/* Shadow pseudo-element */
+.liquid-cta-shadow::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  border-radius: 999vw;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1));
+  width: calc(100% - var(--shadow-cuttoff-fix) - 0.25em);
+  height: calc(100% - var(--shadow-cuttoff-fix) - 0.25em);
+  top: calc(var(--shadow-cuttoff-fix) - 0.5em);
+  left: calc(var(--shadow-cuttoff-fix) - 0.875em);
+  padding: 0.125em;
+  box-sizing: border-box;
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+  transition: all var(--anim--hover-time) var(--anim--hover-ease);
+  overflow: visible;
+  opacity: 1;
+}
+
+/* Button/Anchor Base Styles */
+.liquid-cta-wrap :is(button, a) {
+  --border-width: clamp(1px, 0.0625em, 4px);
+  all: unset;
+  cursor: pointer;
+  position: relative;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  pointer-events: auto;
+  z-index: 3;
+  background: linear-gradient(
+    -75deg,
+    rgba(255, 255, 255, 0.05),
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.05)
+  );
+  border-radius: 999vw;
+  box-shadow:
+    inset 0 0.125em 0.125em rgba(0, 0, 0, 0.05),
+    inset 0 -0.125em 0.125em rgba(255, 255, 255, 0.5),
+    0 0.25em 0.125em -0.125em rgba(0, 0, 0, 0.2),
+    0 0 0.1em 0.25em inset rgba(255, 255, 255, 0.2),
+    0 0 0 0 rgba(255, 255, 255, 1);
+  backdrop-filter: blur(clamp(1px, 0.125em, 4px));
+  -webkit-backdrop-filter: blur(clamp(1px, 0.125em, 4px));
+  transition: all var(--anim--hover-time) var(--anim--hover-ease);
+}
+
+.liquid-cta-wrap :is(button, a):hover {
+  transform: scale(0.975);
+  backdrop-filter: blur(0.01em);
+  -webkit-backdrop-filter: blur(0.01em);
+  box-shadow:
+    inset 0 0.125em 0.125em rgba(0, 0, 0, 0.05),
+    inset 0 -0.125em 0.125em rgba(255, 255, 255, 0.5),
+    0 0.15em 0.05em -0.1em rgba(0, 0, 0, 0.25),
+    0 0 0.05em 0.1em inset rgba(255, 255, 255, 0.5),
+    0 0 0 0 rgba(255, 255, 255, 1);
+}
+
+/* Button/Anchor Text */
+.liquid-cta-wrap :is(button, a) span {
+  position: relative;
+  display: block;
+  user-select: none;
+  -webkit-user-select: none;
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+  letter-spacing: -0.05em;
+  font-weight: 500;
+  font-size: 1em;
+  color: rgba(50, 50, 50, 1);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-shadow: 0em 0.25em 0.05em rgba(0, 0, 0, 0.1);
+  transition: all var(--anim--hover-time) var(--anim--hover-ease);
+  padding-inline: 1.5em;
+  padding-block: 0.875em;
+}
+
+.liquid-cta-wrap :is(button, a):hover span {
+  text-shadow: 0.025em 0.025em 0.025em rgba(0, 0, 0, 0.12);
+}
+
+/* Text light reflection */
+.liquid-cta-wrap :is(button, a) span::after {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: 1;
+  width: calc(100% - var(--border-width));
+  height: calc(100% - var(--border-width));
+  top: calc(0% + var(--border-width) / 2);
+  left: calc(0% + var(--border-width) / 2);
+  box-sizing: border-box;
+  border-radius: 999vw;
+  overflow: clip;
+  background: linear-gradient(
+    var(--angle-2),
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.5) 40% 50%,
+    rgba(255, 255, 255, 0) 55%
+  );
+  z-index: 3;
+  mix-blend-mode: screen;
+  pointer-events: none;
+  background-size: 200% 200%;
+  background-position: 0% 50%;
+  background-repeat: no-repeat;
+  transition:
+    background-position calc(var(--anim--hover-time) * 1.25)
+      var(--anim--hover-ease),
+    --angle-2 calc(var(--anim--hover-time) * 1.25) var(--anim--hover-ease);
+}
+
+.liquid-cta-wrap :is(button, a):hover span::after {
+  background-position: 25% 50%;
+}
+
+.liquid-cta-wrap :is(button, a):active span::after {
+  background-position: 50% 15%;
+  --angle-2: -15deg;
+}
+
+/* Touch Devices */
+@media (hover: none) and (pointer: coarse) {
+  .liquid-cta-wrap :is(button, a) span::after,
+  .liquid-cta-wrap :is(button, a):active span::after {
+    --angle-2: -45deg;
+  }
+}
+
+/* Button/Anchor Border Outline */
+.liquid-cta-wrap :is(button, a)::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  border-radius: 999vw;
+  width: calc(100% + var(--border-width));
+  height: calc(100% + var(--border-width));
+  top: calc(0% - var(--border-width) / 2);
+  left: calc(0% - var(--border-width) / 2);
+  padding: var(--border-width);
+  box-sizing: border-box;
+  background:
+    conic-gradient(
+      from var(--angle-1) at 50% 50%,
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0) 5% 40%,
+      rgba(0, 0, 0, 0.5) 50%,
+      rgba(0, 0, 0, 0) 60% 95%,
+      rgba(0, 0, 0, 0.5)
+    ),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5));
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+  transition:
+    all var(--anim--hover-time) var(--anim--hover-ease),
+    --angle-1 500ms ease;
+  box-shadow: inset 0 0 0 calc(var(--border-width) / 2) rgba(255, 255, 255, 0.5);
+}
+
+.liquid-cta-wrap :is(button, a):hover::after {
+  --angle-1: -125deg;
+}
+
+.liquid-cta-wrap :is(button, a):active::after {
+  --angle-1: -75deg;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .liquid-cta-wrap :is(button, a)::after,
+  .liquid-cta-wrap :is(button, a):hover::after,
+  .liquid-cta-wrap :is(button, a):active::after {
+    --angle-1: -75deg;
+  }
+}
+
+/* Shadow Hover Effects */
+.liquid-cta-wrap:has(:is(button, a):hover) .liquid-cta-shadow {
+  filter: blur(clamp(2px, 0.0625em, 6px));
+  -webkit-filter: blur(clamp(2px, 0.0625em, 6px));
+  transition: filter var(--anim--hover-time) var(--anim--hover-ease);
+}
+
+.liquid-cta-wrap:has(:is(button, a):hover) .liquid-cta-shadow::after {
+  top: calc(var(--shadow-cuttoff-fix) - 0.875em);
+  opacity: 1;
+}
+
+/* 3D Rotation on Active */
+.liquid-cta-wrap:has(:is(button, a):active) {
+  transform: rotate3d(1, 0, 0, 25deg);
+}
+
+.liquid-cta-wrap:has(:is(button, a):active) :is(button, a) {
+  box-shadow:
+    inset 0 0.125em 0.125em rgba(0, 0, 0, 0.05),
+    inset 0 -0.125em 0.125em rgba(255, 255, 255, 0.5),
+    0 0.125em 0.125em -0.125em rgba(0, 0, 0, 0.2),
+    0 0 0.1em 0.25em inset rgba(255, 255, 255, 0.2),
+    0 0.225em 0.05em 0 rgba(0, 0, 0, 0.05),
+    0 0.25em 0 0 rgba(255, 255, 255, 0.75),
+    inset 0 0.25em 0.05em 0 rgba(0, 0, 0, 0.15);
+}
+
+.liquid-cta-wrap:has(:is(button, a):active) .liquid-cta-shadow {
+  filter: blur(clamp(2px, 0.125em, 12px));
+  -webkit-filter: blur(clamp(2px, 0.125em, 12px));
+}
+
+.liquid-cta-wrap:has(:is(button, a):active) .liquid-cta-shadow::after {
+  top: calc(var(--shadow-cuttoff-fix) - 0.5em);
+  opacity: 0.75;
+}
+
+.liquid-cta-wrap:has(:is(button, a):active) span {
+  text-shadow: 0.025em 0.25em 0.05em rgba(0, 0, 0, 0.12);
+}
+
+/* Dark Mode */
+html.dark .liquid-cta-wrap :is(button, a) {
+  background: linear-gradient(
+    -70deg,
+    rgba(255, 255, 255, 0.015),
+    rgba(200, 210, 225, 0.055) 30%,
+    rgba(180, 200, 220, 0.07) 50%,
+    rgba(200, 210, 225, 0.055) 70%,
+    rgba(255, 255, 255, 0.015)
+  );
+  box-shadow:
+    inset 0 0.125em 0.125em rgba(0, 0, 0, 0.12),
+    inset 0 -0.125em 0.125em rgba(255, 255, 255, 0.045),
+    0 0.25em 0.125em -0.125em rgba(0, 0, 0, 0.32),
+    0 0 0.1em 0.25em inset rgba(255, 255, 255, 0.02);
+}
+
+html.dark .liquid-cta-wrap :is(button, a):hover {
+  box-shadow:
+    inset 0 0.125em 0.125em rgba(0, 0, 0, 0.12),
+    inset 0 -0.125em 0.125em rgba(255, 255, 255, 0.045),
+    0 0.15em 0.05em -0.1em rgba(0, 0, 0, 0.38),
+    0 0 0.05em 0.1em inset rgba(255, 255, 255, 0.035);
+}
+
+html.dark .liquid-cta-wrap :is(button, a) span {
+  color: rgba(235, 240, 245, 1);
+  text-shadow: 0em 0.2em 0.06em rgba(0, 0, 0, 0.22);
+}
+
+/* Dark mode light reflection on CTA button */
+html.dark .liquid-cta-wrap :is(button, a) span::after {
+  background: linear-gradient(
+    var(--angle-2),
+    rgba(255, 255, 255, 0) 0%,
+    rgba(200, 220, 240, 0.04) 30%,
+    rgba(180, 210, 235, 0.08) 45%,
+    rgba(200, 220, 240, 0.04) 55%,
+    rgba(255, 255, 255, 0) 65%
+  );
+}
+
+html.dark .liquid-cta-wrap :is(button, a):hover span {
+  text-shadow: 0.02em 0.02em 0.03em rgba(0, 0, 0, 0.18);
+}
+
+html.dark .liquid-cta-wrap :is(button, a):active span {
+  text-shadow: 0.02em 0.18em 0.05em rgba(0, 0, 0, 0.18);
+}
+
+html.dark .liquid-cta-wrap :is(button, a)::after {
+  background:
+    conic-gradient(
+      from var(--angle-1) at 50% 50%,
+      rgba(200, 215, 235, 0.12),
+      rgba(255, 255, 255, 0) 8% 42%,
+      rgba(200, 215, 235, 0.12) 50%,
+      rgba(255, 255, 255, 0) 58% 92%,
+      rgba(200, 215, 235, 0.12)
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.06),
+      rgba(255, 255, 255, 0.04)
+    );
+  box-shadow: inset 0 0 0 calc(var(--border-width) / 2)
+    rgba(255, 255, 255, 0.06);
+}
+
+html.dark .liquid-cta-shadow::after {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.32), rgba(0, 0, 0, 0.18));
+}
+
+html.dark .liquid-cta-wrap:has(:is(button, a):active) :is(button, a) {
+  box-shadow:
+    inset 0 0.125em 0.125em rgba(0, 0, 0, 0.12),
+    inset 0 -0.125em 0.125em rgba(255, 255, 255, 0.045),
+    0 0.125em 0.125em -0.125em rgba(0, 0, 0, 0.32),
+    0 0 0.1em 0.25em inset rgba(255, 255, 255, 0.02),
+    0 0.225em 0.05em 0 rgba(0, 0, 0, 0.08),
+    0 0.25em 0 0 rgba(255, 255, 255, 0.08),
+    inset 0 0.25em 0.05em 0 rgba(0, 0, 0, 0.12);
+}
+
+html.dark .liquid-cta-wrap:has(:is(button, a):active) span {
+  text-shadow: 0.02em 0.22em 0.05em rgba(0, 0, 0, 0.16);
+}
+
+/* ===== LIQUID ICON BUTTON ===== */
+/* Circular icon button with full liquid glass effect including shadow layer */
+
+.liquid-icon-wrap {
+  --global--size: 1rem;
+  --anim--hover-time: 400ms;
+  --anim--hover-ease: cubic-bezier(0.25, 1, 0.5, 1);
+  position: relative;
+  z-index: 2;
+  border-radius: 999vw;
+  background: transparent;
+  pointer-events: none;
+  transition: all var(--anim--hover-time) var(--anim--hover-ease);
+  font-size: var(--global--size);
+}
+
+/* Icon Shadow Container */
+.liquid-icon-shadow {
+  --shadow-cuttoff-fix: 1.5em;
+  position: absolute;
+  width: calc(100% + var(--shadow-cuttoff-fix));
+  height: calc(100% + var(--shadow-cuttoff-fix));
+  top: calc(0% - var(--shadow-cuttoff-fix) / 2);
+  left: calc(0% - var(--shadow-cuttoff-fix) / 2);
+  filter: blur(clamp(2px, 0.1em, 8px));
+  -webkit-filter: blur(clamp(2px, 0.1em, 8px));
+  overflow: visible;
+  pointer-events: none;
+}
+
+.liquid-icon-shadow::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  border-radius: 999vw;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.08));
+  width: calc(100% - var(--shadow-cuttoff-fix) - 0.2em);
+  height: calc(100% - var(--shadow-cuttoff-fix) - 0.2em);
+  top: calc(var(--shadow-cuttoff-fix) - 0.4em);
+  left: calc(var(--shadow-cuttoff-fix) - 0.65em);
+  padding: 0.1em;
+  box-sizing: border-box;
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+  transition: all var(--anim--hover-time) var(--anim--hover-ease);
+  overflow: visible;
+  opacity: 1;
+}
+
+/* Icon Button/Anchor Base */
+.liquid-icon-wrap :is(button, a) {
+  --border-width: 1px;
+  --icon-size: 3em;
+  all: unset;
+  cursor: pointer;
+  position: relative;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  pointer-events: auto;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--icon-size);
+  height: var(--icon-size);
+  background: linear-gradient(
+    -75deg,
+    rgba(255, 255, 255, 0.05),
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.05)
+  );
+  border-radius: 999vw;
+  box-shadow:
+    inset 0 0.1em 0.1em rgba(0, 0, 0, 0.05),
+    inset 0 -0.1em 0.1em rgba(255, 255, 255, 0.5),
+    0 0.2em 0.1em -0.1em rgba(0, 0, 0, 0.2),
+    0 0 0.08em 0.2em inset rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(clamp(1px, 0.1em, 4px));
+  -webkit-backdrop-filter: blur(clamp(1px, 0.1em, 4px));
+  transition: all var(--anim--hover-time) var(--anim--hover-ease);
+  color: var(--color-text-primary);
+}
+
+.liquid-icon-wrap :is(button, a):hover {
+  transform: scale(0.975);
+  backdrop-filter: blur(0.02em);
+  -webkit-backdrop-filter: blur(0.02em);
+  box-shadow:
+    inset 0 0.1em 0.1em rgba(0, 0, 0, 0.05),
+    inset 0 -0.1em 0.1em rgba(255, 255, 255, 0.5),
+    0 0.12em 0.04em -0.08em rgba(0, 0, 0, 0.25),
+    0 0 0.04em 0.08em inset rgba(255, 255, 255, 0.5);
+}
+
+/* Icon Light Reflection */
+.liquid-icon-wrap :is(button, a)::before {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  width: calc(100% - var(--border-width));
+  height: calc(100% - var(--border-width));
+  top: calc(var(--border-width) / 2);
+  left: calc(var(--border-width) / 2);
+  border-radius: inherit;
+  overflow: hidden;
+  background: linear-gradient(
+    var(--angle-2),
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.4) 35% 45%,
+    rgba(255, 255, 255, 0) 50%
+  );
+  mix-blend-mode: screen;
+  pointer-events: none;
+  background-size: 200% 200%;
+  background-position: 0% 50%;
+  background-repeat: no-repeat;
+  transition:
+    background-position calc(var(--anim--hover-time) * 1.25)
+      var(--anim--hover-ease),
+    --angle-2 calc(var(--anim--hover-time) * 1.25) var(--anim--hover-ease);
+}
+
+.liquid-icon-wrap :is(button, a):hover::before {
+  background-position: 20% 50%;
+}
+
+.liquid-icon-wrap :is(button, a):active::before {
+  background-position: 40% 20%;
+  --angle-2: -15deg;
+}
+
+/* Icon Border Gradient */
+.liquid-icon-wrap :is(button, a)::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  border-radius: inherit;
+  width: calc(100% + var(--border-width));
+  height: calc(100% + var(--border-width));
+  top: calc(0% - var(--border-width) / 2);
+  left: calc(0% - var(--border-width) / 2);
+  padding: var(--border-width);
+  box-sizing: border-box;
+  background:
+    conic-gradient(
+      from var(--angle-1) at 50% 50%,
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0) 5% 40%,
+      rgba(0, 0, 0, 0.5) 50%,
+      rgba(0, 0, 0, 0) 60% 95%,
+      rgba(0, 0, 0, 0.5)
+    ),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5));
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+  pointer-events: none;
+  transition:
+    all var(--anim--hover-time) var(--anim--hover-ease),
+    --angle-1 500ms ease;
+  box-shadow: inset 0 0 0 calc(var(--border-width) / 2) rgba(255, 255, 255, 0.5);
+}
+
+.liquid-icon-wrap :is(button, a):hover::after {
+  --angle-1: -125deg;
+}
+
+.liquid-icon-wrap :is(button, a):active::after {
+  --angle-1: -75deg;
+}
+
+/* Touch Devices */
+@media (hover: none) and (pointer: coarse) {
+  .liquid-icon-wrap :is(button, a)::before,
+  .liquid-icon-wrap :is(button, a):active::before {
+    --angle-2: -45deg;
+  }
+  .liquid-icon-wrap :is(button, a)::after,
+  .liquid-icon-wrap :is(button, a):hover::after,
+  .liquid-icon-wrap :is(button, a):active::after {
+    --angle-1: -75deg;
+  }
+}
+
+/* Shadow Hover Effects */
+.liquid-icon-wrap:has(:is(button, a):hover) .liquid-icon-shadow {
+  filter: blur(clamp(2px, 0.05em, 4px));
+  -webkit-filter: blur(clamp(2px, 0.05em, 4px));
+  transition: filter var(--anim--hover-time) var(--anim--hover-ease);
+}
+
+.liquid-icon-wrap:has(:is(button, a):hover) .liquid-icon-shadow::after {
+  top: calc(var(--shadow-cuttoff-fix) - 0.6em);
+  opacity: 1;
+}
+
+/* 3D Rotation on Active */
+.liquid-icon-wrap:has(:is(button, a):active) {
+  transform: rotate3d(1, 0, 0, 15deg);
+}
+
+.liquid-icon-wrap:has(:is(button, a):active) :is(button, a) {
+  box-shadow:
+    inset 0 0.1em 0.1em rgba(0, 0, 0, 0.05),
+    inset 0 -0.1em 0.1em rgba(255, 255, 255, 0.5),
+    0 0.1em 0.1em -0.1em rgba(0, 0, 0, 0.2),
+    0 0 0.08em 0.2em inset rgba(255, 255, 255, 0.2),
+    0 0.18em 0.04em 0 rgba(0, 0, 0, 0.05),
+    0 0.2em 0 0 rgba(255, 255, 255, 0.75),
+    inset 0 0.2em 0.04em 0 rgba(0, 0, 0, 0.15);
+}
+
+.liquid-icon-wrap:has(:is(button, a):active) .liquid-icon-shadow {
+  filter: blur(clamp(2px, 0.1em, 8px));
+  -webkit-filter: blur(clamp(2px, 0.1em, 8px));
+}
+
+.liquid-icon-wrap:has(:is(button, a):active) .liquid-icon-shadow::after {
+  top: calc(var(--shadow-cuttoff-fix) - 0.4em);
+  opacity: 0.75;
+}
+
+/* Dark Mode Icon */
+html.dark .liquid-icon-wrap :is(button, a) {
+  background: linear-gradient(
+    -70deg,
+    rgba(255, 255, 255, 0.012),
+    rgba(200, 210, 225, 0.05) 30%,
+    rgba(180, 200, 220, 0.06) 50%,
+    rgba(200, 210, 225, 0.05) 70%,
+    rgba(255, 255, 255, 0.012)
+  );
+  box-shadow:
+    inset 0 0.1em 0.1em rgba(0, 0, 0, 0.12),
+    inset 0 -0.1em 0.1em rgba(255, 255, 255, 0.055),
+    0 0.2em 0.1em -0.1em rgba(0, 0, 0, 0.32),
+    0 0 0.08em 0.2em inset rgba(255, 255, 255, 0.025);
+}
+
+html.dark .liquid-icon-wrap :is(button, a):hover {
+  box-shadow:
+    inset 0 0.1em 0.1em rgba(0, 0, 0, 0.12),
+    inset 0 -0.1em 0.1em rgba(255, 255, 255, 0.055),
+    0 0.12em 0.04em -0.08em rgba(0, 0, 0, 0.4),
+    0 0 0.04em 0.08em inset rgba(255, 255, 255, 0.045);
+}
+
+html.dark .liquid-icon-wrap :is(button, a)::before {
+  background: linear-gradient(
+    var(--angle-2),
+    rgba(255, 255, 255, 0) 0%,
+    rgba(200, 220, 240, 0.035) 25%,
+    rgba(180, 210, 235, 0.065) 40%,
+    rgba(200, 220, 240, 0.035) 50%,
+    rgba(255, 255, 255, 0) 60%
+  );
+}
+
+html.dark .liquid-icon-wrap :is(button, a)::after {
+  background:
+    conic-gradient(
+      from var(--angle-1) at 50% 50%,
+      rgba(200, 215, 235, 0.1),
+      rgba(255, 255, 255, 0) 8% 42%,
+      rgba(200, 215, 235, 0.1) 50%,
+      rgba(255, 255, 255, 0) 58% 92%,
+      rgba(200, 215, 235, 0.1)
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.055),
+      rgba(255, 255, 255, 0.035)
+    );
+  box-shadow: inset 0 0 0 calc(var(--border-width) / 2)
+    rgba(255, 255, 255, 0.055);
+}
+
+html.dark .liquid-icon-shadow::after {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.15));
+}
+
+html.dark .liquid-icon-wrap:has(:is(button, a):active) :is(button, a) {
+  box-shadow:
+    inset 0 0.1em 0.1em rgba(0, 0, 0, 0.12),
+    inset 0 -0.1em 0.1em rgba(255, 255, 255, 0.055),
+    0 0.1em 0.1em -0.1em rgba(0, 0, 0, 0.32),
+    0 0 0.08em 0.2em inset rgba(255, 255, 255, 0.025),
+    0 0.18em 0.04em 0 rgba(0, 0, 0, 0.08),
+    0 0.2em 0 0 rgba(255, 255, 255, 0.08),
+    inset 0 0.2em 0.04em 0 rgba(0, 0, 0, 0.15);
+}
+
+/* Icon Size Variants */
+.liquid-icon-wrap.liquid-icon-sm :is(button, a) {
+  --icon-size: 2.5em;
+}
+
+.liquid-icon-wrap.liquid-icon-lg :is(button, a) {
+  --icon-size: 3.5em;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 768px) {
+  .liquid-card {
+    border-radius: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .animate-float-slow,
+  .animate-float-medium,
+  .animate-float-fast {
+    animation: none;
+  }
+}
